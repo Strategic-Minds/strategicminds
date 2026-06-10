@@ -2,30 +2,30 @@ const phases = ['Intake', 'Payment', 'Schedule', 'Plan', 'Build', 'Validate', 'L
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-[#050816] text-slate-50">
-      <section className="mx-auto flex min-h-screen max-w-6xl flex-col justify-center px-6 py-16">
-        <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+    <main style={{ minHeight: '100vh', background: '#050816', color: '#f8fafc', fontFamily: 'Arial, sans-serif' }}>
+      <section style={{ maxWidth: '1120px', margin: '0 auto', padding: '64px 24px', minHeight: '100vh', display: 'flex', alignItems: 'center' }}>
+        <div style={{ display: 'grid', gap: '40px', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', width: '100%' }}>
           <div>
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.35em] text-blue-400">Strategic Minds Advisory</p>
-            <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">Client Operating System powered by AUTO_BUILDER.</h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
+            <p style={{ marginBottom: '16px', fontSize: '12px', fontWeight: 700, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#60a5fa' }}>Strategic Minds Advisory</p>
+            <h1 style={{ margin: 0, fontSize: 'clamp(40px, 8vw, 72px)', lineHeight: 1, fontWeight: 800 }}>Client Operating System powered by AUTO_BUILDER.</h1>
+            <p style={{ marginTop: '24px', maxWidth: '680px', fontSize: '18px', lineHeight: 1.7, color: '#cbd5e1' }}>
               A governed intake, payment, planning, build, validation, and approval interface for launching client systems without legacy-code drift.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a href="/dashboard" className="rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-950/40 hover:bg-blue-500">Open Dashboard</a>
-              <a href="/api/health" className="rounded-full border border-slate-700 px-6 py-3 text-sm font-semibold text-slate-200 hover:border-blue-400">Health Check</a>
+            <div style={{ marginTop: '32px', display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
+              <a href="/dashboard" style={{ borderRadius: '999px', background: '#2563eb', padding: '12px 24px', fontSize: '14px', fontWeight: 700, color: '#ffffff' }}>Open Dashboard</a>
+              <a href="/api/health" style={{ borderRadius: '999px', border: '1px solid #334155', padding: '12px 24px', fontSize: '14px', fontWeight: 700, color: '#e2e8f0' }}>Health Check</a>
             </div>
           </div>
-          <div className="rounded-3xl border border-slate-800 bg-slate-950/70 p-5 shadow-2xl shadow-blue-950/20">
-            <div className="mb-5 flex items-center justify-between">
-              <span className="text-sm font-semibold text-slate-300">Workflow Status</span>
-              <span className="rounded-full bg-blue-500/15 px-3 py-1 text-xs font-semibold text-blue-300">Preview Only</span>
+          <div style={{ borderRadius: '28px', border: '1px solid #1e293b', background: '#0f172a', padding: '20px' }}>
+            <div style={{ marginBottom: '20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+              <span style={{ fontSize: '14px', fontWeight: 700, color: '#cbd5e1' }}>Workflow Status</span>
+              <span style={{ borderRadius: '999px', background: 'rgba(37, 99, 235, 0.18)', padding: '4px 12px', fontSize: '12px', fontWeight: 700, color: '#93c5fd' }}>Preview Only</span>
             </div>
-            <div className="space-y-3">
+            <div style={{ display: 'grid', gap: '12px' }}>
               {phases.map((phase, index) => (
-                <div key={phase} className="flex items-center justify-between rounded-2xl border border-slate-800 bg-slate-900/80 px-4 py-3">
-                  <span className="text-sm text-slate-200">{index + 1}. {phase}</span>
-                  <span className="text-xs text-slate-400">Queued</span>
+                <div key={phase} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderRadius: '18px', border: '1px solid #1e293b', background: '#111827', padding: '12px 16px' }}>
+                  <span style={{ fontSize: '14px', color: '#e2e8f0' }}>{index + 1}. {phase}</span>
+                  <span style={{ fontSize: '12px', color: '#94a3b8' }}>Queued</span>
                 </div>
               ))}
             </div>
