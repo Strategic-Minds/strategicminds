@@ -1,0 +1,76 @@
+name: Autonomous Control Plane Signed Cron
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_url:
+        description: Live StrategicMinds autobuilder tick URL
+        required: false
+        default: https://strategicminds-strategic-minds-advisory.vercel.app/api/autobuilder/tick
+  schedule:
+    - cron: '17 * * * *'
+
+jobs:
+  verify-signed-cron:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Call signed StrategicMinds autobuilder tick
+        env:
+          CRON_SECRET: ${{ secrets.AUTONOMOUS_CONTROL_PLANE_CRON_SECRET }}
+          TARGET_URL: ${{ github.event.inputs.target_url || 'https://strategicminds-strategic-minds-advisory.vercel.app/api/autobuilder/tick' }}
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts
+
+          if [ -z "${CRON_SECRET:-}" ]; then
+            node - <<'NODE'
+          const fs = require('fs');
+          fs.writeFileSync('artifacts/signed-cron-verification.json', JSON.stringify({
+            verificationStatus: 'failed',
+            error: 'missing_AUTONOMOUS_CONTROL_PLANE_CRON_SECRET',
+            checkedAt: new Date().toISOString()
+          }, null, 2));
+          NODE
+            exit 1
+          fi
+
+          http_code=$(curl -sS -o artifacts/response.json -w '%{http_code}' \
+            -H "Authorization: Bearer ${CRON_SECRET}" \
+            "${TARGET_URL}")
+
+          HTTP_CODE="$http_code" TARGET_URL="$TARGET_URL" node - <<'NODE'
+          const fs = require('fs');
+          const responseText = fs.readFileSync('artifacts/response.json', 'utf8');
+          let body;
+          try {
+            body = JSON.parse(responseText);
+          } catch (error) {
+            body = { raw: responseText };
+          }
+
+          const verified = process.env.HTTP_CODE === '200' && body?.ok === true;
+          const artifact = {
+            verificationStatus: verified ? 'verified' : 'failed',
+            targetUrl: process.env.TARGET_URL,
+            httpStatus: Number(process.env.HTTP_CODE),
+            ok: body?.ok ?? false,
+            persistence: body?.persistence ?? null,
+            receiptId: body?.receipt?.id ?? null,
+            checkedAt: new Date().toISOString()
+          };
+
+          fs.writeFileSync('artifacts/signed-cron-verification.json', JSON.stringify(artifact, null, 2));
+
+          if (!verified) {
+            process.exit(1);
+          }
+          NODE
+
+      - name: Upload signed cron artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: signed-cron-verification
+          path: artifacts/
