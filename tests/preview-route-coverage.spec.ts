@@ -1,7 +1,7 @@
-import { expect, test } from '@playwright/test';
+import { expect, test, type APIRequestContext } from '@playwright/test';
 import manifest from './preview-route-manifest.json';
 
-async function expectOk(path: string, request: Parameters<Parameters<typeof test>[1]>[0]['request']) {
+async function expectOk(path: string, request: APIRequestContext) {
   const response = await request.get(path);
   expect(response.status(), path).toBe(200);
 }
