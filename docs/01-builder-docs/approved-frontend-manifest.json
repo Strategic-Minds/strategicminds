@@ -1,0 +1,57 @@
+{
+  "manifestName": "approved-frontend-manifest",
+  "sourceTruth": {
+    "primaryVisualDriveId": "1rmDliv93X2UznD0FEqG1Ll66ONcMgskG",
+    "primaryVisualFile": "ChatGPT Image Jun 9, 2026, 09_18_27 PM.png",
+    "dashboardSpecDriveId": "1ZOGjUWT67LHTQvVbLEd-7Pksh1sRJtN3",
+    "adminSpecDriveId": "197iJBvSA-CvFgV8VyiBgd1sd2TYUdxL5",
+    "brandLockDriveId": "181Al9kZFmCUzse9Cy7tLBCA1VeEGNaq_"
+  },
+  "logo": {
+    "approvedSource": "Drive PNG top-left logo/wordmark",
+    "description": "brain/thinking-profile icon plus Strategic Minds Advisory wordmark",
+    "replacementAllowed": false
+  },
+  "visualHierarchy": [
+    "header with logo, nav, Schedule a Call CTA, Client Login CTA",
+    "hero with approved headline, support copy, CTAs, AI system diagram, and 10-step journey",
+    "four package cards with MVP System Build Package marked Most Popular",
+    "Google Workspace integration strip",
+    "dark trust/value band",
+    "client dashboard preview with dark sidebar and light operational panels"
+  ],
+  "colors": {
+    "surface": "#FBFBFC",
+    "deepNavy": "#08172C",
+    "electricBlue": "#1256D7",
+    "softBorder": "#B5C8D4",
+    "mutedText": "#575D6C",
+    "successGreen": "#4BA062",
+    "secondaryBlue": "#424DC5"
+  },
+  "typography": {
+    "family": "Geist Sans or system sans-serif",
+    "letterSpacing": "0",
+    "rules": ["hero scale only for public hero", "compact dashboard and admin labels"]
+  },
+  "layout": {
+    "radiusMaxPx": 8,
+    "avoid": ["nested cards", "decorative orbs", "purple/beige/brown themes", "placeholder generated dashboard images"]
+  },
+  "publicRoutes": ["/", "/services", "/packages", "/how-it-works", "/about", "/schedule", "/contact", "/signup", "/login", "/terms", "/privacy", "/refund-policy"],
+  "clientRoutes": ["/client", "/client/journey", "/client/projects", "/client/documents", "/client/payments", "/client/invoices", "/client/meetings", "/client/messages", "/client/ai-assistant", "/client/ai-call", "/client/settings"],
+  "adminRoutes": ["/admin", "/admin/leads", "/admin/clients", "/admin/projects", "/admin/payments", "/admin/invoices", "/admin/workflows", "/admin/agents", "/admin/reports", "/admin/approvals", "/admin/receipts", "/admin/releases", "/admin/settings"],
+  "homepageContent": {
+    "brand": "Strategic Minds Advisory",
+    "tagline": "Intelligence In Motion",
+    "eyebrow": "AI-powered. Automated. Results driven.",
+    "headline": "We Turn Ideas Into Automated, AI-Powered Business Systems.",
+    "ctas": ["Schedule a Call", "View Packages"],
+    "journeySteps": ["Choose Your Package", "Secure Payment", "Schedule Your Call", "Share Your Idea", "We Plan Your System", "MVP Development", "Review & Feedback", "Launch Your System", "Automated Updates", "Scale & Optimize"],
+    "packages": ["Business Planning Consultation", "Workflow Automation Package", "MVP System Build Package", "Full Business System Package"],
+    "integrations": ["Gmail", "Google Drive", "Google Calendar", "Google Sheets", "Google Docs", "Google Meet"]
+  },
+  "clientDashboardModules": ["Overview", "10 Step Journey", "Projects", "Documents", "Payments", "Invoices", "Meetings", "Messages", "AI Assistant", "AI Call", "Settings"],
+  "adminModules": ["Leads", "Clients", "Projects", "Payments", "Workflows", "Agents", "Approvals", "Reports", "Receipts", "Releases"],
+  "validationRequiredBeforeMerge": ["build", "public route coverage", "client auth route coverage", "admin role route coverage", "approved asset usage", "PWA icons", "Playwright screenshots", "no quarantined generated assets referenced"]
+}

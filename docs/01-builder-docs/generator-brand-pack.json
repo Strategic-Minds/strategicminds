@@ -1,0 +1,64 @@
+{
+  "brand": {
+    "name": "Strategic Minds Advisory",
+    "shortName": "Strategic Minds",
+    "tagline": "Intelligence In Motion",
+    "positioning": "AI-powered advisory and automation studio for founders, operators, and growing businesses that need business systems built, automated, and governed.",
+    "promise": "Turn ideas into automated, AI-powered business systems without exposing clients to unsafe automation, live billing, or ungated production actions.",
+    "audience": [
+      "service business owners",
+      "founders",
+      "creators turning expertise into systems",
+      "operators who need AI automation with governance"
+    ]
+  },
+  "voice": {
+    "tone": ["strategic", "clear", "premium", "calm", "operator-grade"],
+    "avoid": ["hype", "guaranteed income claims", "cartoon AI imagery", "generic robot mascots", "dark unreadable overlays"],
+    "headlineStyle": "direct outcome-led statements with concrete business language",
+    "copyRules": [
+      "Use AI and automation language, but keep governance and approval gates visible.",
+      "Use strong claims only when they are framed as capabilities, not guaranteed financial outcomes.",
+      "Prefer concise sections, scannable bullets, and action-oriented CTAs."
+    ]
+  },
+  "visualIdentity": {
+    "palette": {
+      "ink": "#0B1220",
+      "charcoal": "#151A23",
+      "white": "#FFFFFF",
+      "mist": "#F5F7FA",
+      "steel": "#64748B",
+      "electricBlue": "#2563EB",
+      "cyan": "#06B6D4",
+      "success": "#16A34A",
+      "warning": "#F59E0B"
+    },
+    "paletteRules": [
+      "Use ink/white/mist as the dominant system palette.",
+      "Use electric blue and cyan as precision accents, not full-page gradients.",
+      "Avoid purple-heavy, beige, brown/orange, and one-hue themes."
+    ],
+    "typography": {
+      "primary": "Geist Sans or system sans-serif",
+      "numeric": "Geist Mono or system monospace",
+      "rules": ["letter spacing 0", "hero type only for true hero", "dense dashboard text should stay compact"]
+    },
+    "layout": {
+      "radius": "8px or less",
+      "sectionStyle": "full-width bands or constrained unframed layouts",
+      "cardUse": "cards only for repeated items, modals, or framed tools",
+      "navigation": "quiet top navigation with clear CTA"
+    }
+  },
+  "interfaceRules": {
+    "firstViewport": "The first screen must communicate Strategic Minds Advisory and show the business-system/automation subject clearly.",
+    "primaryCtas": ["Schedule a Call", "View Packages", "Start Client Intake"],
+    "routeFamilies": {
+      "public": "premium advisory website",
+      "client": "secure client operating dashboard",
+      "admin": "restrained control plane for approvals, workflows, receipts, and releases"
+    },
+    "governanceSignals": ["approval gates", "preview-first builds", "rollback receipts", "test-mode payments", "AI refusal rules"]
+  }
+}

@@ -1,45 +1,170 @@
-const journey = ['Choose Package','Payment','Schedule Call','Share Idea','Plan System','MVP Build','Review','Launch','Updates','Scale'];
-const packages = [
-  ['Business Planning Consultation','$497'],
-  ['Workflow Automation Package','$1,497'],
-  ['MVP System Build Package','$2,997'],
-  ['Full Business System Package','$5,997+']
+const journeySteps = [
+  'Choose Your Package',
+  'Secure Payment',
+  'Schedule Your Call',
+  'Share Your Idea',
+  'We Plan Your System',
+  'MVP Development',
+  'Review & Feedback',
+  'Launch Your System',
+  'Automated Updates',
+  'Scale & Optimize',
 ];
-const workspace = ['Gmail','Google Drive','Google Calendar','Google Sheets','Google Docs','Google Meet'];
+
+const packages = [
+  {
+    name: 'Business Planning Consultation',
+    price: '$497',
+    features: ['90 Min Strategy Call', 'Business Audit', 'Custom Action Plan', 'Recommendations'],
+  },
+  {
+    name: 'Workflow Automation Package',
+    price: '$1,497',
+    features: ['Workflow Audit', 'Automation Setup', 'System Integrations', 'Training & Support'],
+  },
+  {
+    name: 'MVP System Build Package',
+    price: '$2,997',
+    featured: true,
+    features: ['Custom MVP Build', 'Database & Backend', 'Frontend / Website', '2 Revisions Included'],
+  },
+  {
+    name: 'Full Business System Package',
+    price: '$5,997+',
+    features: ['Everything in MVP', 'Advanced Automations', 'Team Training', 'Priority & Support'],
+  },
+];
+
+const workspace = ['Gmail', 'Google Drive', 'Google Calendar', 'Google Sheets', 'Google Docs', 'Google Meet'];
 
 export default function HomePage() {
   return (
-    <main style={{ background: '#eef5ff', color: '#07172f', fontFamily: 'Arial, sans-serif', minHeight: '100vh', padding: 22 }}>
-      <div style={{ maxWidth: 1800, margin: '0 auto', background: '#ffffff', borderRadius: 18, overflow: 'hidden', border: '1px solid #d6e2f2' }}>
-        <nav style={{ height: 78, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 34px', borderBottom: '1px solid #e2e8f0' }}>
-          <strong>STRATEGIC MINDS ADVISORY</strong>
-          <div style={{ display: 'flex', gap: 18, fontSize: 12, fontWeight: 900 }}>
-            <a>HOME</a><a>SERVICES</a><a>PACKAGES</a><a>HOW IT WORKS</a><a>ABOUT</a>
-            <a href="/dashboard" style={{ background: '#1557d8', color: 'white', padding: '12px 18px', borderRadius: 8 }}>CLIENT LOGIN</a>
-          </div>
+    <main className="site-shell">
+      <header className="site-header" aria-label="Strategic Minds Advisory navigation">
+        <a className="brand-lockup" href="/" aria-label="Strategic Minds Advisory home">
+          <img src="/brand/strategic-minds-logo.svg" alt="Strategic Minds Advisory" />
+        </a>
+        <nav className="site-nav" aria-label="Primary navigation">
+          <a href="/">Home</a>
+          <a href="/services">Services</a>
+          <a href="/packages">Packages</a>
+          <a href="/how-it-works">How It Works</a>
+          <a href="/about">About</a>
         </nav>
-        <section style={{ display: 'grid', gridTemplateColumns: '1fr 320px 1.4fr', gap: 34, padding: '42px 46px 28px', alignItems: 'center' }}>
-          <div>
-            <p style={{ display: 'inline-block', background: '#eaf1ff', color: '#1557d8', borderRadius: 999, padding: '10px 16px', fontSize: 12, fontWeight: 900 }}>AI-POWERED AUTOMATED RESULTS DRIVEN</p>
-            <h1 style={{ fontSize: 54, lineHeight: 1.02, margin: '24px 0 18px', fontWeight: 900 }}>We Turn Ideas Into <span style={{ color: '#1557d8' }}>Automated AI-Powered</span> Business Systems.</h1>
-            <p style={{ color: '#475569', fontSize: 18, lineHeight: 1.55 }}>From planning to automation, we build your systems, workflows, websites, and content engines so you can focus on growth.</p>
+        <div className="header-actions">
+          <a className="button primary" href="/schedule">Schedule a Call</a>
+          <a className="button secondary" href="/login">Client Login</a>
+        </div>
+      </header>
+
+      <section className="hero-grid approved-home" aria-labelledby="hero-title">
+        <div className="hero-copy">
+          <p className="eyebrow">AI-powered. Automated. Results driven.</p>
+          <h1 id="hero-title">We Turn Ideas Into Automated, AI-Powered Business Systems.</h1>
+          <p className="hero-subcopy">
+            From planning to automation, we build your systems, workflows, websites, and content engines so you can focus on growth.
+          </p>
+          <div className="hero-actions">
+            <a className="button primary" href="/schedule">Schedule a Call</a>
+            <a className="button secondary" href="/packages">View Packages</a>
           </div>
-          <div style={{ display: 'grid', placeItems: 'center' }}>
-            <div style={{ width: 220, height: 220, borderRadius: '50%', border: '2px dashed #bcd1fb', display: 'grid', placeItems: 'center' }}>
-              <div style={{ width: 110, height: 110, borderRadius: 28, background: '#1557d8', color: 'white', display: 'grid', placeItems: 'center', fontSize: 52 }}>AI</div>
+        </div>
+
+        <div className="system-orbit" aria-label="Strategy, planning, build, launch, optimize, and improve system map">
+          <div className="orbit-center">AI</div>
+          <span>Strategy & Planning</span>
+          <span>Build & Automate</span>
+          <span>Deliver & Launch</span>
+          <span>Optimize & Scale</span>
+          <span>Monitor & Improve</span>
+        </div>
+
+        <div className="journey-panel" aria-label="The 10 Step Client Journey">
+          <h2>The 10 Step Client Journey</h2>
+          <div className="journey-strip">
+            {journeySteps.map((step, index) => (
+              <article className="journey-step" key={step}>
+                <span>{index + 1}</span>
+                <strong>{step}</strong>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="package-section" aria-labelledby="packages-title">
+        <h2 id="packages-title">Choose the Right Package for Your Business</h2>
+        <div className="package-grid">
+          {packages.map((pkg, index) => (
+            <article className={pkg.featured ? 'package-card featured' : 'package-card'} key={pkg.name}>
+              {pkg.featured ? <span className="popular">Most Popular</span> : null}
+              <span className="package-number">{index + 1}</span>
+              <h3>{pkg.name}</h3>
+              <p className="price">{pkg.price}</p>
+              <ul>
+                {pkg.features.map((feature) => <li key={feature}>{feature}</li>)}
+              </ul>
+              <a className="button secondary" href="/packages">Get Started</a>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="workspace-strip" aria-label="Fully integrated with Google Workspace">
+        <p>Fully integrated with Google Workspace</p>
+        <div>
+          {workspace.map((item) => <span key={item}>{item}</span>)}
+        </div>
+      </section>
+
+      <section className="dashboard-preview-section" aria-labelledby="dashboard-preview-title">
+        <div className="section-heading">
+          <p className="eyebrow">Client Portal Preview</p>
+          <h2 id="dashboard-preview-title">Approved Strategic Minds client dashboard</h2>
+          <p>Structured to match the approved Drive composite: sidebar navigation, step cards, journey tracker, documents, updates, payments, and schedule call prompt.</p>
+        </div>
+        <div className="dashboard-frame compact-dashboard" aria-label="Approved client dashboard preview">
+          <aside className="dashboard-sidebar">
+            <img src="/brand/strategic-minds-logo.svg" alt="Strategic Minds Advisory" />
+            {['Dashboard', 'My Journey', 'Calls', 'Payments', 'Invoices', 'Documents', 'Updates', 'Messages', 'Settings', 'Logout'].map((item, index) => (
+              <span className={index === 0 ? 'active' : ''} key={item}>{item}</span>
+            ))}
+          </aside>
+          <div className="dashboard-main">
+            <div className="dashboard-topline">
+              <div>
+                <h3>Welcome back, John!</h3>
+                <p>Here is what is happening with your project.</p>
+              </div>
+              <a className="button primary" href="/schedule">Schedule a Call</a>
+            </div>
+            <div className="dashboard-stat-grid">
+              <article><small>Current Step</small><strong>4 of 10</strong><span>Share Your Idea</span></article>
+              <article><small>Next Call</small><strong>May 30, 2025</strong><span>2:00 PM EST</span></article>
+              <article><small>Project Status</small><strong>In Progress</strong><span>On Track</span></article>
+              <article><small>Amount Paid</small><strong>$2,997</strong><span>MVP System Build</span></article>
+            </div>
+            <div className="dashboard-journey-mini">
+              {journeySteps.map((step, index) => (
+                <span className={index < 3 ? 'done' : index === 3 ? 'current' : ''} key={step}>{index + 1}</span>
+              ))}
+            </div>
+            <div className="dashboard-panel-grid">
+              <article><h4>Recent Updates</h4><p>We received your project brief.</p><p>Your call has been scheduled.</p><p>Payment received successfully.</p></article>
+              <article><h4>Project Progress</h4><div className="progress"><span /></div><p>Discovery & Planning</p><p>Strategy & Blueprint</p><p>MVP Development</p></article>
+              <article><h4>Documents</h4><p>Project Brief</p><p>Strategy Blueprint</p><p>MVP Roadmap</p></article>
+              <article><h4>Payment Schedule</h4><p>Deposit Paid $1,497</p><p>MVP Build Milestone $1,500</p><p>Final Payment $0</p></article>
             </div>
           </div>
-          <div style={{ background: '#f8fbff', border: '1px solid #dbe3ef', borderRadius: 16, padding: 22 }}>
-            <h2 style={{ textAlign: 'center', fontSize: 22, margin: '0 0 28px' }}>THE 10 STEP CLIENT JOURNEY</h2>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(10,1fr)', gap: 10 }}>{journey.map((step, i) => <div key={step} style={{ textAlign: 'center' }}><div style={{ margin: '0 auto 9px', width: 42, height: 42, borderRadius: '50%', background: i < 3 ? '#19a867' : '#1557d8', color: 'white', display: 'grid', placeItems: 'center', fontWeight: 900 }}>{i+1}</div><strong style={{ display: 'block', fontSize: 11 }}>{step}</strong></div>)}</div>
-          </div>
-        </section>
-        <section style={{ margin: '12px 36px', background: '#ffffff', border: '1px solid #dbe3ef', borderRadius: 16, padding: 26 }}>
-          <h2 style={{ textAlign: 'center', fontSize: 18, margin: '0 0 26px' }}>CHOOSE THE RIGHT PACKAGE FOR YOUR BUSINESS</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 18 }}>{packages.map((p, i) => <article key={p[0]} style={{ border: '1px solid #dbe3ef', borderRadius: 14, padding: 22 }}><h3>{p[0]}</h3><h2>{p[1]}</h2><p>Built for clear execution and client visibility.</p><button style={{ width: '100%', padding: 14, borderRadius: 8, border: '1px solid #cbd5e1', background: i===2 ? '#1557d8' : '#fff', color: i===2 ? '#fff' : '#07172f', fontWeight: 900 }}>GET STARTED</button></article>)}</div>
-        </section>
-        <section style={{ margin: '18px 36px', background: '#fff', border: '1px solid #dbe3ef', borderRadius: 16, padding: 26, textAlign: 'center' }}><h3>FULLY INTEGRATED WITH GOOGLE WORKSPACE</h3><div style={{ display: 'grid', gridTemplateColumns: 'repeat(6,1fr)', gap: 18, marginTop: 24 }}>{workspace.map((x) => <div key={x}><strong>{x}</strong><p style={{ color: '#64748b', fontSize: 12 }}>Connected Workflow</p></div>)}</div></section>
-      </div>
+        </div>
+      </section>
+
+      <section className="value-band" aria-label="Strategic Minds operating promises">
+        <article><strong>Fully Automated</strong><span>We handle the tech so you can focus on your business.</span></article>
+        <article><strong>Transparent Process</strong><span>See every step, update, and payment.</span></article>
+        <article><strong>On-Time Delivery</strong><span>Clear milestones and communication.</span></article>
+        <article><strong>Ongoing Support</strong><span>Updates, improvements, and support.</span></article>
+      </section>
     </main>
   );
 }

@@ -1,0 +1,173 @@
+{
+  "manifestName": "Strategic Minds Advisory Canonical Image Manifest",
+  "version": "1.0.0",
+  "status": "source_truth_for_generator",
+  "globalRules": {
+    "style": "premium advisory, real business systems, crisp SaaS/workflow interfaces, human operators, clear automation context",
+    "quality": "high-resolution, realistic or polished product-rendered bitmap imagery",
+    "avoid": [
+      "generic robot mascots",
+      "abstract gradient-only hero art",
+      "dark unreadable stock photos",
+      "purple blob/orb backgrounds",
+      "misleading revenue screenshots",
+      "fake customer logos",
+      "secret keys or real customer data in UI"
+    ],
+    "accessibility": "Every image needs descriptive alt text and must not carry critical text that is unavailable in HTML.",
+    "safety": "Use synthetic dashboards with placeholder data only. No real client data, no secrets, no live Stripe or production infrastructure screenshots."
+  },
+  "requiredAssets": [
+    {
+      "id": "hero-command-center",
+      "priority": "critical",
+      "route": "/",
+      "placement": "first viewport hero background or full-bleed hero media",
+      "aspectRatio": "16:9",
+      "minSize": "2400x1350",
+      "format": "webp",
+      "prompt": "Premium AI business command center for Strategic Minds Advisory: founder/operator reviewing clean workflow dashboards, approval gates, automation timelines, and revenue-system diagrams on modern screens; bright, sharp, realistic, professional consulting studio, no fake brands, no secret data.",
+      "alt": "Strategic Minds Advisory command center showing governed AI business workflows and approvals."
+    },
+    {
+      "id": "services-system-map",
+      "priority": "high",
+      "route": "/services",
+      "placement": "services overview band",
+      "aspectRatio": "4:3",
+      "minSize": "1600x1200",
+      "format": "webp",
+      "prompt": "Clean business systems map with modular AI automation blocks for strategy, build, launch, operations, analytics, and governance; premium SaaS/advisory style, light interface, blue/cyan accents, no tiny unreadable text.",
+      "alt": "Modular map of AI-powered business systems and advisory workflows."
+    },
+    {
+      "id": "packages-offer-stack",
+      "priority": "high",
+      "route": "/packages",
+      "placement": "package comparison support visual",
+      "aspectRatio": "3:2",
+      "minSize": "1800x1200",
+      "format": "webp",
+      "prompt": "Premium offer stack visual showing three service tiers as clean system build layers: starter system, setup service, ongoing operating system; polished advisory product visual, realistic cards, no readable pricing claims unless supplied by content.",
+      "alt": "Strategic Minds package tiers shown as layered business system components."
+    },
+    {
+      "id": "how-it-works-pipeline",
+      "priority": "high",
+      "route": "/how-it-works",
+      "placement": "process timeline",
+      "aspectRatio": "16:9",
+      "minSize": "1920x1080",
+      "format": "webp",
+      "prompt": "Visual process pipeline from discovery to validation to build to launch to optimize, with approval gates and rollback checkpoints; crisp modern workflow interface, professional, no sensitive data.",
+      "alt": "Process pipeline showing discovery, validation, build, launch, and optimization with approval gates."
+    },
+    {
+      "id": "about-operator-advisory",
+      "priority": "medium",
+      "route": "/about",
+      "placement": "about page editorial image",
+      "aspectRatio": "4:5",
+      "minSize": "1400x1750",
+      "format": "webp",
+      "prompt": "Professional advisory workspace with an operator planning AI automation systems on a laptop and whiteboard; premium, human, focused, credible, no celebrity likeness, no fake client data.",
+      "alt": "Advisor planning governed AI automation systems in a professional workspace."
+    },
+    {
+      "id": "schedule-consultation",
+      "priority": "medium",
+      "route": "/schedule",
+      "placement": "scheduling page support visual",
+      "aspectRatio": "3:2",
+      "minSize": "1800x1200",
+      "format": "webp",
+      "prompt": "Clean consultation booking scene with calendar, strategy notes, and automation roadmap preview on a modern interface; bright, calm, premium advisory feel.",
+      "alt": "Consultation booking visual with calendar and automation roadmap."
+    },
+    {
+      "id": "client-dashboard-preview",
+      "priority": "critical",
+      "route": "/client",
+      "placement": "client dashboard empty/preview state",
+      "aspectRatio": "16:10",
+      "minSize": "1920x1200",
+      "format": "webp",
+      "prompt": "Synthetic client dashboard for Strategic Minds Advisory showing project journey, documents, payments, meetings, messages, AI assistant, and approvals; clean SaaS UI, placeholder data only, no real names or secrets.",
+      "alt": "Client dashboard preview with project journey, documents, payments, meetings, and AI assistant modules."
+    },
+    {
+      "id": "admin-control-plane-preview",
+      "priority": "critical",
+      "route": "/admin",
+      "placement": "admin control plane preview/empty state",
+      "aspectRatio": "16:10",
+      "minSize": "1920x1200",
+      "format": "webp",
+      "prompt": "Synthetic admin control plane for approvals, clients, projects, payments, invoices, workflows, agents, reports, receipts, releases, and settings; restrained operational UI, placeholder data only, no real secrets or customer info.",
+      "alt": "Admin control plane preview with approvals, workflows, agents, receipts, and release controls."
+    },
+    {
+      "id": "ai-refusal-governance",
+      "priority": "medium",
+      "route": "/client/ai-assistant",
+      "placement": "AI assistant governance state",
+      "aspectRatio": "16:9",
+      "minSize": "1600x900",
+      "format": "webp",
+      "prompt": "AI assistant interface with visible safe refusal and approval-gate concepts for secrets, live payments, production deploys, messages, and destructive database actions; clean, professional, no real credentials.",
+      "alt": "AI assistant interface showing safe refusal categories and approval gates."
+    },
+    {
+      "id": "payment-test-mode",
+      "priority": "medium",
+      "route": "/client/payments",
+      "placement": "payments empty/test state",
+      "aspectRatio": "16:9",
+      "minSize": "1600x900",
+      "format": "webp",
+      "prompt": "Payment dashboard in test mode showing pending invoice and checkout test path badges; Stripe-like payment concepts without using Stripe branding, no live card data, no real financial records.",
+      "alt": "Payment dashboard preview showing test-mode checkout and invoice status."
+    },
+    {
+      "id": "release-rollback-checklist",
+      "priority": "medium",
+      "route": "/admin/releases",
+      "placement": "release governance panel",
+      "aspectRatio": "16:9",
+      "minSize": "1600x900",
+      "format": "webp",
+      "prompt": "Release control checklist with preview validation, approval, rollback, receipts, and production lock indicators; modern control-plane interface, no real deployment IDs.",
+      "alt": "Release control checklist with preview validation, approval, rollback, and receipt steps."
+    },
+    {
+      "id": "pwa-icon-set",
+      "priority": "high",
+      "route": "global",
+      "placement": "PWA manifest icons",
+      "aspectRatio": "1:1",
+      "sizes": ["192x192", "512x512"],
+      "format": "png",
+      "prompt": "Minimal Strategic Minds Advisory app icon: precise abstract monogram or signal mark suggesting intelligence, motion, and systems; ink background, white/cyan/blue accent, legible at small sizes, no text-heavy logo.",
+      "alt": "Strategic Minds Advisory app icon."
+    },
+    {
+      "id": "open-graph-home",
+      "priority": "medium",
+      "route": "/",
+      "placement": "social preview open graph image",
+      "aspectRatio": "1.91:1",
+      "minSize": "1200x630",
+      "format": "png",
+      "prompt": "Open graph preview for Strategic Minds Advisory with clear brand name, Intelligence In Motion tagline, and subtle governed AI workflow background; readable, premium, no fake performance claims.",
+      "alt": "Strategic Minds Advisory social preview image."
+    }
+  ],
+  "assetNaming": {
+    "directory": "public/images/generated",
+    "pattern": "strategic-minds-{id}.{ext}",
+    "examples": [
+      "public/images/generated/strategic-minds-hero-command-center.webp",
+      "public/images/generated/strategic-minds-pwa-icon-set-512.png"
+    ]
+  }
+}
