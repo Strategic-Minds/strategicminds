@@ -30,6 +30,7 @@ jobs:
           test -f docs/06-governance/SUPABASE_RLS_DRAFT.md
           test -f docs/06-governance/PLAYWRIGHT_ROUTE_COVERAGE.md
           test -f docs/06-governance/HARDENING_PASS_RECEIPT.md
+          test -f docs/06-governance/CRITICAL_ASSET_GENERATION_RECEIPT.md
           test -f supabase/migrations/202606110001_preview_rls_draft.sql
           test -f supabase/migrations/202606110002_auth_rls_policy_draft.sql
           test -f tests/preview-route-manifest.json
@@ -51,3 +52,4 @@ jobs:
           grep -q "hero-command-center" docs/01-builder-docs/generator-image-manifest.json
           grep -q "client-dashboard-preview" docs/01-builder-docs/generator-image-manifest.json
           grep -q "admin-control-plane-preview" docs/01-builder-docs/generator-image-manifest.json
+          grep -q "strategic-minds-hero-command-center.webp" docs/06-governance/CRITICAL_ASSET_GENERATION_RECEIPT.md
