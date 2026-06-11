@@ -1,0 +1,77 @@
+{
+  "manifestName": "approved-asset-manifest",
+  "status": "supersedes_prior_generated_asset_assumptions",
+  "approvedPrimaryAsset": {
+    "file": "ChatGPT Image Jun 9, 2026, 09_18_27 PM.png",
+    "driveId": "1rmDliv93X2UznD0FEqG1Ll66ONcMgskG",
+    "mimeType": "image/png",
+    "dimensions": "1536x1024",
+    "role": "approved website, logo, dashboard, and visual hierarchy source"
+  },
+  "requiredAssets": [
+    {
+      "id": "approved-source-composite",
+      "approvedSource": "Drive PNG 1rmDliv93X2UznD0FEqG1Ll66ONcMgskG",
+      "implementationRule": "preserve as visual reference and optional source image"
+    },
+    {
+      "id": "logo-primary",
+      "approvedSource": "top-left approved PNG logo or source logo file from Drive",
+      "description": "brain/thinking-profile mark plus Strategic Minds Advisory wordmark",
+      "implementationRule": "required before final visual implementation"
+    },
+    {
+      "id": "hero-system-diagram",
+      "approvedSource": "approved PNG center AI system diagram",
+      "implementationRule": "recreate with exact hierarchy or extract if quality is sufficient"
+    },
+    {
+      "id": "client-journey-strip",
+      "approvedSource": "approved PNG 10-step journey",
+      "implementationRule": "recreate responsively with exact step names"
+    },
+    {
+      "id": "package-card-set",
+      "approvedSource": "approved PNG package section",
+      "implementationRule": "recreate as responsive cards with approved package hierarchy"
+    },
+    {
+      "id": "workspace-integration-strip",
+      "approvedSource": "approved PNG Google Workspace row",
+      "implementationRule": "use real product names/icons only where legally safe"
+    },
+    {
+      "id": "client-dashboard-preview",
+      "approvedSource": "approved PNG right-side dashboard",
+      "implementationRule": "recreate UI; do not use prior generated dashboard image"
+    },
+    {
+      "id": "pwa-icon-set",
+      "approvedSource": "approved logo-primary",
+      "implementationRule": "generate 192x192 and 512x512 PNG icons from approved logo"
+    },
+    {
+      "id": "open-graph-home",
+      "approvedSource": "approved brand/logo/hero",
+      "implementationRule": "base on approved source; do not use wrong generated assets"
+    }
+  ],
+  "dashboardRequirements": {
+    "sidebar": ["Dashboard", "My Journey", "Calls", "Payments", "Invoices", "Documents", "Updates", "Messages", "Settings", "Logout"],
+    "panels": ["welcome state", "current step", "next call", "project status", "amount paid", "10-step journey", "recent updates", "project progress", "documents", "payment schedule", "bottom schedule CTA"]
+  },
+  "quarantinedPriorGeneratedAssets": [
+    "/workspace/output/strategic-minds-hero-command-center.webp",
+    "/workspace/output/strategic-minds-client-dashboard-preview.webp",
+    "/workspace/output/strategic-minds-admin-control-plane-preview.webp",
+    "/workspace/output/strategic-minds-pwa-icon-512.png",
+    "/workspace/output/strategic-minds-pwa-icon-192.png"
+  ],
+  "pwa": {
+    "manifestPath": "public/manifest.json",
+    "currentPreviewIssue": "icons array is empty",
+    "requiredIconSizes": ["192x192", "512x512"],
+    "sourceRequirement": "approved logo-primary"
+  },
+  "validationReceiptsRequired": ["Drive PNG inspection", "logo extraction/source logo receipt", "dashboard screenshot comparison", "PWA icon size/source receipt", "Playwright desktop/mobile screenshots", "no quarantined asset references"]
+}
