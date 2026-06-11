@@ -1,14 +1,23 @@
 # Auth Hardening Plan
 
-## Preview Guard
+## Implemented In PR #5 Draft
 
-Client routes under `/client/*` require `sm_client_preview_session` matching `PREVIEW_AUTH_BYPASS_TOKEN`.
+Client routes under `/client/*` now require a Supabase Auth session through middleware.
 
-Admin routes under `/admin/*` return `401 admin_auth_required` unless `sm_admin_preview_session` matches `PREVIEW_AUTH_BYPASS_TOKEN`.
+Admin routes under `/admin/*` require a Supabase Auth session plus an admin role in `user.app_metadata.role` or `user.app_metadata.roles`.
+
+If Supabase public env vars are missing, client routes redirect to `/login` and admin routes return `401 supabase_auth_not_configured`.
+
+## Required Environment
+
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+
+Do not expose `SUPABASE_SERVICE_ROLE_KEY` to the browser. Service-role use remains server-side only and approval-gated.
 
 ## Release Requirement
 
-Before merge approval, replace preview-cookie bypass with Supabase Auth session checks and role-backed admin authorization. Do not use user-editable metadata for authorization decisions.
+Before merge approval, validate login, logout, session refresh, client isolation, and admin role assignment on a non-production Supabase project or branch. Do not use user-editable metadata for authorization decisions.
 
 ## Blocked Production Actions
 
