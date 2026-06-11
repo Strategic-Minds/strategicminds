@@ -25,6 +25,7 @@ jobs:
           test -f docs/06-governance/AUTH_HARDENING_PLAN.md
           test -f docs/06-governance/SUPABASE_RLS_DRAFT.md
           test -f docs/06-governance/PLAYWRIGHT_ROUTE_COVERAGE.md
+          test -f docs/06-governance/HARDENING_PASS_RECEIPT.md
           test -f supabase/migrations/202606110001_preview_rls_draft.sql
           test -f supabase/migrations/202606110002_auth_rls_policy_draft.sql
           test -f tests/preview-route-manifest.json
