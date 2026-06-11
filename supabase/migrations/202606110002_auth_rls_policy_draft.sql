@@ -9,6 +9,18 @@ alter table if exists public.approvals enable row level security;
 alter table if exists public.receipts enable row level security;
 alter table if exists public.workflow_runs enable row level security;
 
+drop policy if exists "clients_select_own" on public.clients;
+drop policy if exists "clients_update_own" on public.clients;
+drop policy if exists "projects_select_own" on public.projects;
+drop policy if exists "approvals_select_own" on public.approvals;
+drop policy if exists "receipts_select_own" on public.receipts;
+drop policy if exists "workflow_runs_select_own" on public.workflow_runs;
+drop policy if exists "admin_read_clients" on public.clients;
+drop policy if exists "admin_read_projects" on public.projects;
+drop policy if exists "admin_read_approvals" on public.approvals;
+drop policy if exists "admin_read_receipts" on public.receipts;
+drop policy if exists "admin_read_workflow_runs" on public.workflow_runs;
+
 create policy "clients_select_own" on public.clients
   for select
   to authenticated
