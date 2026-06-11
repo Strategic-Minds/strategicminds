@@ -1,0 +1,56 @@
+{
+  "manifestName": "approved-backend-manifest",
+  "stack": ["Next.js", "Vercel", "Supabase Auth", "Supabase Database", "Stripe test checkout", "Google Workspace placeholders", "Twilio queue placeholder", "Vercel AI Gateway", "Vercel Cron"],
+  "apiRoutes": ["/api/auth/status", "/api/stripe/checkout", "/api/stripe/webhook", "/api/agent/validate", "/api/ai/chat", "/api/ai/call", "/api/google/drive-sync", "/api/contact", "/api/intake", "/api/admin/approve", "/api/release/receipt", "/api/cron/client-ops"],
+  "missingFromPrButInBootstrap": ["/api/twilio/queue"],
+  "auth": {
+    "clientRoutes": "Supabase Auth required",
+    "adminRoutes": "Supabase Auth plus admin role required",
+    "adminRoleSource": "server-owned app_metadata or role table, not user-editable metadata",
+    "serviceRoleExposure": "forbidden",
+    "previewVerification": "blocked because Supabase public env is not configured in inspected preview"
+  },
+  "supabaseSchemaDraft": {
+    "tables": ["clients", "projects", "approvals", "receipts", "workflow_runs"],
+    "relationships": [
+      "clients.user_id -> auth.users.id",
+      "projects.client_id -> clients.id",
+      "approvals.project_id -> projects.id",
+      "receipts.project_id -> projects.id",
+      "workflow_runs.project_id -> projects.id"
+    ],
+    "rlsRequirements": [
+      "enable RLS on all approved public tables",
+      "users read their own client row",
+      "users read rows connected to their own client row",
+      "admin read via server-owned role metadata",
+      "no broad anonymous read/write policies",
+      "writes remain server-side and approval-gated until finalized"
+    ]
+  },
+  "supabaseInspection": {
+    "projectRef": "prhppuuwcnmfdhwsagug",
+    "projectName": "Strategic Minds Advisory",
+    "region": "us-east-2",
+    "status": "ACTIVE_HEALTHY",
+    "prSpecificDevBranchFound": false,
+    "approvedTablesLive": false,
+    "securityAdvisor": ["public.autobuilder_run_receipts has RLS enabled but no policies"]
+  },
+  "stripe": {
+    "mode": "test_only",
+    "liveKeyBehavior": "block sk_live_",
+    "sessionCreationRequires": ["sk_test_ key", "STRIPE_TEST_CHECKOUT_ENABLED=true", "STRIPE_TEST_PRICE_ID"],
+    "previewReceipt": { "status": "configuration_required", "liveStripe": false, "checkoutCreated": false, "testCheckoutEnabled": false, "hasTestPrice": false }
+  },
+  "aiGatewayRefusalRules": ["credentials", "secrets", "production deploy", "live stripe", "send email", "send sms", "destructive database", "spend", "social publishing", "unapproved customer-facing AI calls"],
+  "cron": {
+    "path": "/api/cron/client-ops",
+    "schedule": "*/5 * * * *",
+    "auth": "Authorization: Bearer ${CRON_SECRET}",
+    "unsignedPreviewStatus": 401,
+    "safeChecksOnly": true
+  },
+  "releaseChecklist": ["approved source reflected", "PR diff reviewed", "preview matches final PR head", "route coverage passes", "Supabase dev branch RLS/auth passes", "Stripe test checkout passes", "AI refusal tested", "PWA manifest/icons validated", "Playwright coverage passes"],
+  "rollbackChecklist": ["keep PR draft", "revert branch commits if preview breaks", "do not promote production", "do not apply production migrations", "keep Supabase branch isolated", "keep Stripe test mode only", "preserve validation receipts"]
+}
