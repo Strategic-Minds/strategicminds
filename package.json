@@ -1,1 +1,36 @@
-{"name":"strategic-minds-advisory","version":"0.1.0","private":true,"scripts":{"dev":"next dev","build":"next build","start":"next start","lint":"next lint","validate:preview":"node scripts/validate-preview-routes.mjs"},"dependencies":{"@supabase/supabase-js":"latest","@vercel/analytics":"latest","ai":"latest","lucide-react":"latest","next":"latest","react":"latest","react-dom":"latest","stripe":"latest"},"devDependencies":{"@types/node":"latest","@types/react":"latest","@types/react-dom":"latest","eslint":"latest","eslint-config-next":"latest","typescript":"latest","tailwindcss":"latest","postcss":"latest","autoprefixer":"latest"}}
+{
+  "name": "strategic-minds-advisory",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "validate:preview": "node scripts/validate-preview-routes.mjs",
+    "test:routes": "playwright test tests/preview-route-coverage.spec.ts"
+  },
+  "dependencies": {
+    "@supabase/ssr": "latest",
+    "@supabase/supabase-js": "latest",
+    "@vercel/analytics": "latest",
+    "ai": "latest",
+    "lucide-react": "latest",
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "stripe": "latest"
+  },
+  "devDependencies": {
+    "@playwright/test": "latest",
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "eslint": "latest",
+    "eslint-config-next": "latest",
+    "typescript": "latest",
+    "tailwindcss": "latest",
+    "postcss": "latest",
+    "autoprefixer": "latest"
+  }
+}
