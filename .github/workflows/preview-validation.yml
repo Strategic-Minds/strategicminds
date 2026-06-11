@@ -20,6 +20,10 @@ jobs:
           test -f app/api/auth/status/route.ts
           test -f app/api/stripe/checkout/route.ts
           test -f docs/01-builder-docs/VERCEL_WORKFLOW_MASTER_INVOCATION.md
+          test -f docs/01-builder-docs/BRAND_PACK.md
+          test -f docs/01-builder-docs/CANONICAL_IMAGE_MANIFEST.md
+          test -f docs/01-builder-docs/generator-brand-pack.json
+          test -f docs/01-builder-docs/generator-image-manifest.json
           test -f docs/06-governance/VALIDATION_GATE.md
           test -f docs/06-governance/ROLLBACK_CHECKLIST.md
           test -f docs/06-governance/AUTH_HARDENING_PLAN.md
@@ -41,3 +45,9 @@ jobs:
           grep -q "enable row level security" supabase/migrations/202606110002_auth_rls_policy_draft.sql
           grep -q "auth.uid" supabase/migrations/202606110002_auth_rls_policy_draft.sql
           grep -q "test:routes" package.json
+      - name: Validate generator source truth
+        run: |
+          grep -q "Strategic Minds Advisory" docs/01-builder-docs/generator-brand-pack.json
+          grep -q "hero-command-center" docs/01-builder-docs/generator-image-manifest.json
+          grep -q "client-dashboard-preview" docs/01-builder-docs/generator-image-manifest.json
+          grep -q "admin-control-plane-preview" docs/01-builder-docs/generator-image-manifest.json
