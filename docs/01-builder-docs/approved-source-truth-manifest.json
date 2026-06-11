@@ -1,0 +1,77 @@
+{
+  "manifestName": "approved-source-truth-manifest",
+  "pr": 5,
+  "repo": "Strategic-Minds/strategicminds",
+  "branch": "feature/strategic-minds-vercel-workflow-os",
+  "status": "canonical_source_truth_after_drive_github_vercel_supabase_inspection",
+  "approvedSources": {
+    "primaryVisual": {
+      "title": "ChatGPT Image Jun 9, 2026, 09_18_27 PM.png",
+      "driveId": "1rmDliv93X2UznD0FEqG1Ll66ONcMgskG",
+      "mimeType": "image/png",
+      "dimensions": "1536x1024",
+      "parentFolderId": "1rjOt7prvOCaUNgCmcY8Ce605cIv2FuSY",
+      "role": "approved full website and client dashboard composite"
+    },
+    "textSources": [
+      { "title": "strategic_minds_bootstrap_docs.md", "driveId": "1DOhLKD6FjNclCgbd0ILM6tS8jufQurg4" },
+      { "title": "Strategic_Minds_End_to_End_System_Master.md", "driveId": "1-XQ1SBiWGu7SBn4lCuaTJWyRmFVS4T0Z" },
+      { "title": "brand-lock.md", "driveId": "181Al9kZFmCUzse9Cy7tLBCA1VeEGNaq_" },
+      { "title": "client-dashboard-spec.md", "driveId": "1ZOGjUWT67LHTQvVbLEd-7Pksh1sRJtN3" },
+      { "title": "admin-control-plane-spec.md", "driveId": "197iJBvSA-CvFgV8VyiBgd1sd2TYUdxL5" },
+      { "title": "pwa-spec.md", "driveId": "1BeTHqI6R_WIsFFTY8-qIE6ECBobNHLM0" }
+    ]
+  },
+  "brand": {
+    "name": "Strategic Minds Advisory",
+    "tagline": "Intelligence In Motion",
+    "visualIdentity": "AI-enhanced thinking profile, electric-blue/black, light and dark mode",
+    "lockedWebsiteDirection": ["Option 1 dark mode", "Option 2 light mode"],
+    "mode": "preview_branch_build_only_until_approved"
+  },
+  "approvedVisualFacts": {
+    "logo": "brain/thinking-profile icon plus Strategic Minds Advisory wordmark in top-left of approved PNG",
+    "heroHeadline": "We Turn Ideas Into Automated, AI-Powered Business Systems.",
+    "eyebrow": "AI-POWERED. AUTOMATED. RESULTS DRIVEN.",
+    "navigation": ["Home", "Services", "Packages", "How It Works", "About", "Schedule a Call", "Client Login"],
+    "journeySteps": ["Choose Your Package", "Secure Payment", "Schedule Your Call", "Share Your Idea", "We Plan Your System", "MVP Development", "Review & Feedback", "Launch Your System", "Automated Updates", "Scale & Optimize"],
+    "packages": ["Business Planning Consultation", "Workflow Automation Package", "MVP System Build Package", "Full Business System Package"],
+    "workspaceIntegrations": ["Gmail", "Google Drive", "Google Calendar", "Google Sheets", "Google Docs", "Google Meet"]
+  },
+  "colorAnchors": {
+    "surface": "#FBFBFC",
+    "deepNavy": "#08172C",
+    "electricBlue": "#1256D7",
+    "softBorder": "#B5C8D4",
+    "mutedText": "#575D6C",
+    "successGreen": "#4BA062",
+    "secondaryBlue": "#424DC5"
+  },
+  "inspectionReceipts": {
+    "github": {
+      "draft": true,
+      "merged": false,
+      "headShaBeforeManifestCommit": "74b16e1fd889b65bbe29049e1693fdbe3332e304",
+      "placeholderUiConflict": true,
+      "generatedAssetReceiptConflict": true
+    },
+    "vercel": {
+      "projectId": "prj_DfKbw4bxNrw6comaiOsdwHAQbrCP",
+      "latestPreviewDeploymentId": "dpl_6e4mT5YUkZS7HppPG4DVrcC7yeWj",
+      "latestPreviewUrl": "https://strategicminds-209h5vkj7-strategic-minds-advisory.vercel.app",
+      "matchesPrHeadBeforeManifestCommit": true
+    },
+    "supabase": {
+      "projectRef": "prhppuuwcnmfdhwsagug",
+      "prSpecificBranchFound": false,
+      "approvedSchemaLive": false,
+      "schemaState": "source_controlled_draft_only"
+    }
+  },
+  "rules": [
+    "Do not substitute generated images for the approved Drive PNG.",
+    "Do not infer UI structure from placeholder PR pages when the Drive source is more specific.",
+    "Do not apply production migrations without operator approval.",
+    "Do not recommend merge until all receipt-backed gates pass."
+  ]
+}
