@@ -15,6 +15,10 @@ jobs:
           test -f vercel.json
           test -f middleware.ts
           test -f public/manifest.json
+          test -f lib/auth/admin.ts
+          test -f lib/supabase/server.ts
+          test -f app/api/auth/status/route.ts
+          test -f app/api/stripe/checkout/route.ts
           test -f docs/01-builder-docs/VERCEL_WORKFLOW_MASTER_INVOCATION.md
           test -f docs/06-governance/VALIDATION_GATE.md
           test -f docs/06-governance/ROLLBACK_CHECKLIST.md
@@ -22,5 +26,17 @@ jobs:
           test -f docs/06-governance/SUPABASE_RLS_DRAFT.md
           test -f docs/06-governance/PLAYWRIGHT_ROUTE_COVERAGE.md
           test -f supabase/migrations/202606110001_preview_rls_draft.sql
+          test -f supabase/migrations/202606110002_auth_rls_policy_draft.sql
           test -f tests/preview-route-manifest.json
+          test -f tests/preview-route-coverage.spec.ts
+          test -f playwright.config.ts
           test -f scripts/validate-preview-routes.mjs
+      - name: Validate hardening guardrails
+        run: |
+          grep -q "createServerClient" middleware.ts
+          grep -q "hasAdminRole" middleware.ts
+          grep -q "sk_live_" app/api/stripe/checkout/route.ts
+          grep -q "live_stripe_key_blocked" app/api/stripe/checkout/route.ts
+          grep -q "enable row level security" supabase/migrations/202606110002_auth_rls_policy_draft.sql
+          grep -q "auth.uid" supabase/migrations/202606110002_auth_rls_policy_draft.sql
+          grep -q "test:routes" package.json
