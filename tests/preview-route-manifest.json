@@ -1,0 +1,8 @@
+{
+  "publicRoutes": ["/", "/services", "/packages", "/how-it-works", "/about", "/schedule", "/contact", "/signup", "/login", "/terms", "/privacy", "/refund-policy"],
+  "notFoundRoutes": ["/not-found"],
+  "clientRoutes": ["/client", "/client/journey", "/client/projects", "/client/documents", "/client/payments", "/client/invoices", "/client/meetings", "/client/messages", "/client/ai-assistant", "/client/ai-call", "/client/settings"],
+  "adminRoutes": ["/admin", "/admin/leads", "/admin/clients", "/admin/projects", "/admin/payments", "/admin/invoices", "/admin/workflows", "/admin/agents", "/admin/reports", "/admin/approvals", "/admin/receipts", "/admin/releases", "/admin/settings"],
+  "apiRoutes": ["/api/auth/status", "/api/stripe/checkout", "/api/stripe/webhook", "/api/agent/validate", "/api/ai/chat", "/api/ai/call", "/api/google/drive-sync", "/api/contact", "/api/intake", "/api/admin/approve", "/api/release/receipt"],
+  "cronRoutes": ["/api/cron/client-ops"]
+}
