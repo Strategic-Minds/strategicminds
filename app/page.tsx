@@ -1,5 +1,3 @@
-const approvedSourceUrl = 'https://drive.google.com/uc?export=view&id=1rmDliv93X2UznD0FEqG1Ll66ONcMgskG';
-
 const journeySteps = [
   'Choose Your Package',
   'Secure Payment',
@@ -44,11 +42,7 @@ export default function HomePage() {
     <main className="site-shell">
       <header className="site-header" aria-label="Strategic Minds Advisory navigation">
         <a className="brand-lockup" href="/" aria-label="Strategic Minds Advisory home">
-          <span className="brand-mark">SM</span>
-          <span>
-            <strong>Strategic Minds</strong>
-            <small>Advisory</small>
-          </span>
+          <img src="/brand/strategic-minds-logo.svg" alt="Strategic Minds Advisory" />
         </a>
         <nav className="site-nav" aria-label="Primary navigation">
           <a href="/">Home</a>
@@ -63,7 +57,7 @@ export default function HomePage() {
         </div>
       </header>
 
-      <section className="hero-grid" aria-labelledby="hero-title">
+      <section className="hero-grid approved-home" aria-labelledby="hero-title">
         <div className="hero-copy">
           <p className="eyebrow">AI-powered. Automated. Results driven.</p>
           <h1 id="hero-title">We Turn Ideas Into Automated, AI-Powered Business Systems.</h1>
@@ -123,15 +117,46 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="approved-preview" aria-labelledby="approved-source-title">
-        <div>
-          <p className="eyebrow">Approved Drive Source</p>
-          <h2 id="approved-source-title">Exact approved website and dashboard reference</h2>
-          <p>
-            This preview is wired to the inspected Drive source so the next build pass follows the approved logo, dashboard, package layout, and visual hierarchy.
-          </p>
+      <section className="dashboard-preview-section" aria-labelledby="dashboard-preview-title">
+        <div className="section-heading">
+          <p className="eyebrow">Client Portal Preview</p>
+          <h2 id="dashboard-preview-title">Approved Strategic Minds client dashboard</h2>
+          <p>Structured to match the approved Drive composite: sidebar navigation, step cards, journey tracker, documents, updates, payments, and schedule call prompt.</p>
         </div>
-        <img src={approvedSourceUrl} alt="Approved Strategic Minds Advisory website and client dashboard composite from Drive source" />
+        <div className="dashboard-frame compact-dashboard" aria-label="Approved client dashboard preview">
+          <aside className="dashboard-sidebar">
+            <img src="/brand/strategic-minds-logo.svg" alt="Strategic Minds Advisory" />
+            {['Dashboard', 'My Journey', 'Calls', 'Payments', 'Invoices', 'Documents', 'Updates', 'Messages', 'Settings', 'Logout'].map((item, index) => (
+              <span className={index === 0 ? 'active' : ''} key={item}>{item}</span>
+            ))}
+          </aside>
+          <div className="dashboard-main">
+            <div className="dashboard-topline">
+              <div>
+                <h3>Welcome back, John!</h3>
+                <p>Here is what is happening with your project.</p>
+              </div>
+              <a className="button primary" href="/schedule">Schedule a Call</a>
+            </div>
+            <div className="dashboard-stat-grid">
+              <article><small>Current Step</small><strong>4 of 10</strong><span>Share Your Idea</span></article>
+              <article><small>Next Call</small><strong>May 30, 2025</strong><span>2:00 PM EST</span></article>
+              <article><small>Project Status</small><strong>In Progress</strong><span>On Track</span></article>
+              <article><small>Amount Paid</small><strong>$2,997</strong><span>MVP System Build</span></article>
+            </div>
+            <div className="dashboard-journey-mini">
+              {journeySteps.map((step, index) => (
+                <span className={index < 3 ? 'done' : index === 3 ? 'current' : ''} key={step}>{index + 1}</span>
+              ))}
+            </div>
+            <div className="dashboard-panel-grid">
+              <article><h4>Recent Updates</h4><p>We received your project brief.</p><p>Your call has been scheduled.</p><p>Payment received successfully.</p></article>
+              <article><h4>Project Progress</h4><div className="progress"><span /></div><p>Discovery & Planning</p><p>Strategy & Blueprint</p><p>MVP Development</p></article>
+              <article><h4>Documents</h4><p>Project Brief</p><p>Strategy Blueprint</p><p>MVP Roadmap</p></article>
+              <article><h4>Payment Schedule</h4><p>Deposit Paid $1,497</p><p>MVP Build Milestone $1,500</p><p>Final Payment $0</p></article>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section className="value-band" aria-label="Strategic Minds operating promises">
