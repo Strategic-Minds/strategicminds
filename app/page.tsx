@@ -1,45 +1,183 @@
-const journey = ['Choose Package','Payment','Schedule Call','Share Idea','Plan System','MVP Build','Review','Launch','Updates','Scale'];
-const packages = [
-  ['Business Planning Consultation','$497'],
-  ['Workflow Automation Package','$1,497'],
-  ['MVP System Build Package','$2,997'],
-  ['Full Business System Package','$5,997+']
+const journey = [
+  'Choose package',
+  'Secure payment',
+  'Schedule call',
+  'Share idea',
+  'Plan system',
+  'Build MVP',
+  'Review',
+  'Launch',
+  'Automate',
+  'Scale'
 ];
-const workspace = ['Gmail','Google Drive','Google Calendar','Google Sheets','Google Docs','Google Meet'];
+
+const offers = [
+  {
+    name: 'Business Planning Consultation',
+    price: '$497',
+    text: 'A focused strategy session with a build map, offer direction, and priority execution path.'
+  },
+  {
+    name: 'Workflow Automation',
+    price: '$1,497',
+    text: 'A governed automation layer for intake, follow-up, project movement, and admin visibility.'
+  },
+  {
+    name: 'MVP System Build',
+    price: '$2,997',
+    text: 'A launchable first system with website, dashboard structure, validation gates, and handoff docs.',
+    featured: true
+  },
+  {
+    name: 'Business In A Box',
+    price: '$5,997+',
+    text: 'A complete operating package with source truth, client portal, automations, and launch support.'
+  }
+];
+
+const modules = [
+  ['Client Dashboard', 'Project progress, payments, documents, meetings, deliverables, and requests in one portal.'],
+  ['Admin Control Plane', 'Leads, clients, approvals, agents, receipts, workflow health, and release queue visibility.'],
+  ['Five-Minute Ops Loop', 'Cron checks queue status, missing receipts, validation blockers, and pending approvals.'],
+  ['Governed AI Gateway', 'Scoped assistant behavior with refusal rules, source-truth grounding, and approval gates.']
+];
 
 export default function HomePage() {
   return (
-    <main style={{ background: '#eef5ff', color: '#07172f', fontFamily: 'Arial, sans-serif', minHeight: '100vh', padding: 22 }}>
-      <div style={{ maxWidth: 1800, margin: '0 auto', background: '#ffffff', borderRadius: 18, overflow: 'hidden', border: '1px solid #d6e2f2' }}>
-        <nav style={{ height: 78, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 34px', borderBottom: '1px solid #e2e8f0' }}>
-          <strong>STRATEGIC MINDS ADVISORY</strong>
-          <div style={{ display: 'flex', gap: 18, fontSize: 12, fontWeight: 900 }}>
-            <a>HOME</a><a>SERVICES</a><a>PACKAGES</a><a>HOW IT WORKS</a><a>ABOUT</a>
-            <a href="/dashboard" style={{ background: '#1557d8', color: 'white', padding: '12px 18px', borderRadius: 8 }}>CLIENT LOGIN</a>
+    <main className="site-shell">
+      <nav className="nav">
+        <a className="brand" href="/">
+          Strategic Minds Advisory
+          <span>Intelligence In Motion</span>
+        </a>
+        <div className="nav-links">
+          <a href="#packages">Packages</a>
+          <a href="#workflow">Workflow</a>
+          <a href="/client">Client</a>
+          <a href="/admin">Admin</a>
+          <a className="btn primary" href="#start">Start</a>
+        </div>
+      </nav>
+
+      <section className="hero">
+        <div>
+          <span className="eyebrow">AI-powered business systems</span>
+          <h1>Strategic Minds Advisory</h1>
+          <p>
+            We turn ideas into automated operating systems: websites, client portals, admin command centers,
+            source-truth workflows, and validation loops that keep the work moving.
+          </p>
+          <div className="actions">
+            <a className="btn primary" href="#packages">Choose a package</a>
+            <a className="btn" href="/client">View client dashboard</a>
+            <a className="btn" href="/admin">Open admin control plane</a>
           </div>
-        </nav>
-        <section style={{ display: 'grid', gridTemplateColumns: '1fr 320px 1.4fr', gap: 34, padding: '42px 46px 28px', alignItems: 'center' }}>
-          <div>
-            <p style={{ display: 'inline-block', background: '#eaf1ff', color: '#1557d8', borderRadius: 999, padding: '10px 16px', fontSize: 12, fontWeight: 900 }}>AI-POWERED AUTOMATED RESULTS DRIVEN</p>
-            <h1 style={{ fontSize: 54, lineHeight: 1.02, margin: '24px 0 18px', fontWeight: 900 }}>We Turn Ideas Into <span style={{ color: '#1557d8' }}>Automated AI-Powered</span> Business Systems.</h1>
-            <p style={{ color: '#475569', fontSize: 18, lineHeight: 1.55 }}>From planning to automation, we build your systems, workflows, websites, and content engines so you can focus on growth.</p>
+          <div className="proof-strip" aria-label="Operating proof points">
+            <div><strong>10</strong><span>step client journey</span></div>
+            <div><strong>5 min</strong><span>ops check cadence</span></div>
+            <div><strong>0</strong><span>unsafe live actions without approval</span></div>
           </div>
-          <div style={{ display: 'grid', placeItems: 'center' }}>
-            <div style={{ width: 220, height: 220, borderRadius: '50%', border: '2px dashed #bcd1fb', display: 'grid', placeItems: 'center' }}>
-              <div style={{ width: 110, height: 110, borderRadius: 28, background: '#1557d8', color: 'white', display: 'grid', placeItems: 'center', fontSize: 52 }}>AI</div>
+        </div>
+
+        <div className="system-preview" aria-label="Strategic Minds system preview">
+          <div className="preview-header">
+            <strong>Live Operating System</strong>
+            <span className="pulse">Preview ready</span>
+          </div>
+          <div className="preview-grid">
+            <div className="rail">
+              <span className="active">Overview</span>
+              <span>Clients</span>
+              <span>Projects</span>
+              <span>Approvals</span>
+              <span>Receipts</span>
+              <span>Release queue</span>
+            </div>
+            <div className="live-panel">
+              <div className="row-between">
+                <strong>Command Status</strong>
+                <span className="badge green">Healthy</span>
+              </div>
+              <div className="metrics">
+                <div className="metric"><strong>14</strong><span>active checks</span></div>
+                <div className="metric"><strong>8</strong><span>client modules</span></div>
+                <div className="metric"><strong>3</strong><span>approval gates</span></div>
+              </div>
+              <div className="task-line"><span>Payment path</span><strong>Test mode</strong></div>
+              <div className="task-line"><span>Drive receipts</span><strong>Queued</strong></div>
+              <div className="task-line"><span>Release policy</span><strong>Approval gated</strong></div>
             </div>
           </div>
-          <div style={{ background: '#f8fbff', border: '1px solid #dbe3ef', borderRadius: 16, padding: 22 }}>
-            <h2 style={{ textAlign: 'center', fontSize: 22, margin: '0 0 28px' }}>THE 10 STEP CLIENT JOURNEY</h2>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(10,1fr)', gap: 10 }}>{journey.map((step, i) => <div key={step} style={{ textAlign: 'center' }}><div style={{ margin: '0 auto 9px', width: 42, height: 42, borderRadius: '50%', background: i < 3 ? '#19a867' : '#1557d8', color: 'white', display: 'grid', placeItems: 'center', fontWeight: 900 }}>{i+1}</div><strong style={{ display: 'block', fontSize: 11 }}>{step}</strong></div>)}</div>
+        </div>
+      </section>
+
+      <section id="workflow" className="section light-band">
+        <span className="eyebrow">Client journey</span>
+        <h2 className="section-title">A clear path from idea to operational system.</h2>
+        <p className="section-copy">
+          Every engagement moves through the same visible pipeline so the client can see progress and the
+          operator can keep approvals, receipts, and release decisions under control.
+        </p>
+        <div className="workflow">
+          {journey.map((step, index) => (
+            <div key={step}>
+              <strong>{String(index + 1).padStart(2, '0')}</strong>
+              <p>{step}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="packages" className="section light-band">
+        <span className="eyebrow">Packages</span>
+        <h2 className="section-title">Choose the operating depth your business needs now.</h2>
+        <div className="offer-grid">
+          {offers.map((offer) => (
+            <article className={`offer ${offer.featured ? 'featured' : ''}`} key={offer.name}>
+              <div>
+                <h3>{offer.name}</h3>
+                <p>{offer.text}</p>
+              </div>
+              <div>
+                <div className="price">{offer.price}</div>
+                <a className={`btn ${offer.featured ? 'primary' : 'dark'}`} href="#start">Get started</a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="section dark-band">
+        <div className="ops-split">
+          <div>
+            <span className="eyebrow">Operating stack</span>
+            <h2 className="section-title">Website, dashboard, command center, and automation loop in one system.</h2>
+            <p className="section-copy" style={{ color: '#c7d3e9' }}>
+              Strategic Minds is structured as a governed client delivery machine: intake, planning, build,
+              payment, documents, agent checks, admin summaries, release receipts, and rollback readiness.
+            </p>
           </div>
-        </section>
-        <section style={{ margin: '12px 36px', background: '#ffffff', border: '1px solid #dbe3ef', borderRadius: 16, padding: 26 }}>
-          <h2 style={{ textAlign: 'center', fontSize: 18, margin: '0 0 26px' }}>CHOOSE THE RIGHT PACKAGE FOR YOUR BUSINESS</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 18 }}>{packages.map((p, i) => <article key={p[0]} style={{ border: '1px solid #dbe3ef', borderRadius: 14, padding: 22 }}><h3>{p[0]}</h3><h2>{p[1]}</h2><p>Built for clear execution and client visibility.</p><button style={{ width: '100%', padding: 14, borderRadius: 8, border: '1px solid #cbd5e1', background: i===2 ? '#1557d8' : '#fff', color: i===2 ? '#fff' : '#07172f', fontWeight: 900 }}>GET STARTED</button></article>)}</div>
-        </section>
-        <section style={{ margin: '18px 36px', background: '#fff', border: '1px solid #dbe3ef', borderRadius: 16, padding: 26, textAlign: 'center' }}><h3>FULLY INTEGRATED WITH GOOGLE WORKSPACE</h3><div style={{ display: 'grid', gridTemplateColumns: 'repeat(6,1fr)', gap: 18, marginTop: 24 }}>{workspace.map((x) => <div key={x}><strong>{x}</strong><p style={{ color: '#64748b', fontSize: 12 }}>Connected Workflow</p></div>)}</div></section>
-      </div>
+          <div className="module-grid">
+            {modules.map(([title, text]) => (
+              <div className="module" key={title}>
+                <strong>{title}</strong>
+                <span className="muted">{text}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="start" className="section final-cta">
+        <div>
+          <span className="eyebrow">Ready when you are</span>
+          <h2 className="section-title">Build the next business system with approval-gated automation.</h2>
+          <div className="actions">
+            <a className="btn primary" href="mailto:strategicmindsadvisory@gmail.com">Request a build</a>
+            <a className="btn" href="/admin">Review admin view</a>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
