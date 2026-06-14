@@ -32,7 +32,7 @@ export async function middleware(request: NextRequest) {
       );
     }
 
-    return redirectToLogin(request);
+    return NextResponse.next();
   }
 
   let response = NextResponse.next({ request });
