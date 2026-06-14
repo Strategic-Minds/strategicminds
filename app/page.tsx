@@ -1,169 +1,132 @@
-const journeySteps = [
-  'Choose Your Package',
-  'Secure Payment',
-  'Schedule Your Call',
-  'Share Your Idea',
-  'We Plan Your System',
-  'MVP Development',
-  'Review & Feedback',
-  'Launch Your System',
-  'Automated Updates',
-  'Scale & Optimize',
+const publicJourney = [
+  ['Sign Up', 'Create your client file and contact profile.'],
+  ['Answer Intake', 'Complete 10-15 onboarding questions by form, email, or text.'],
+  ['Strategy + Discovery', 'We prepare business docs, market research, and recommendations.'],
+  ['Brand Packs', 'You review five brand and website directions.'],
+  ['Gate 1 Approval', 'Approve the plan and make payment before build begins.'],
+  ['Build + Launch', 'AUTO BUILDER creates, tests, soft launches, and hands off the system.'],
+];
+
+const gateOneDeliverables = [
+  'Business strategy and business plan',
+  'Financial strategy and operating cost estimate',
+  'Market discovery and similar-system report',
+  'Five branding and website concept packs',
+  'Automation, workflow, and Auto Social plan',
 ];
 
 const packages = [
-  {
-    name: 'Business Planning Consultation',
-    price: '$497',
-    features: ['90 Min Strategy Call', 'Business Audit', 'Custom Action Plan', 'Recommendations'],
-  },
-  {
-    name: 'Workflow Automation Package',
-    price: '$1,497',
-    features: ['Workflow Audit', 'Automation Setup', 'System Integrations', 'Training & Support'],
-  },
-  {
-    name: 'MVP System Build Package',
-    price: '$2,997',
-    featured: true,
-    features: ['Custom MVP Build', 'Database & Backend', 'Frontend / Website', '2 Revisions Included'],
-  },
-  {
-    name: 'Full Business System Package',
-    price: '$5,997+',
-    features: ['Everything in MVP', 'Advanced Automations', 'Team Training', 'Priority & Support'],
-  },
+  ['Business Planning Consultation', '$497', 'Strategy session and focused action map.'],
+  ['Workflow Automation Package', '$1,497', 'Simple automation plan and setup path.'],
+  ['MVP System Build Package', '$2,997', 'Website, dashboard, docs, and launch plan.', true],
+  ['Full Business System Package', '$5,997+', 'Complete OS, website or store, and handoff.'],
 ];
-
-const workspace = ['Gmail', 'Google Drive', 'Google Calendar', 'Google Sheets', 'Google Docs', 'Google Meet'];
 
 export default function HomePage() {
   return (
-    <main className="site-shell">
+    <main className="site-shell simplified-site">
       <header className="site-header" aria-label="Strategic Minds Advisory navigation">
         <a className="brand-lockup" href="/" aria-label="Strategic Minds Advisory home">
           <img src="/brand/strategic-minds-logo.svg" alt="Strategic Minds Advisory" />
         </a>
         <nav className="site-nav" aria-label="Primary navigation">
-          <a href="/">Home</a>
-          <a href="/services">Services</a>
           <a href="/packages">Packages</a>
           <a href="/how-it-works">How It Works</a>
-          <a href="/about">About</a>
+          <a href="/client">Client Dashboard</a>
         </nav>
         <div className="header-actions">
-          <a className="button primary" href="/schedule">Schedule a Call</a>
-          <a className="button secondary" href="/login">Client Login</a>
+          <a className="button primary" href="/signup">Start Intake</a>
+          <a className="button secondary" href="/schedule">Schedule a Call</a>
         </div>
       </header>
 
-      <section className="hero-grid approved-home" aria-labelledby="hero-title">
+      <section className="simple-hero" aria-labelledby="hero-title">
         <div className="hero-copy">
-          <p className="eyebrow">AI-powered. Automated. Results driven.</p>
-          <h1 id="hero-title">We Turn Ideas Into Automated, AI-Powered Business Systems.</h1>
-          <p className="hero-subcopy">
-            From planning to automation, we build your systems, workflows, websites, and content engines so you can focus on growth.
-          </p>
+          <p className="eyebrow">AI consultant business systems</p>
+          <h1 id="hero-title">A simple client journey. A powerful build system behind it.</h1>
+          <p className="hero-subcopy">Clients answer the right questions, approve the right plan, then we build the website, workflow, store, Drive, Git, and operating system after approval.</p>
           <div className="hero-actions">
-            <a className="button primary" href="/schedule">Schedule a Call</a>
-            <a className="button secondary" href="/packages">View Packages</a>
+            <a className="button primary" href="/signup">Start Intake</a>
+            <a className="button secondary" href="/client">Preview Dashboard</a>
           </div>
         </div>
-
-        <div className="system-orbit" aria-label="Strategy, planning, build, launch, optimize, and improve system map">
-          <div className="orbit-center">AI</div>
-          <span>Strategy & Planning</span>
-          <span>Build & Automate</span>
-          <span>Deliver & Launch</span>
-          <span>Optimize & Scale</span>
-          <span>Monitor & Improve</span>
-        </div>
-
-        <div className="journey-panel" aria-label="The 10 Step Client Journey">
-          <h2>The 10 Step Client Journey</h2>
-          <div className="journey-strip">
-            {journeySteps.map((step, index) => (
-              <article className="journey-step" key={step}>
-                <span>{index + 1}</span>
-                <strong>{step}</strong>
-              </article>
-            ))}
-          </div>
+        <div className="hero-panel">
+          <small>Current client view</small>
+          <strong>Journey, schedule, progress, approvals, files.</strong>
+          <span>No admin noise. No backend complexity. No live payment action before approval.</span>
         </div>
       </section>
 
-      <section className="package-section" aria-labelledby="packages-title">
-        <h2 id="packages-title">Choose the Right Package for Your Business</h2>
-        <div className="package-grid">
-          {packages.map((pkg, index) => (
-            <article className={pkg.featured ? 'package-card featured' : 'package-card'} key={pkg.name}>
-              {pkg.featured ? <span className="popular">Most Popular</span> : null}
-              <span className="package-number">{index + 1}</span>
-              <h3>{pkg.name}</h3>
-              <p className="price">{pkg.price}</p>
-              <ul>
-                {pkg.features.map((feature) => <li key={feature}>{feature}</li>)}
-              </ul>
-              <a className="button secondary" href="/packages">Get Started</a>
+      <section className="simple-section" aria-labelledby="journey-title">
+        <div className="section-heading tight-heading">
+          <p className="eyebrow">How it works</p>
+          <h2 id="journey-title">The simple Strategic Minds workflow</h2>
+        </div>
+        <div className="simple-steps">
+          {publicJourney.map(([title, text], index) => (
+            <article key={title}>
+              <span>{index + 1}</span>
+              <strong>{title}</strong>
+              <p>{text}</p>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="workspace-strip" aria-label="Fully integrated with Google Workspace">
-        <p>Fully integrated with Google Workspace</p>
+      <section className="simple-section split-section" aria-labelledby="gate-title">
         <div>
-          {workspace.map((item) => <span key={item}>{item}</span>)}
+          <p className="eyebrow">Gate 1</p>
+          <h2 id="gate-title">The client approves the plan before the build starts.</h2>
+          <p className="hero-subcopy">The client only sees polished recommendations and approval materials. AUTO BUILDER, Discovery, Branding, Vercel Workflow, Drive, Git, and QA stay backstage.</p>
+        </div>
+        <ul className="deliverable-list">
+          {gateOneDeliverables.map((item) => <li key={item}>{item}</li>)}
+        </ul>
+      </section>
+
+      <section className="simple-section" aria-labelledby="packages-title">
+        <div className="section-heading tight-heading">
+          <p className="eyebrow">Packages</p>
+          <h2 id="packages-title">Start with the right build depth.</h2>
+        </div>
+        <div className="package-grid simple-package-grid">
+          {packages.map(([name, price, text, featured]) => (
+            <article className={featured ? 'package-card featured' : 'package-card'} key={name as string}>
+              {featured ? <span className="popular">Most Popular</span> : null}
+              <h3>{name}</h3>
+              <p className="price">{price}</p>
+              <p>{text}</p>
+              <a className="button secondary" href="/signup">Get Started</a>
+            </article>
+          ))}
         </div>
       </section>
 
-      <section className="dashboard-preview-section" aria-labelledby="dashboard-preview-title">
-        <div className="section-heading">
-          <p className="eyebrow">Client Portal Preview</p>
-          <h2 id="dashboard-preview-title">Approved Strategic Minds client dashboard</h2>
-          <p>Structured to match the approved Drive composite: sidebar navigation, step cards, journey tracker, documents, updates, payments, and schedule call prompt.</p>
+      <section className="dashboard-preview-section simplified-preview" aria-labelledby="dashboard-preview-title">
+        <div className="section-heading tight-heading">
+          <p className="eyebrow">Client portal</p>
+          <h2 id="dashboard-preview-title">Simple dashboard, clean approvals, clear progress.</h2>
         </div>
-        <div className="dashboard-frame compact-dashboard" aria-label="Approved client dashboard preview">
-          <aside className="dashboard-sidebar">
+        <div className="mini-client-preview">
+          <aside>
             <img src="/brand/strategic-minds-logo.svg" alt="Strategic Minds Advisory" />
-            {['Dashboard', 'My Journey', 'Calls', 'Payments', 'Invoices', 'Documents', 'Updates', 'Messages', 'Settings', 'Logout'].map((item, index) => (
-              <span className={index === 0 ? 'active' : ''} key={item}>{item}</span>
-            ))}
+            <span className="active">Dashboard</span>
+            <span>Journey</span>
+            <span>Schedule</span>
+            <span>Approvals</span>
+            <span>Files</span>
           </aside>
-          <div className="dashboard-main">
-            <div className="dashboard-topline">
-              <div>
-                <h3>Welcome back, John!</h3>
-                <p>Here is what is happening with your project.</p>
-              </div>
-              <a className="button primary" href="/schedule">Schedule a Call</a>
-            </div>
-            <div className="dashboard-stat-grid">
-              <article><small>Current Step</small><strong>4 of 10</strong><span>Share Your Idea</span></article>
-              <article><small>Next Call</small><strong>May 30, 2025</strong><span>2:00 PM EST</span></article>
-              <article><small>Project Status</small><strong>In Progress</strong><span>On Track</span></article>
-              <article><small>Amount Paid</small><strong>$2,997</strong><span>MVP System Build</span></article>
-            </div>
-            <div className="dashboard-journey-mini">
-              {journeySteps.map((step, index) => (
-                <span className={index < 3 ? 'done' : index === 3 ? 'current' : ''} key={step}>{index + 1}</span>
-              ))}
-            </div>
-            <div className="dashboard-panel-grid">
-              <article><h4>Recent Updates</h4><p>We received your project brief.</p><p>Your call has been scheduled.</p><p>Payment received successfully.</p></article>
-              <article><h4>Project Progress</h4><div className="progress"><span /></div><p>Discovery & Planning</p><p>Strategy & Blueprint</p><p>MVP Development</p></article>
-              <article><h4>Documents</h4><p>Project Brief</p><p>Strategy Blueprint</p><p>MVP Roadmap</p></article>
-              <article><h4>Payment Schedule</h4><p>Deposit Paid $1,497</p><p>MVP Build Milestone $1,500</p><p>Final Payment $0</p></article>
+          <div>
+            <h3>Your Strategic Minds Journey</h3>
+            <p>Current step: Strategy Packet</p>
+            <div className="mini-progress"><span /></div>
+            <div className="mini-grid">
+              <article><strong>Progress</strong><span>4 active reports</span></article>
+              <article><strong>Gate 1</strong><span>Approval folder pending</span></article>
+              <article><strong>Next Call</strong><span>Schedule when ready</span></article>
             </div>
           </div>
         </div>
-      </section>
-
-      <section className="value-band" aria-label="Strategic Minds operating promises">
-        <article><strong>Fully Automated</strong><span>We handle the tech so you can focus on your business.</span></article>
-        <article><strong>Transparent Process</strong><span>See every step, update, and payment.</span></article>
-        <article><strong>On-Time Delivery</strong><span>Clear milestones and communication.</span></article>
-        <article><strong>Ongoing Support</strong><span>Updates, improvements, and support.</span></article>
       </section>
     </main>
   );
