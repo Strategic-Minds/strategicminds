@@ -1,111 +1,127 @@
-const publicJourney = [
-  ['Sign Up', 'Create your client file and contact profile.'],
-  ['Answer Intake', 'Complete 10-15 onboarding questions by form, email, or text.'],
-  ['Strategy + Discovery', 'We prepare business docs, market research, and recommendations.'],
-  ['Brand Packs', 'You review five brand and website directions.'],
-  ['Gate 1 Approval', 'Approve the plan and make payment before build begins.'],
-  ['Build + Launch', 'AUTO BUILDER creates, tests, soft launches, and hands off the system.'],
+const journey = [
+  { title: 'Sign Up', text: 'Client creates a simple profile and contact record.' },
+  { title: 'Intake', text: 'Client answers 10-15 guided questions by portal, email, or text.' },
+  { title: 'Strategy', text: 'Business Builder Strategist turns answers into first planning docs.' },
+  { title: 'Discovery', text: 'Discovery Agent researches market, competitors, systems, and site patterns.' },
+  { title: 'Brand Packs', text: 'Branding Agent prepares five client-ready brand and website directions.' },
+  { title: 'Gate 1', text: 'Client approves the plan and makes payment before build starts.' },
+  { title: 'Build', text: 'AUTO BUILDER sends builder docs into the Vercel Workflow build lane.' },
+  { title: 'Test', text: 'QA, soft launch, bug fixes, reveal, handoff, warranty, and referral path.' },
 ];
 
-const gateOneDeliverables = [
+const deliverables = [
   'Business strategy and business plan',
   'Financial strategy and operating cost estimate',
   'Market discovery and similar-system report',
-  'Five branding and website concept packs',
-  'Automation, workflow, and Auto Social plan',
+  'Five brand and website concept packs',
+  'Automation, workflow, Auto Social, and cost plan',
+  'Gate 1 approval folder connected to the project Drive',
 ];
 
 const packages = [
-  ['Business Planning Consultation', '$497', 'Strategy session and focused action map.'],
-  ['Workflow Automation Package', '$1,497', 'Simple automation plan and setup path.'],
-  ['MVP System Build Package', '$2,997', 'Website, dashboard, docs, and launch plan.', true],
-  ['Full Business System Package', '$5,997+', 'Complete OS, website or store, and handoff.'],
+  { name: 'Business Planning Consultation', price: '$497', text: 'A focused strategy session, business direction, and next-step action map.' },
+  { name: 'Workflow Automation Package', price: '$1,497', text: 'Automation strategy, workflow design, and a practical setup path.' },
+  { name: 'MVP System Build Package', price: '$2,997', text: 'Website, client portal, builder docs, Drive structure, and launch plan.', featured: true },
+  { name: 'Full Business System Package', price: '$5,997+', text: 'Complete operating system, website or Shopify store, testing, and handoff.' },
 ];
 
 export default function HomePage() {
   return (
-    <main className="site-shell simplified-site">
+    <main className="site-shell">
       <header className="site-header" aria-label="Strategic Minds Advisory navigation">
         <a className="brand-lockup" href="/" aria-label="Strategic Minds Advisory home">
           <img src="/brand/strategic-minds-logo.svg" alt="Strategic Minds Advisory" />
         </a>
         <nav className="site-nav" aria-label="Primary navigation">
           <a href="/packages">Packages</a>
-          <a href="/how-it-works">How It Works</a>
+          <a href="/signup">Start Intake</a>
           <a href="/client">Client Dashboard</a>
+          <a href="/schedule">Schedule</a>
         </nav>
         <div className="header-actions">
+          <a className="button secondary" href="/login">Login</a>
           <a className="button primary" href="/signup">Start Intake</a>
-          <a className="button secondary" href="/schedule">Schedule a Call</a>
         </div>
       </header>
 
-      <section className="simple-hero" aria-labelledby="hero-title">
+      <section className="hero-stage" aria-labelledby="hero-title">
         <div className="hero-copy">
-          <p className="eyebrow">AI consultant business systems</p>
-          <h1 id="hero-title">A simple client journey. A powerful build system behind it.</h1>
-          <p className="hero-subcopy">Clients answer the right questions, approve the right plan, then we build the website, workflow, store, Drive, Git, and operating system after approval.</p>
+          <p className="eyebrow">Strategic Minds Advisory</p>
+          <h1 id="hero-title">We turn ideas into automated, AI-powered business systems.</h1>
+          <p className="hero-subcopy">Clients see a clean journey: intake, strategy, discovery, approval, build, test, reveal, and handoff. The agents, Drive folders, Git, Vercel Workflow, Shopify, and QA stay organized behind the scenes.</p>
           <div className="hero-actions">
-            <a className="button primary" href="/signup">Start Intake</a>
-            <a className="button secondary" href="/client">Preview Dashboard</a>
+            <a className="button primary" href="/signup">Start Your Intake</a>
+            <a className="button secondary" href="/client">Preview Client Dashboard</a>
           </div>
         </div>
-        <div className="hero-panel">
-          <small>Current client view</small>
-          <strong>Journey, schedule, progress, approvals, files.</strong>
-          <span>No admin noise. No backend complexity. No live payment action before approval.</span>
+        <div className="hero-dashboard-card" aria-label="Client dashboard preview">
+          <div className="preview-topbar">
+            <span>Client Portal</span>
+            <strong>Gate 1</strong>
+          </div>
+          <div className="preview-progress">
+            <div><span />Intake Received</div>
+            <div className="active"><span />Strategy Packet</div>
+            <div><span />Discovery Report</div>
+            <div><span />Brand Packs</div>
+          </div>
+          <div className="preview-stat-grid">
+            <article><strong>5</strong><span>brand and website packs</span></article>
+            <article><strong>1</strong><span>approval folder</span></article>
+            <article><strong>10</strong><span>journey milestones</span></article>
+          </div>
         </div>
       </section>
 
-      <section className="simple-section" aria-labelledby="journey-title">
-        <div className="section-heading tight-heading">
-          <p className="eyebrow">How it works</p>
-          <h2 id="journey-title">The simple Strategic Minds workflow</h2>
+      <section className="journey-section" aria-labelledby="journey-title">
+        <div className="section-heading">
+          <p className="eyebrow">The journey</p>
+          <h2 id="journey-title">Simple for the client. Structured for the build team.</h2>
         </div>
-        <div className="simple-steps">
-          {publicJourney.map(([title, text], index) => (
-            <article key={title}>
+        <div className="journey-grid">
+          {journey.map((step, index) => (
+            <article key={step.title}>
               <span>{index + 1}</span>
-              <strong>{title}</strong>
-              <p>{text}</p>
+              <strong>{step.title}</strong>
+              <p>{step.text}</p>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="simple-section split-section" aria-labelledby="gate-title">
+      <section className="split-band" aria-labelledby="gate-title">
         <div>
-          <p className="eyebrow">Gate 1</p>
-          <h2 id="gate-title">The client approves the plan before the build starts.</h2>
-          <p className="hero-subcopy">The client only sees polished recommendations and approval materials. AUTO BUILDER, Discovery, Branding, Vercel Workflow, Drive, Git, and QA stay backstage.</p>
+          <p className="eyebrow">Gate 1 approval</p>
+          <h2 id="gate-title">The client receives decision-ready strategy before the build begins.</h2>
+          <p className="muted-copy">The dashboard stays clean: schedule, progress, approvals, and files. The deeper AUTO BUILDER and Auto Social workflow remains internal until it is time to present results.</p>
         </div>
         <ul className="deliverable-list">
-          {gateOneDeliverables.map((item) => <li key={item}>{item}</li>)}
+          {deliverables.map((item) => <li key={item}>{item}</li>)}
         </ul>
       </section>
 
-      <section className="simple-section" aria-labelledby="packages-title">
-        <div className="section-heading tight-heading">
+      <section className="package-section" aria-labelledby="packages-title">
+        <div className="section-heading">
           <p className="eyebrow">Packages</p>
-          <h2 id="packages-title">Start with the right build depth.</h2>
+          <h2 id="packages-title">Choose the starting level. Upgrade as the system proves itself.</h2>
         </div>
-        <div className="package-grid simple-package-grid">
-          {packages.map(([name, price, text, featured]) => (
-            <article className={featured ? 'package-card featured' : 'package-card'} key={name as string}>
-              {featured ? <span className="popular">Most Popular</span> : null}
-              <h3>{name}</h3>
-              <p className="price">{price}</p>
-              <p>{text}</p>
-              <a className="button secondary" href="/signup">Get Started</a>
+        <div className="package-grid">
+          {packages.map((item) => (
+            <article className={item.featured ? 'package-card featured' : 'package-card'} key={item.name}>
+              {item.featured ? <span className="popular">Best fit</span> : null}
+              <h3>{item.name}</h3>
+              <p className="price">{item.price}</p>
+              <p>{item.text}</p>
+              <a className="button secondary" href="/signup">Start Intake</a>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="dashboard-preview-section simplified-preview" aria-labelledby="dashboard-preview-title">
-        <div className="section-heading tight-heading">
-          <p className="eyebrow">Client portal</p>
-          <h2 id="dashboard-preview-title">Simple dashboard, clean approvals, clear progress.</h2>
+      <section className="portal-preview-band" aria-labelledby="portal-title">
+        <div className="section-heading">
+          <p className="eyebrow">Client dashboard</p>
+          <h2 id="portal-title">Only the pieces the client needs to see.</h2>
         </div>
         <div className="mini-client-preview">
           <aside>
@@ -116,14 +132,19 @@ export default function HomePage() {
             <span>Approvals</span>
             <span>Files</span>
           </aside>
-          <div>
-            <h3>Your Strategic Minds Journey</h3>
-            <p>Current step: Strategy Packet</p>
+          <div className="mini-preview-main">
+            <div className="mini-preview-header">
+              <div>
+                <small>Current step</small>
+                <h3>Strategy Packet</h3>
+              </div>
+              <a className="button primary" href="/client">Open Preview</a>
+            </div>
             <div className="mini-progress"><span /></div>
             <div className="mini-grid">
-              <article><strong>Progress</strong><span>4 active reports</span></article>
-              <article><strong>Gate 1</strong><span>Approval folder pending</span></article>
-              <article><strong>Next Call</strong><span>Schedule when ready</span></article>
+              <article><strong>Progress Reports</strong><span>Clean milestone updates</span></article>
+              <article><strong>Approval Folder</strong><span>Gate 1 decision materials</span></article>
+              <article><strong>Schedule</strong><span>Reveal and review calls</span></article>
             </div>
           </div>
         </div>
