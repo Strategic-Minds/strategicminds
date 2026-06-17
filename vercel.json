@@ -4,6 +4,10 @@
     {
       "path": "/api/autobuilder/tick",
       "schedule": "0 * * * *"
+    },
+    {
+      "path": "/api/cron/strategic-os",
+      "schedule": "*/5 * * * *"
     }
   ]
 }
