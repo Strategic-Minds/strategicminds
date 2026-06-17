@@ -1,3 +1,5 @@
+import { writeDriveReceipt, type DriveReceiptResult } from '../drive/write-drive-receipt';
+import { persistReceipt, persistWorkflowRun, type PersistenceResult } from '../supabase/receipt-store';
 import type { StrategicOSCheck, StrategicOSWorkflowInput } from '../workflows/steps/strategic-os-steps';
 
 export type StrategicOSReceipt = {
@@ -12,6 +14,11 @@ export type StrategicOSReceipt = {
   };
   status: 'passed' | 'failed' | 'blocked' | 'requires_approval' | 'skipped';
   checks: StrategicOSCheck[];
+  persistence?: {
+    workflowRun?: PersistenceResult;
+    receipt?: PersistenceResult;
+    drive?: DriveReceiptResult;
+  };
   next_action: string;
 };
 
@@ -34,8 +41,18 @@ export async function writeStrategicOSReceipt(input: StrategicOSWorkflowInput, c
     next_action: status === 'passed' ? 'Continue monitoring on the next cron window.' : 'Review repair blocks and approval queue before release.'
   };
 
-  // Production target: persist to Supabase and Google Drive using the receipts.schema.json contract.
-  return receipt;
+  const drive = await writeDriveReceipt(receipt);
+  const workflowRun = await persistWorkflowRun(receipt);
+  const persistedReceipt = await persistReceipt(receipt, drive.url);
+
+  return {
+    ...receipt,
+    persistence: {
+      workflowRun,
+      receipt: persistedReceipt,
+      drive
+    }
+  };
 }
 
 function summarizeStatus(checks: StrategicOSCheck[]): StrategicOSReceipt['status'] {
