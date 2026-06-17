@@ -59,7 +59,8 @@ export async function GET(request: Request) {
       runWindow: result.runWindow,
       receiptId: result.receiptId,
       approvalCount: result.approvalCount,
-      repairBlockCount: result.repairBlockCount
+      repairBlockCount: result.repairBlockCount,
+      persistence: result.persistence
     },
     { status: 202 }
   );
