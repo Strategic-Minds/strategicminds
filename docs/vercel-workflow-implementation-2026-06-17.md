@@ -6,7 +6,7 @@ Drive spec: https://docs.google.com/document/d/1kuzazI2tfnl1tDdj9LCQsXXAvTKx4VFf
 
 ## Scope Implemented
 
-This commit series implements only the approved cron/workflow backbone from the Drive spec.
+This commit series implements the approved cron/workflow backbone from the Drive spec, plus Supabase persistence and Drive receipt writer hooks.
 
 Implemented files:
 
@@ -16,6 +16,9 @@ Implemented files:
 - `lib/workflows/steps/strategic-os-steps.ts`
 - `lib/receipts/write-receipt.ts`
 - `lib/dashboard/sync-dashboard-state.ts`
+- `lib/supabase/rest.ts`
+- `lib/supabase/receipt-store.ts`
+- `lib/drive/write-drive-receipt.ts`
 - `tests/strategic-os-cron.spec.ts`
 
 ## Cron
@@ -68,6 +71,39 @@ Current steps:
 13. Write receipt
 14. Sync dashboard state
 
+## Persistence Wiring
+
+Supabase is wired without adding package dependencies. The workflow uses Supabase REST with:
+
+- `SUPABASE_URL`
+- `SUPABASE_SERVICE_ROLE_KEY`
+
+Current Supabase writes:
+
+- `workflow_runs`
+- `receipts`
+- `dashboard_events`
+
+Drive receipt writing is wired through a server-side webhook/connector hook:
+
+- `DRIVE_RECEIPT_WEBHOOK_URL` preferred
+- `GOOGLE_WORKSPACE_CONNECTOR_REF` fallback if it is an HTTPS endpoint
+- `DRIVE_RECEIPT_WEBHOOK_SECRET` optional bearer token
+
+The cron response now includes persistence booleans:
+
+```json
+{
+  "persistence": {
+    "driveReceipt": true,
+    "supabaseReceipt": true,
+    "dashboardEvent": true
+  }
+}
+```
+
+A false value means the code path ran but the live service/write target still needs configuration or repair.
+
 ## Chromium Browser Worker Note
 
 The workflow checks for any of these env names at runtime:
@@ -80,10 +116,10 @@ This records the user note that a Chromium browser worker has been installed in 
 
 ## Remaining Work
 
-This is the backbone, not the complete production system. Remaining items:
-
-- Wire true Vercel Workflow SDK/package integration if required by the final Vercel project setup.
-- Persist receipts to Supabase and Google Drive.
+- Apply the Supabase schema and RLS policies in the live Supabase project.
+- Configure a real Drive receipt webhook/connector endpoint.
+- Validate Supabase writes from the deployed cron route.
+- Validate Drive receipt creation from the deployed cron route.
 - Implement live registry sync through Google Sheets/Drive connector.
 - Implement Supabase schema introspection and RLS verification.
 - Implement Stripe/Shopify webhook verification.
@@ -93,5 +129,5 @@ This is the backbone, not the complete production system. Remaining items:
 
 ## Status
 
-Repo implementation: completed for approved cron/workflow backbone only.
+Repo implementation: completed for approved cron/workflow backbone plus persistence hooks.
 Production launch: still blocked by release gate and live validation receipts.
