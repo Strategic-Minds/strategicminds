@@ -24,6 +24,11 @@ export type StrategicOSWorkflowResult = {
   receiptId: string;
   approvalCount: number;
   repairBlockCount: number;
+  persistence: {
+    driveReceipt: boolean;
+    supabaseReceipt: boolean;
+    dashboardEvent: boolean;
+  };
 };
 
 export async function startStrategicOSValidationWorkflow(input: StrategicOSWorkflowInput): Promise<StrategicOSWorkflowResult> {
@@ -56,7 +61,7 @@ export async function strategicOSValidationWorkflow(input: StrategicOSWorkflowIn
   await enqueueRepairBlocks(context);
 
   const receipt = await writeStrategicOSReceipt(input, context.checks);
-  await syncStrategicOSDashboardState(receipt, context.approvals);
+  const dashboardState = await syncStrategicOSDashboardState(receipt, context.approvals);
 
   return {
     runId: input.runId,
@@ -64,6 +69,11 @@ export async function strategicOSValidationWorkflow(input: StrategicOSWorkflowIn
     status: 'completed',
     receiptId: receipt.receipt_id,
     approvalCount: context.approvals.length,
-    repairBlockCount: context.repairBlocks.length
+    repairBlockCount: context.repairBlocks.length,
+    persistence: {
+      driveReceipt: Boolean(receipt.persistence?.drive?.ok),
+      supabaseReceipt: Boolean(receipt.persistence?.receipt?.ok),
+      dashboardEvent: Boolean(dashboardState.persistence?.dashboardEvent?.ok)
+    }
   };
 }
