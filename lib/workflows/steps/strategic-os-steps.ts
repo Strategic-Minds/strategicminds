@@ -126,11 +126,17 @@ export async function checkVercelDeploymentAndEnv(context: StrategicOSWorkflowCo
 export async function checkSupabaseSchemaAndRLS(context: StrategicOSWorkflowContext) {
   'use step';
 
+  const hasSupabasePersistence = Boolean(process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY);
+
   return addCheck(context, {
     name: 'supabase_schema_rls_contract',
-    status: process.env.SUPABASE_URL ? 'requires_approval' : 'blocked',
-    evidence: 'Supabase schema contract exists in Drive. Live schema/RLS verification still requires a deployed database check.',
-    repairBlock: 'Implement Supabase schema introspection and RLS verification before production client data is enabled.'
+    status: hasSupabasePersistence ? 'requires_approval' : 'blocked',
+    evidence: hasSupabasePersistence
+      ? 'Supabase persistence env is configured. Live schema/RLS introspection is still required.'
+      : 'Supabase persistence requires SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY.',
+    repairBlock: hasSupabasePersistence
+      ? 'Implement Supabase schema introspection and RLS verification before production client data is enabled.'
+      : 'Set SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY in Vercel.'
   });
 }
 
@@ -148,11 +154,18 @@ export async function checkPaymentAndIntakeHealth(context: StrategicOSWorkflowCo
 export async function checkGoogleWorkspaceHealth(context: StrategicOSWorkflowContext) {
   'use step';
 
+  const driveReceiptTarget = process.env.DRIVE_RECEIPT_WEBHOOK_URL || process.env.GOOGLE_WORKSPACE_CONNECTOR_REF;
+  const canWriteDriveReceipt = Boolean(driveReceiptTarget && driveReceiptTarget.startsWith('https://'));
+
   return addCheck(context, {
     name: 'google_workspace_contract',
-    status: process.env.GOOGLE_WORKSPACE_CONNECTOR_REF ? 'requires_approval' : 'blocked',
-    evidence: 'Google Workspace connector manifest exists. Live Drive/Gmail/Calendar checks still need deployed connector execution.',
-    repairBlock: 'Wire Drive receipt writes, Gmail draft/send policy, and Calendar booking checks.'
+    status: canWriteDriveReceipt ? 'requires_approval' : 'blocked',
+    evidence: canWriteDriveReceipt
+      ? 'Drive receipt writer target is configured. Gmail/Calendar checks still need deployed connector execution.'
+      : 'Drive receipt writing needs DRIVE_RECEIPT_WEBHOOK_URL or an HTTPS GOOGLE_WORKSPACE_CONNECTOR_REF.',
+    repairBlock: canWriteDriveReceipt
+      ? 'Wire Gmail draft/send policy and Calendar booking checks.'
+      : 'Set DRIVE_RECEIPT_WEBHOOK_URL or HTTPS GOOGLE_WORKSPACE_CONNECTOR_REF in Vercel.'
   });
 }
 
