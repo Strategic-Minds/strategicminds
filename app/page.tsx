@@ -2,27 +2,32 @@ import styles from './homepage.module.css';
 
 const cx = (...classes: Array<string | false | undefined>) => classes.filter(Boolean).join(' ');
 
+const outcomes = [
+  'More qualified leads',
+  'More booked calls',
+  'Less manual follow-up',
+  'A website you can proudly send people to'
+];
+
 const services = [
-  ['Business Planning', 'Strategy, positioning, offer structure, and execution path.'],
-  ['Workflow Automation', 'Automate intake, follow-up, approvals, and admin movement.'],
-  ['MVP System Build', 'Build and launch your first Vercel-powered website system.'],
-  ['Business In A Box', 'Website, portal, workflow, handoff, and launch support.']
+  ['High-converting website', 'A clean homepage that explains what you do, why it matters, and how to take the next step.'],
+  ['Client-ready dashboard', 'A simple place for clients to see progress, requests, meetings, documents, and next steps.'],
+  ['Smart follow-up system', 'Automated reminders, request tracking, and lead follow-up so fewer opportunities fall through.'],
+  ['Launch and growth plan', 'A practical plan for offers, content, calls, and next improvements after the site goes live.']
 ];
 
-const workflow = [
-  ['Lead Capture', 'Forms, calendar, chat widget'],
-  ['Auto Onboarding', 'Client intake and setup'],
-  ['Auto Builder', 'Discovery, docs, build, validate'],
-  ['Workflow Engine', 'Vercel workflow automation'],
-  ['5-Min Cron', 'System health and approvals'],
-  ['AI Gateway', 'Safe agent actions'],
-  ['Notifications', 'Email drafts and alerts'],
-  ['Receipts & Logs', 'Audit proof and release records']
+const steps = [
+  ['1', 'Tell us what you sell', 'We learn your offer, ideal customer, current bottlenecks, and what you want the site to do.'],
+  ['2', 'We design the funnel', 'Your page gets clear sections, simple words, strong calls to action, and a lead path.'],
+  ['3', 'We build it on Vercel', 'You get a fast website, installable app experience, dashboard, and admin workspace.'],
+  ['4', 'You approve launch', 'Nothing goes live until you review the preview and approve the final release.']
 ];
 
-const stack = ['Next.js', 'Vercel', 'Supabase', 'Resend', 'Stripe Ready', 'PWA', 'Tailwind CSS'];
-
-const dashboardRows = ['Discovery', 'Brand & Strategy', 'Documentation', 'Build Phase', 'Validation', 'Release'];
+const packages = [
+  ['Website Fix', 'For owners who need a better homepage now.', 'Homepage strategy, clearer copy, stronger call-to-action, and Vercel preview.'],
+  ['Website + Dashboard', 'For service businesses that want a smoother client experience.', 'Homepage, client dashboard, admin workspace, request flow, and launch checklist.'],
+  ['Business System', 'For owners ready to automate follow-up and delivery.', 'Website funnel, dashboard, admin console, automations, PWA setup, and operating guide.']
+];
 
 export default function HomePage() {
   return (
@@ -36,49 +41,57 @@ export default function HomePage() {
           </span>
         </a>
         <div className={styles.navLinks}>
+          <a href="#services">What You Get</a>
+          <a href="#process">How It Works</a>
           <a href="#packages">Packages</a>
-          <a href="#solutions">Solutions</a>
-          <a href="#workflow">Workflow</a>
-          <a href="/client">Dashboard</a>
-          <a className={cx(styles.btn, styles.primary)} href="mailto:strategicmindsadvisory@gmail.com">Book a Call</a>
+          <a href="/client">Client Login</a>
+          <a className={cx(styles.btn, styles.primary)} href="mailto:strategicmindsadvisory@gmail.com?subject=Website%20strategy%20call">Book a Call</a>
         </div>
       </nav>
 
       <section className={styles.hero}>
         <div className={styles.heroCopy}>
-          <span className={styles.eyebrow}>Strategic Minds Advisory</span>
-          <h1>
-            Intelligence
-            <span>In Motion</span>
-          </h1>
+          <span className={styles.eyebrow}>Websites and automation for business owners</span>
+          <h1>A website that turns visitors into booked calls.</h1>
           <p>
-            We build automated websites, intelligent workflows, and scalable business systems that run on Vercel.
+            We build clean, high-tech websites that explain your value fast, make your business look trustworthy,
+            and guide people to contact you without confusion.
           </p>
           <div className={styles.actions}>
-            <a className={cx(styles.btn, styles.primary)} href="#packages">Explore Packages</a>
-            <a className={styles.btn} href="mailto:strategicmindsadvisory@gmail.com">Book a Call</a>
+            <a className={cx(styles.btn, styles.primary)} href="mailto:strategicmindsadvisory@gmail.com?subject=I%20want%20a%20website%20that%20gets%20more%20leads">Book a Free Strategy Call</a>
+            <a className={styles.btn} href="#packages">See Packages</a>
           </div>
-          <div className={styles.heroBadges} aria-label="Included capabilities">
-            <span>Built for scale</span>
-            <span>Automation first</span>
-            <span>AI powered</span>
-            <span>Results driven</span>
+          <div className={styles.heroBadges} aria-label="Business outcomes">
+            {outcomes.map((item) => (
+              <span key={item}>{item}</span>
+            ))}
           </div>
         </div>
 
-        <div className={styles.heroVisual} aria-hidden="true">
-          <div className={styles.aiHead} />
-          <div className={styles.motionLines} />
-          <div className={styles.orbit}>
-            <span>SM</span>
+        <div className={styles.heroVisual} aria-label="Lead funnel preview">
+          <div className={styles.funnelCard}>
+            <span>New Website Visitor</span>
+            <strong>They understand your offer in 5 seconds.</strong>
+          </div>
+          <div className={cx(styles.funnelCard, styles.funnelCardTwo)}>
+            <span>Clear Next Step</span>
+            <strong>They book a call or send a request.</strong>
+          </div>
+          <div className={cx(styles.funnelCard, styles.funnelCardThree)}>
+            <span>Automatic Follow-Up</span>
+            <strong>Your dashboard tracks the lead and next action.</strong>
+          </div>
+          <div className={styles.signalPanel}>
+            <span>Simple Funnel</span>
+            <strong>Visit -&gt; Trust -&gt; Contact -&gt; Follow-up -&gt; Sale</strong>
           </div>
         </div>
       </section>
 
-      <section id="packages" className={styles.section}>
+      <section id="services" className={styles.section}>
         <div className={styles.sectionHeader}>
-          <span className={styles.eyebrow}>Our Core Services</span>
-          <h2>Five-star systems without the heavy agency drag.</h2>
+          <span className={styles.eyebrow}>What you get</span>
+          <h2>Your business explained clearly, beautifully, and built to capture real opportunities.</h2>
         </div>
         <div className={styles.serviceGrid}>
           {services.map(([title, text]) => (
@@ -91,86 +104,50 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="solutions" className={cx(styles.section, styles.dashboardSection)}>
+      <section id="process" className={styles.processBand}>
         <div className={styles.sectionHeader}>
-          <span className={styles.eyebrow}>Client Dashboard Preview</span>
-          <h2>Website, portal, workflow, and approvals in one operating view.</h2>
+          <span className={styles.eyebrow}>How it works</span>
+          <h2>A simple path from idea to a working website system.</h2>
         </div>
-        <div className={styles.dashboard}>
-          <aside className={styles.dashboardRail}>
-            {['Dashboard', 'Projects', 'Tasks', 'Documents', 'Payments', 'Messages', 'Settings'].map((item, index) => (
-              <span className={index === 0 ? styles.active : ''} key={item}>{item}</span>
-            ))}
-          </aside>
-          <div className={styles.dashboardMain}>
-            <div className={styles.progressRing}>
-              <strong>75%</strong>
-              <span>Project Progress</span>
-            </div>
-            <div className={styles.projectList}>
-              {dashboardRows.map((row, index) => (
-                <div key={row}>
-                  <span>{row}</span>
-                  <strong>{index < 4 ? 'Ready' : 'Queued'}</strong>
-                </div>
-              ))}
-            </div>
-            <div className={styles.meetingCard}>
-              <span>Upcoming Meeting</span>
-              <strong>Strategy Call</strong>
-              <p>Review package, scope, and Vercel preview path.</p>
-              <a href="mailto:strategicmindsadvisory@gmail.com">View Calendar</a>
-            </div>
-          </div>
-          <div className={styles.statRow}>
-            <div><strong>12</strong><span>Total Projects</span></div>
-            <div><strong>7</strong><span>Active Projects</span></div>
-            <div><strong>$96,320</strong><span>Revenue Pipeline</span></div>
-            <div><strong>18</strong><span>Open Tasks</span></div>
-          </div>
-        </div>
-      </section>
-
-      <section id="workflow" className={styles.section}>
-        <div className={styles.sectionHeader}>
-          <span className={styles.eyebrow}>Vercel Workflow Automation</span>
-          <h2>Every build includes the pieces needed to launch, operate, and improve.</h2>
-        </div>
-        <div className={styles.workflowGrid}>
-          {workflow.map(([title, text]) => (
-            <div className={styles.workflowItem} key={title}>
-              <span className={styles.cardIcon} />
-              <strong>{title}</strong>
+        <div className={styles.stepGrid}>
+          {steps.map(([number, title, text]) => (
+            <div className={styles.stepItem} key={title}>
+              <strong>{number}</strong>
+              <h3>{title}</h3>
               <p>{text}</p>
             </div>
           ))}
         </div>
       </section>
 
-      <section className={styles.bottomGrid} aria-label="Technology and features">
-        <div className={styles.stackPanel}>
-          <span className={styles.eyebrow}>Tech Stack</span>
-          <div className={styles.stackList}>
-            {stack.map((item) => (
-              <strong key={item}>{item}</strong>
-            ))}
+      <section id="packages" className={styles.section}>
+        <div className={styles.sectionHeader}>
+          <span className={styles.eyebrow}>Packages</span>
+          <h2>Pick the level that matches where your business is today.</h2>
+        </div>
+        <div className={styles.packageGrid}>
+          {packages.map(([title, fit, text], index) => (
+            <article className={cx(styles.packageCard, index === 1 && styles.featuredPackage)} key={title}>
+              <span>{fit}</span>
+              <h3>{title}</h3>
+              <p>{text}</p>
+              <a className={cx(styles.btn, index === 1 && styles.primary)} href={`mailto:strategicmindsadvisory@gmail.com?subject=${encodeURIComponent(title + ' package')}`}>
+                Ask About This
+              </a>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className={styles.finalCta}>
+        <div>
+          <span className={styles.eyebrow}>Ready for a better first impression?</span>
+          <h2>Let your website explain the value, build trust, and bring the next client closer.</h2>
+          <p>Send a quick message and we will map the first version of your website funnel.</p>
+          <div className={styles.actions}>
+            <a className={cx(styles.btn, styles.primary)} href="mailto:strategicmindsadvisory@gmail.com?subject=Build%20my%20website%20funnel">Start My Website Funnel</a>
+            <a className={styles.btn} href="/client">View Client Dashboard</a>
           </div>
-        </div>
-        <div className={styles.featurePanel}>
-          <span className={styles.eyebrow}>Global Features</span>
-          <ul>
-            <li>Light and dark mode ready</li>
-            <li>PWA-ready Vercel deployment</li>
-            <li>Secure, scalable workflow path</li>
-            <li>SEO and speed optimized</li>
-            <li>AI-powered automation direction</li>
-          </ul>
-        </div>
-        <div className={styles.brandPanel}>
-          <span className={styles.logoMark} aria-hidden="true" />
-          <strong>Strategic Minds</strong>
-          <span>Advisory</span>
-          <p>Intelligence In Motion</p>
         </div>
       </section>
     </main>
