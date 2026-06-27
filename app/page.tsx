@@ -1,180 +1,143 @@
-const journey = [
-  'Choose package',
-  'Secure payment',
-  'Schedule call',
-  'Share idea',
-  'Plan system',
-  'Build MVP',
-  'Review',
-  'Launch',
-  'Automate',
-  'Scale'
-];
-
-const offers = [
+const services = [
   {
-    name: 'Business Planning Consultation',
-    price: '$497',
-    text: 'A focused strategy session with a build map, offer direction, and priority execution path.'
+    name: 'Website Launch',
+    price: 'From $497',
+    text: 'A focused Vercel site with sharp positioning, responsive pages, contact routing, and a clean launch checklist.'
   },
   {
     name: 'Workflow Automation',
-    price: '$1,497',
-    text: 'A governed automation layer for intake, follow-up, project movement, and admin visibility.'
+    price: 'From $1,497',
+    text: 'Intake, follow-up, project movement, approvals, and receipt paths mapped into a practical operating flow.'
   },
   {
-    name: 'MVP System Build',
-    price: '$2,997',
-    text: 'A launchable first system with website, dashboard structure, validation gates, and handoff docs.',
+    name: 'Client Portal',
+    price: 'From $2,997',
+    text: 'A private client workspace for progress, files, requests, meetings, approvals, and next-step visibility.',
     featured: true
   },
   {
-    name: 'Business In A Box',
-    price: '$5,997+',
-    text: 'A complete operating package with source truth, client portal, automations, and launch support.'
+    name: 'Business System Build',
+    price: 'Scoped build',
+    text: 'A full website, portal, admin view, automation plan, and handoff packet for a launch-ready business system.'
   }
 ];
 
-const modules = [
-  ['Client Dashboard', 'Project progress, payments, documents, meetings, deliverables, and requests in one portal.'],
-  ['Admin Control Plane', 'Leads, clients, approvals, agents, receipts, workflow health, and release queue visibility.'],
-  ['Five-Minute Ops Loop', 'Cron checks queue status, missing receipts, validation blockers, and pending approvals.'],
-  ['Governed AI Gateway', 'Scoped assistant behavior with refusal rules, source-truth grounding, and approval gates.']
+const setupItems = [
+  ['Homepage', 'A polished first impression with clear offer, CTA, and mobile-first layout.'],
+  ['Intake Flow', 'Lead capture and request routing prepared for the next automation step.'],
+  ['Client Portal', 'A simple place for progress, documents, requests, and approvals.'],
+  ['Workflow Layer', 'Preview-safe automation logic for handoffs, receipts, and review gates.'],
+  ['Vercel Preview', 'Branch-safe changes can be reviewed before production release.'],
+  ['Launch Handoff', 'A checklist for DNS, forms, analytics, payment readiness, and rollback.']
+];
+
+const process = [
+  ['01', 'Clarify', 'We turn the idea, offer, and audience into a focused website plan.'],
+  ['02', 'Build', 'The homepage, portal path, and core workflow are assembled on Vercel.'],
+  ['03', 'Review', 'You approve copy, layout, routing, launch gates, and client-facing details.'],
+  ['04', 'Launch', 'Production release happens only after the preview is checked and approved.']
 ];
 
 export default function HomePage() {
   return (
     <main className="site-shell">
-      <nav className="nav">
+      <nav className="site-nav" aria-label="Main navigation">
         <a className="brand" href="/">
           Strategic Minds Advisory
-          <span>Intelligence In Motion</span>
+          <span>Vercel Website Systems</span>
         </a>
         <div className="nav-links">
-          <a href="#packages">Packages</a>
-          <a href="#workflow">Workflow</a>
-          <a href="/client">Client</a>
-          <a href="/admin">Admin</a>
-          <a className="btn primary" href="#start">Start</a>
+          <a href="#services">Services</a>
+          <a href="#setup">Setup</a>
+          <a href="#process">Process</a>
+          <a href="/client">Client Portal</a>
+          <a className="btn primary" href="#contact">Start</a>
         </div>
       </nav>
 
       <section className="hero">
-        <div>
-          <span className="eyebrow">AI-powered business systems</span>
+        <div className="hero-copy">
+          <span className="eyebrow">Vercel-first website setup</span>
           <h1>Strategic Minds Advisory</h1>
           <p>
-            We turn ideas into automated operating systems: websites, client portals, admin command centers,
-            source-truth workflows, and validation loops that keep the work moving.
+            Websites, client portals, and automation-ready workflows for service businesses that need a cleaner path from idea to launch.
           </p>
           <div className="actions">
-            <a className="btn primary" href="#packages">Choose a package</a>
-            <a className="btn" href="/client">View client dashboard</a>
-            <a className="btn" href="/admin">Open admin control plane</a>
+            <a className="btn primary" href="mailto:strategicmindsadvisory@gmail.com">Request a build</a>
+            <a className="btn" href="#services">View services</a>
           </div>
-          <div className="proof-strip" aria-label="Operating proof points">
-            <div><strong>10</strong><span>step client journey</span></div>
-            <div><strong>5 min</strong><span>ops check cadence</span></div>
-            <div><strong>0</strong><span>unsafe live actions without approval</span></div>
-          </div>
-        </div>
-
-        <div className="system-preview" aria-label="Strategic Minds system preview">
-          <div className="preview-header">
-            <strong>Live Operating System</strong>
-            <span className="pulse">Preview ready</span>
-          </div>
-          <div className="preview-grid">
-            <div className="rail">
-              <span className="active">Overview</span>
-              <span>Clients</span>
-              <span>Projects</span>
-              <span>Approvals</span>
-              <span>Receipts</span>
-              <span>Release queue</span>
-            </div>
-            <div className="live-panel">
-              <div className="row-between">
-                <strong>Command Status</strong>
-                <span className="badge green">Healthy</span>
-              </div>
-              <div className="metrics">
-                <div className="metric"><strong>14</strong><span>active checks</span></div>
-                <div className="metric"><strong>8</strong><span>client modules</span></div>
-                <div className="metric"><strong>3</strong><span>approval gates</span></div>
-              </div>
-              <div className="task-line"><span>Payment path</span><strong>Test mode</strong></div>
-              <div className="task-line"><span>Drive receipts</span><strong>Queued</strong></div>
-              <div className="task-line"><span>Release policy</span><strong>Approval gated</strong></div>
-            </div>
+          <div className="hero-proof" aria-label="Delivery principles">
+            <span>Preview-first builds</span>
+            <span>Approval-gated launches</span>
+            <span>Client-ready handoff</span>
           </div>
         </div>
       </section>
 
-      <section id="workflow" className="section light-band">
-        <span className="eyebrow">Client journey</span>
-        <h2 className="section-title">A clear path from idea to operational system.</h2>
+      <section id="services" className="section light-band">
+        <span className="eyebrow">Services</span>
+        <h2 className="section-title">A website that can become the operating layer for the business.</h2>
         <p className="section-copy">
-          Every engagement moves through the same visible pipeline so the client can see progress and the
-          operator can keep approvals, receipts, and release decisions under control.
+          Start with the homepage and grow into the portal, intake, approvals, documents, and automation paths as the business gets traction.
         </p>
-        <div className="workflow">
-          {journey.map((step, index) => (
-            <div key={step}>
-              <strong>{String(index + 1).padStart(2, '0')}</strong>
-              <p>{step}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section id="packages" className="section light-band">
-        <span className="eyebrow">Packages</span>
-        <h2 className="section-title">Choose the operating depth your business needs now.</h2>
         <div className="offer-grid">
-          {offers.map((offer) => (
-            <article className={`offer ${offer.featured ? 'featured' : ''}`} key={offer.name}>
+          {services.map((service) => (
+            <article className={`offer ${service.featured ? 'featured' : ''}`} key={service.name}>
               <div>
-                <h3>{offer.name}</h3>
-                <p>{offer.text}</p>
+                <h3>{service.name}</h3>
+                <p>{service.text}</p>
               </div>
               <div>
-                <div className="price">{offer.price}</div>
-                <a className={`btn ${offer.featured ? 'primary' : 'dark'}`} href="#start">Get started</a>
+                <div className="price">{service.price}</div>
+                <a className={`btn ${service.featured ? 'primary' : 'dark'}`} href="#contact">Start here</a>
               </div>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="section dark-band">
-        <div className="ops-split">
-          <div>
-            <span className="eyebrow">Operating stack</span>
-            <h2 className="section-title">Website, dashboard, command center, and automation loop in one system.</h2>
-            <p className="section-copy" style={{ color: '#c7d3e9' }}>
-              Strategic Minds is structured as a governed client delivery machine: intake, planning, build,
-              payment, documents, agent checks, admin summaries, release receipts, and rollback readiness.
-            </p>
-          </div>
-          <div className="module-grid">
-            {modules.map(([title, text]) => (
-              <div className="module" key={title}>
-                <strong>{title}</strong>
-                <span className="muted">{text}</span>
-              </div>
-            ))}
-          </div>
+      <section id="setup" className="section setup-band">
+        <div className="setup-copy">
+          <span className="eyebrow">Website setup</span>
+          <h2 className="section-title">Built for Vercel previews, clean handoff, and safe launch decisions.</h2>
+          <p className="section-copy">
+            The stack stays simple on the outside and governed behind the scenes: website, portal, intake, workflow notes, and launch readiness in one path.
+          </p>
+        </div>
+        <div className="setup-grid">
+          {setupItems.map(([title, text]) => (
+            <div className="setup-item" key={title}>
+              <strong>{title}</strong>
+              <span>{text}</span>
+            </div>
+          ))}
         </div>
       </section>
 
-      <section id="start" className="section final-cta">
+      <section id="process" className="section light-band">
+        <span className="eyebrow">Process</span>
+        <h2 className="section-title">Move from idea to working website without losing control of the launch.</h2>
+        <div className="process-grid">
+          {process.map(([number, title, text]) => (
+            <div className="process-step" key={number}>
+              <span>{number}</span>
+              <strong>{title}</strong>
+              <p>{text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="contact" className="section final-cta">
         <div>
-          <span className="eyebrow">Ready when you are</span>
-          <h2 className="section-title">Build the next business system with approval-gated automation.</h2>
+          <span className="eyebrow">Start the build</span>
+          <h2 className="section-title">Set up the website, then connect the workflow that helps it run.</h2>
+          <p className="section-copy">
+            Send the idea, the offer, or the current site problem. The next step is a preview-safe homepage and setup path.
+          </p>
           <div className="actions">
-            <a className="btn primary" href="mailto:strategicmindsadvisory@gmail.com">Request a build</a>
-            <a className="btn" href="/admin">Review admin view</a>
+            <a className="btn primary" href="mailto:strategicmindsadvisory@gmail.com">Email Strategic Minds</a>
+            <a className="btn" href="/client">Open client portal</a>
           </div>
         </div>
       </section>
