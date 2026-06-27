@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="1120" viewBox="0 0 920 1120" role="img" aria-label="Electric AI profile with ten step gated client journey">
+  <defs>
+    <radialGradient id="glow" cx="63%" cy="31%" r="62%">
+      <stop offset="0" stop-color="#2ad8ff" stop-opacity=".95"/>
+      <stop offset=".26" stop-color="#0a77ff" stop-opacity=".52"/>
+      <stop offset=".62" stop-color="#00153d" stop-opacity=".24"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="line" x1="220" x2="768" y1="136" y2="720">
+      <stop stop-color="#63dfff"/>
+      <stop offset=".55" stop-color="#0b7cff"/>
+      <stop offset="1" stop-color="#003cc9"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#071734" stop-opacity=".92"/>
+      <stop offset="1" stop-color="#000510" stop-opacity=".78"/>
+    </linearGradient>
+    <filter id="blueBlur" x="-35%" y="-35%" width="170%" height="170%">
+      <feGaussianBlur stdDeviation="16"/>
+    </filter>
+  </defs>
+
+  <rect width="920" height="1120" fill="#000000"/>
+  <rect width="920" height="1120" fill="url(#glow)" opacity=".92"/>
+  <g opacity=".2">
+    <path d="M92 126h736M92 214h736M92 302h736M92 390h736M92 478h736M92 566h736M92 654h736M92 742h736M92 830h736M92 918h736" stroke="#48a8ff" stroke-width="1"/>
+    <path d="M132 86v910M220 86v910M308 86v910M396 86v910M484 86v910M572 86v910M660 86v910M748 86v910" stroke="#48a8ff" stroke-width="1"/>
+  </g>
+
+  <ellipse cx="542" cy="382" rx="310" ry="352" fill="#005cff" opacity=".2" filter="url(#blueBlur)"/>
+  <path d="M632 158c-92-82-246-62-334 45-48 58-71 130-64 205 7 73 41 125 91 165 27 21 33 45 22 74l-34 90h176l21-88c7-29 28-50 58-56 97-19 177-94 199-197 19-89-29-179-135-238z" fill="#020a19" stroke="url(#line)" stroke-width="4"/>
+  <path d="M326 390c28 1 58-16 80-50 27-41 64-61 112-61h92c32 0 63-11 86-31" fill="none" stroke="#8eeaff" stroke-width="6" stroke-linecap="round" opacity=".82"/>
+  <path d="M390 566c54 16 111 13 170-9 54-20 91-54 111-102" fill="none" stroke="#147fff" stroke-width="7" stroke-linecap="round" opacity=".9"/>
+  <path d="M290 470h136l58 68h82l49-52h130" fill="none" stroke="#44d9ff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M336 316h92l42-50h120M358 642h106l38-56h132" fill="none" stroke="#0b7cff" stroke-width="4" stroke-linecap="round"/>
+
+  <g fill="#dff7ff" stroke="#48dfff" stroke-width="4">
+    <circle cx="300" cy="470" r="12"/>
+    <circle cx="426" cy="470" r="12"/>
+    <circle cx="484" cy="538" r="12"/>
+    <circle cx="566" cy="538" r="12"/>
+    <circle cx="615" cy="486" r="12"/>
+    <circle cx="742" cy="486" r="12"/>
+    <circle cx="428" cy="316" r="12"/>
+    <circle cx="590" cy="266" r="12"/>
+    <circle cx="464" cy="642" r="12"/>
+    <circle cx="634" cy="586" r="12"/>
+  </g>
+
+  <g transform="translate(84 798)">
+    <rect width="752" height="214" rx="8" fill="url(#panel)" stroke="#226dff" stroke-opacity=".42"/>
+    <text x="36" y="55" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="900">Gated AI Build Journey</text>
+    <text x="36" y="91" fill="#a9c8f2" font-family="Arial, Helvetica, sans-serif" font-size="18">Choose, pay, plan, build, approve, launch, update, scale.</text>
+    <path d="M54 146H698" stroke="#1b65d8" stroke-width="5" stroke-linecap="round"/>
+    <g font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="900" text-anchor="middle">
+      <circle cx="54" cy="146" r="17" fill="#21a96b"/><text x="54" y="151" fill="#fff">1</text>
+      <circle cx="126" cy="146" r="17" fill="#21a96b"/><text x="126" y="151" fill="#fff">2</text>
+      <circle cx="198" cy="146" r="17" fill="#21a96b"/><text x="198" y="151" fill="#fff">3</text>
+      <circle cx="270" cy="146" r="17" fill="#087bff"/><text x="270" y="151" fill="#fff">4</text>
+      <circle cx="342" cy="146" r="17" fill="#061a3e" stroke="#4aa8ff" stroke-width="2"/><text x="342" y="151" fill="#cfe9ff">5</text>
+      <circle cx="414" cy="146" r="17" fill="#061a3e" stroke="#4aa8ff" stroke-width="2"/><text x="414" y="151" fill="#cfe9ff">6</text>
+      <circle cx="486" cy="146" r="17" fill="#061a3e" stroke="#4aa8ff" stroke-width="2"/><text x="486" y="151" fill="#cfe9ff">7</text>
+      <circle cx="558" cy="146" r="17" fill="#061a3e" stroke="#4aa8ff" stroke-width="2"/><text x="558" y="151" fill="#cfe9ff">8</text>
+      <circle cx="630" cy="146" r="17" fill="#061a3e" stroke="#4aa8ff" stroke-width="2"/><text x="630" y="151" fill="#cfe9ff">9</text>
+      <circle cx="698" cy="146" r="17" fill="#061a3e" stroke="#4aa8ff" stroke-width="2"/><text x="698" y="151" fill="#cfe9ff">10</text>
+    </g>
+    <g fill="#83c9ff" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="800" text-anchor="middle">
+      <text x="54" y="185">Package</text>
+      <text x="126" y="185">Payment</text>
+      <text x="198" y="185">Call</text>
+      <text x="270" y="185">Brief</text>
+      <text x="342" y="185">Plan</text>
+      <text x="414" y="185">MVP</text>
+      <text x="486" y="185">Review</text>
+      <text x="558" y="185">Launch</text>
+      <text x="630" y="185">Updates</text>
+      <text x="698" y="185">Scale</text>
+    </g>
+  </g>
+
+  <g transform="translate(88 98)" font-family="Arial, Helvetica, sans-serif">
+    <text fill="#5fb3ff" font-size="16" font-weight="900">STRATEGIC MINDS</text>
+    <text y="42" fill="#ffffff" font-size="42" font-weight="900">AI systems with gates.</text>
+    <text y="78" fill="#adc8ea" font-size="18">Simple steps. Clear approvals. No confusing control plane.</text>
+  </g>
+</svg>

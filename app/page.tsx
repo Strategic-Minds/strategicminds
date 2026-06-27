@@ -9,9 +9,10 @@ const outcomes = [
 ];
 
 const steps = [
-  ['01', 'Audit the work'],
-  ['02', 'Build the first system'],
-  ['03', 'Launch and improve']
+  ['01', 'Choose package'],
+  ['02', 'Secure payment'],
+  ['03', 'Build and approve'],
+  ['04', 'Launch and optimize']
 ];
 
 export default function HomePage() {
@@ -28,7 +29,9 @@ export default function HomePage() {
         <div className={styles.navLinks}>
           <a href="#work">Work</a>
           <a href="#process">Process</a>
-          <a href="/client">Client Login</a>
+          <a href="/payment">Payment</a>
+          <a href="/auth">Sign In</a>
+          <a href="/client">Client Portal</a>
           <a className={cx(styles.btn, styles.primary)} href="mailto:strategicmindsadvisory@gmail.com?subject=AI%20strategy%20call">
             Book a Call
           </a>
@@ -53,14 +56,7 @@ export default function HomePage() {
         </div>
 
         <div className={styles.heroVisual} aria-label="AI consulting focus">
-          <span>First AI wins</span>
-          <strong>Start with the work that costs time every day.</strong>
-          <div className={styles.signalList}>
-            <p>Lead follow-up</p>
-            <p>Client intake</p>
-            <p>Missed messages</p>
-            <p>Weekly reporting</p>
-          </div>
+          <img className={styles.heroImage} src="/strategic-ai-hero.svg" alt="Electric AI profile with ten-step gated client journey" />
         </div>
       </section>
 
@@ -82,7 +78,7 @@ export default function HomePage() {
       <section id="process" className={styles.process}>
         <div className={styles.sectionIntro}>
           <span className={styles.eyebrow}>Simple process</span>
-          <h2>Start small. Prove value. Scale what works.</h2>
+          <h2>A gated path from idea to paid build to launch.</h2>
         </div>
         <div className={styles.stepRail}>
           {steps.map(([number, title]) => (
@@ -96,9 +92,9 @@ export default function HomePage() {
 
       <section className={styles.finalCta}>
         <span className={styles.eyebrow}>Ready to make AI useful?</span>
-        <h2>Book a call and we will find the first workflow AI should improve.</h2>
-        <a className={cx(styles.btn, styles.primary)} href="mailto:strategicmindsadvisory@gmail.com?subject=Start%20my%20AI%20consulting%20plan">
-          Start My AI Plan
+        <h2>Choose your package, secure your spot, and move through the build one gate at a time.</h2>
+        <a className={cx(styles.btn, styles.primary)} href="/payment">
+          View Packages
         </a>
       </section>
     </main>

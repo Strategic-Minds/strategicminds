@@ -3,8 +3,9 @@
   min-height: 100vh;
   overflow: hidden;
   background:
-    linear-gradient(135deg, rgba(0, 36, 104, 0.62) 0%, rgba(0, 10, 31, 0.18) 34%, rgba(0, 0, 0, 0) 62%),
-    linear-gradient(180deg, #000104 0%, #020716 48%, #000000 100%);
+    radial-gradient(circle at 80% 24%, rgba(0, 92, 255, 0.32), rgba(0, 18, 60, 0.12) 24%, rgba(0, 0, 0, 0) 46%),
+    radial-gradient(circle at 18% 82%, rgba(0, 58, 160, 0.2), rgba(0, 0, 0, 0) 38%),
+    linear-gradient(180deg, #000000 0%, #01040d 48%, #000000 100%);
   color: #f7fbff;
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -23,11 +24,11 @@
 
 .siteShell::after {
   position: fixed;
-  inset: auto -15% -22% 38%;
-  height: 58svh;
+  inset: auto -16% -24% 34%;
+  height: 68svh;
   pointer-events: none;
-  background: linear-gradient(120deg, rgba(0, 74, 208, 0.32), rgba(0, 13, 42, 0.02));
-  filter: blur(70px);
+  background: linear-gradient(120deg, rgba(0, 102, 255, 0.46), rgba(0, 13, 42, 0.02));
+  filter: blur(78px);
   content: '';
 }
 
@@ -129,7 +130,7 @@
 .hero {
   display: grid;
   min-height: calc(100svh - 94px);
-  grid-template-columns: minmax(0, 0.98fr) minmax(320px, 0.62fr);
+  grid-template-columns: minmax(0, 0.94fr) minmax(360px, 0.72fr);
   align-items: center;
   gap: clamp(34px, 7vw, 96px);
   padding: 22px clamp(18px, 5vw, 72px) 84px;
@@ -174,62 +175,32 @@
 
 .heroVisual {
   position: relative;
-  display: grid;
-  min-height: 430px;
-  align-content: end;
-  gap: 18px;
-  overflow: hidden;
-  border: 1px solid rgba(68, 154, 255, 0.22);
+  min-height: min(72svh, 720px);
+  overflow: visible;
+  border: 1px solid rgba(88, 183, 255, 0.24);
   border-radius: 8px;
-  padding: clamp(22px, 4vw, 42px);
-  background:
-    linear-gradient(150deg, rgba(1, 24, 68, 0.9), rgba(1, 4, 12, 0.94) 62%),
-    linear-gradient(40deg, rgba(0, 106, 255, 0.18), rgba(0, 0, 0, 0) 46%);
-  box-shadow: inset 0 0 90px rgba(0, 82, 221, 0.13), 0 30px 90px rgba(0, 0, 0, 0.42);
+  background: rgba(0, 0, 0, 0.42);
+  box-shadow: 0 0 80px rgba(0, 91, 255, 0.2), 0 36px 110px rgba(0, 0, 0, 0.58);
   animation: riseIn 780ms ease 90ms both;
 }
 
 .heroVisual::before {
   position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(90deg, transparent 0 49%, rgba(84, 173, 255, 0.18) 50%, transparent 51% 100%),
-    linear-gradient(rgba(92, 171, 255, 0.08) 1px, transparent 1px);
-  background-size: 100% 100%, 100% 54px;
+  inset: -16%;
+  z-index: -1;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(0, 112, 255, 0.42), rgba(0, 14, 42, 0.08) 46%, transparent 70%);
+  filter: blur(44px);
   content: '';
 }
 
-.heroVisual > span {
-  position: relative;
-  color: #5fb3ff;
-  font-size: 12px;
-  font-weight: 900;
-  text-transform: uppercase;
-}
-
-.heroVisual > strong {
-  position: relative;
-  max-width: 430px;
-  color: white;
-  font-size: clamp(32px, 4vw, 54px);
-  line-height: 0.98;
-}
-
-.signalList {
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  margin-top: 18px;
-  border-top: 1px solid rgba(137, 197, 255, 0.16);
-}
-
-.signalList p {
-  margin: 0;
-  border-bottom: 1px solid rgba(137, 197, 255, 0.14);
-  padding: 14px 18px 14px 0;
-  color: #c5d7ee;
-  font-size: 14px;
-  font-weight: 800;
+.heroImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: min(72svh, 720px);
+  border-radius: 8px;
+  object-fit: cover;
 }
 
 .step span {
@@ -298,7 +269,7 @@
 
 .stepRail {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   margin-top: 44px;
 }
 
