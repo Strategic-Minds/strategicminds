@@ -1,12 +1,12 @@
 {
-  "name": "Strategic Minds Advisory Client OS",
+  "name": "Strategic Minds Advisory",
   "short_name": "Strategic Minds",
-  "description": "Strategic Minds Advisory client operating system with project tracking and AI agent workspace.",
+  "description": "Website funnel, client dashboard, and business automation workspace.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#eef5ff",
-  "theme_color": "#1557d8",
+  "background_color": "#02040a",
+  "theme_color": "#02040a",
   "orientation": "portrait-primary",
   "icons": [
     {
