@@ -2,8 +2,8 @@
   min-height: 100vh;
   overflow: hidden;
   background:
-    radial-gradient(circle at 18% 8%, rgba(0, 132, 255, 0.22), transparent 30%),
-    radial-gradient(circle at 82% 18%, rgba(49, 99, 255, 0.16), transparent 34%),
+    radial-gradient(circle at 18% 8%, rgba(0, 132, 255, 0.2), transparent 30%),
+    radial-gradient(circle at 82% 18%, rgba(49, 99, 255, 0.14), transparent 34%),
     linear-gradient(180deg, #02040a 0%, #020711 52%, #010309 100%);
   color: #f8fbff;
   font-family: Arial, Helvetica, sans-serif;
@@ -15,24 +15,11 @@
   z-index: 0;
   pointer-events: none;
   background:
-    linear-gradient(rgba(26, 139, 255, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(26, 139, 255, 0.06) 1px, transparent 1px);
+    linear-gradient(rgba(26, 139, 255, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26, 139, 255, 0.055) 1px, transparent 1px);
   background-size: 44px 44px;
   content: '';
-  mask-image: linear-gradient(180deg, black, transparent 78%);
-}
-
-.siteShell::after {
-  position: fixed;
-  inset: auto -12% -28% auto;
-  z-index: 0;
-  width: 54vw;
-  min-width: 560px;
-  aspect-ratio: 1;
-  border-radius: 999px;
-  background: radial-gradient(circle, rgba(0, 132, 255, 0.16), transparent 62%);
-  content: '';
-  pointer-events: none;
+  mask-image: linear-gradient(180deg, black, transparent 82%);
 }
 
 .siteShell > * {
@@ -59,8 +46,8 @@
 .logoMark {
   position: relative;
   flex: 0 0 auto;
-  width: 54px;
-  height: 54px;
+  width: 52px;
+  height: 52px;
   overflow: hidden;
   border: 1px solid rgba(0, 145, 255, 0.62);
   border-radius: 8px;
@@ -82,18 +69,6 @@
     rgba(2, 16, 36, 0.9);
   clip-path: polygon(22% 0, 76% 4%, 100% 26%, 88% 48%, 100% 68%, 73% 100%, 26% 96%, 0 62%, 7% 20%);
   content: '';
-}
-
-.logoMark::after {
-  position: absolute;
-  right: 7px;
-  top: 18px;
-  width: 17px;
-  height: 18px;
-  border-top: 1px solid rgba(29, 164, 255, 0.82);
-  border-bottom: 1px solid rgba(29, 164, 255, 0.72);
-  content: '';
-  transform: skewX(-18deg);
 }
 
 .brandText {
@@ -131,12 +106,12 @@
 
 .btn {
   display: inline-flex;
-  min-height: 42px;
+  min-height: 44px;
   align-items: center;
   justify-content: center;
   border: 1px solid rgba(0, 145, 255, 0.45);
   border-radius: 6px;
-  padding: 11px 18px;
+  padding: 12px 18px;
   background: rgba(2, 11, 24, 0.78);
   color: white;
   font-size: 14px;
@@ -158,21 +133,17 @@
   box-shadow: 0 16px 42px rgba(0, 116, 255, 0.22);
 }
 
-.primary:hover {
-  background: linear-gradient(135deg, #0884ff, #145bff);
-}
-
 .hero {
   display: grid;
-  min-height: 640px;
-  grid-template-columns: minmax(0, 0.88fr) minmax(420px, 1.12fr);
+  min-height: 690px;
+  grid-template-columns: minmax(0, 0.92fr) minmax(420px, 1.08fr);
   align-items: center;
   gap: 42px;
-  padding: 32px 32px 48px;
+  padding: 34px 32px 58px;
 }
 
 .heroCopy {
-  max-width: 620px;
+  max-width: 690px;
   animation: riseIn 650ms ease both;
 }
 
@@ -185,20 +156,17 @@
 }
 
 .hero h1 {
+  max-width: 760px;
   margin: 18px 0;
   color: white;
-  font-size: 76px;
-  line-height: 0.96;
+  font-size: 70px;
+  line-height: 0.98;
   letter-spacing: 0;
 }
 
-.hero h1 span {
-  display: block;
-  color: #0788ff;
-}
-
-.hero p {
-  max-width: 560px;
+.hero p,
+.finalCta p {
+  max-width: 620px;
   color: #c9d6e8;
   font-size: 18px;
   line-height: 1.6;
@@ -232,12 +200,12 @@
 
 .heroVisual {
   position: relative;
-  min-height: 520px;
+  min-height: 540px;
   overflow: hidden;
   border: 1px solid rgba(0, 145, 255, 0.2);
   border-radius: 8px;
   background:
-    radial-gradient(circle at 42% 48%, rgba(0, 145, 255, 0.25), transparent 28%),
+    radial-gradient(circle at 38% 44%, rgba(0, 145, 255, 0.25), transparent 28%),
     radial-gradient(circle at 82% 76%, rgba(0, 145, 255, 0.18), transparent 34%),
     linear-gradient(135deg, rgba(4, 18, 41, 0.94), rgba(2, 4, 10, 0.88));
   box-shadow: inset 0 0 80px rgba(0, 145, 255, 0.08), 0 28px 80px rgba(0, 0, 0, 0.34);
@@ -252,103 +220,62 @@
     linear-gradient(90deg, rgba(37, 161, 255, 0.08) 1px, transparent 1px);
   background-size: 28px 28px;
   content: '';
-  mask-image: radial-gradient(circle at 40% 46%, black, transparent 76%);
+  mask-image: radial-gradient(circle at 42% 44%, black, transparent 78%);
 }
 
-.heroVisual::after {
+.funnelCard,
+.signalPanel {
   position: absolute;
-  inset: 10% 8% auto auto;
-  width: 45%;
-  height: 58%;
-  background:
-    linear-gradient(90deg, rgba(0, 145, 255, 0.48), transparent),
-    repeating-linear-gradient(0deg, transparent 0 18px, rgba(0, 145, 255, 0.18) 19px 20px);
-  content: '';
-  mask-image: linear-gradient(90deg, black, transparent);
+  width: min(70%, 420px);
+  border: 1px solid rgba(0, 145, 255, 0.28);
+  border-radius: 8px;
+  padding: 20px;
+  background: rgba(2, 11, 24, 0.86);
+  box-shadow: 0 18px 54px rgba(0, 0, 0, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
-.aiHead {
-  position: absolute;
-  left: 28px;
-  top: 32px;
-  width: min(72%, 500px);
-  aspect-ratio: 0.82;
-  border: 1px solid rgba(31, 164, 255, 0.72);
-  border-radius: 52% 43% 48% 56%;
-  background:
-    radial-gradient(circle at 63% 45%, #ffffff 0 5px, rgba(16, 181, 255, 0.82) 6px 8px, transparent 10px),
-    radial-gradient(circle at 50% 44%, rgba(0, 145, 255, 0.5), transparent 32%),
-    repeating-linear-gradient(90deg, rgba(0, 145, 255, 0.58) 0 2px, transparent 2px 15px),
-    repeating-linear-gradient(0deg, rgba(0, 145, 255, 0.3) 0 1px, transparent 1px 18px),
-    rgba(2, 14, 31, 0.92);
-  clip-path: polygon(28% 0, 78% 5%, 100% 30%, 89% 52%, 100% 70%, 72% 100%, 28% 95%, 0 62%, 8% 23%);
-  filter: drop-shadow(0 0 30px rgba(0, 145, 255, 0.64));
+.funnelCard {
+  left: 30px;
+  top: 44px;
 }
 
-.aiHead::before {
-  position: absolute;
-  inset: 10%;
-  background:
-    radial-gradient(circle, rgba(171, 224, 255, 0.85) 0 1px, transparent 2px),
-    linear-gradient(90deg, transparent 0 46%, rgba(0, 145, 255, 0.4) 47% 48%, transparent 49%);
-  background-size: 22px 22px, auto;
-  content: '';
-  opacity: 0.88;
-  mask-image: linear-gradient(90deg, black, transparent 82%);
+.funnelCardTwo {
+  left: 104px;
+  top: 194px;
 }
 
-.aiHead::after {
-  position: absolute;
-  left: 58%;
-  top: 43%;
-  width: 12px;
-  height: 12px;
-  border-radius: 999px;
-  background: #ffffff;
-  box-shadow: 0 0 22px #00a3ff, 44px -32px 0 -4px #1397ff, 50px 38px 0 -5px #1397ff;
-  content: '';
+.funnelCardThree {
+  left: 178px;
+  top: 344px;
 }
 
-.motionLines {
-  position: absolute;
-  inset: 18% 0 auto 42%;
-  height: 54%;
-  background:
-    repeating-linear-gradient(0deg, transparent 0 19px, rgba(0, 145, 255, 0.22) 20px 21px),
-    linear-gradient(90deg, rgba(0, 145, 255, 0.75), transparent);
-  mask-image: linear-gradient(90deg, black, transparent);
-}
-
-.orbit {
-  position: absolute;
-  right: 42px;
-  bottom: 48px;
-  display: grid;
-  width: 172px;
-  aspect-ratio: 1;
-  place-items: center;
-  border: 1px solid rgba(0, 145, 255, 0.55);
-  border-radius: 999px;
-  background:
-    repeating-radial-gradient(circle, rgba(0, 145, 255, 0.28) 0 1px, transparent 2px 16px),
-    rgba(0, 8, 18, 0.72);
-  box-shadow: 0 0 42px rgba(0, 145, 255, 0.28);
-}
-
-.orbit span {
-  display: grid;
-  width: 86px;
-  aspect-ratio: 1;
-  place-items: center;
-  border-radius: 999px;
-  background: rgba(2, 11, 24, 0.9);
-  color: white;
-  font-size: 32px;
+.funnelCard span,
+.signalPanel span,
+.packageCard span {
+  color: #18a8ff;
+  font-size: 12px;
   font-weight: 900;
+  text-transform: uppercase;
 }
 
-.section {
-  padding: 38px 32px;
+.funnelCard strong,
+.signalPanel strong {
+  display: block;
+  margin-top: 10px;
+  color: white;
+  font-size: 22px;
+  line-height: 1.18;
+}
+
+.signalPanel {
+  right: 30px;
+  bottom: 38px;
+  width: min(42%, 280px);
+}
+
+.section,
+.processBand {
+  padding: 56px 32px;
 }
 
 .sectionHeader {
@@ -356,52 +283,66 @@
   align-items: end;
   justify-content: space-between;
   gap: 24px;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
 }
 
-.sectionHeader h2 {
-  max-width: 840px;
+.sectionHeader h2,
+.finalCta h2 {
+  max-width: 880px;
   margin: 0;
   color: white;
-  font-size: 32px;
+  font-size: 36px;
   line-height: 1.08;
   letter-spacing: 0;
 }
 
 .serviceGrid,
-.workflowGrid {
+.stepGrid,
+.packageGrid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 14px;
 }
 
+.serviceGrid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.stepGrid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.packageGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .serviceCard,
-.workflowItem,
-.stackPanel,
-.featurePanel,
-.brandPanel {
+.stepItem,
+.packageCard {
   border: 1px solid rgba(0, 145, 255, 0.22);
   border-radius: 8px;
   background: rgba(2, 11, 24, 0.78);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
-.serviceCard {
-  min-height: 214px;
+.serviceCard,
+.stepItem,
+.packageCard {
+  min-height: 230px;
   padding: 24px;
 }
 
-.serviceCard h3 {
-  margin: 30px 0 10px;
+.serviceCard h3,
+.stepItem h3,
+.packageCard h3 {
+  margin: 26px 0 10px;
   color: white;
-  font-size: 21px;
+  font-size: 22px;
   letter-spacing: 0;
 }
 
 .serviceCard p,
-.workflowItem p,
-.meetingCard p,
-.brandPanel p {
+.stepItem p,
+.packageCard p {
   color: #aabbd1;
   line-height: 1.55;
 }
@@ -419,253 +360,38 @@
   box-shadow: 0 0 24px rgba(0, 145, 255, 0.2);
 }
 
-.dashboardSection {
-  padding-top: 54px;
+.processBand {
+  background: rgba(1, 8, 20, 0.68);
 }
 
-.dashboard {
+.stepItem strong {
   display: grid;
-  grid-template-columns: 190px 1fr;
-  gap: 0;
-  overflow: hidden;
-  border: 1px solid rgba(0, 145, 255, 0.25);
-  border-radius: 8px;
-  background:
-    linear-gradient(135deg, rgba(5, 25, 55, 0.92), rgba(2, 5, 13, 0.96)),
-    #02050d;
-  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.34), inset 0 0 80px rgba(0, 145, 255, 0.06);
-}
-
-.dashboardRail {
-  display: grid;
-  align-content: start;
-  gap: 8px;
-  border-right: 1px solid rgba(0, 145, 255, 0.18);
-  padding: 22px;
-  background: rgba(1, 5, 13, 0.62);
-}
-
-.dashboardRail span {
-  border-radius: 6px;
-  padding: 11px 12px;
-  color: #91a7c2;
-  font-size: 13px;
-  font-weight: 800;
-}
-
-.dashboardRail .active {
-  background: linear-gradient(135deg, rgba(0, 116, 255, 0.9), rgba(8, 77, 255, 0.82));
-  color: white;
-}
-
-.dashboardMain {
-  display: grid;
-  grid-template-columns: 230px 1fr 280px;
-  gap: 20px;
-  align-items: stretch;
-  padding: 24px;
-}
-
-.progressRing {
-  display: grid;
+  width: 42px;
+  aspect-ratio: 1;
   place-items: center;
-  align-content: center;
-  min-height: 224px;
-  border: 1px solid rgba(0, 145, 255, 0.22);
-  border-radius: 8px;
+  border-radius: 999px;
+  background: #0788ff;
+  color: white;
+}
+
+.featuredPackage {
   background:
-    radial-gradient(circle, rgba(3, 14, 31, 0.96) 0 56%, transparent 57%),
-    conic-gradient(#0788ff 0 270deg, rgba(0, 145, 255, 0.16) 270deg 360deg);
+    radial-gradient(circle at top right, rgba(0, 145, 255, 0.22), transparent 38%),
+    rgba(5, 25, 55, 0.92);
 }
 
-.progressRing strong {
-  color: white;
-  font-size: 44px;
-}
-
-.progressRing span {
-  color: #9db3cc;
-  font-size: 12px;
-  font-weight: 900;
-  text-transform: uppercase;
-}
-
-.projectList {
-  display: grid;
-  gap: 10px;
-}
-
-.projectList div {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  border: 1px solid rgba(0, 145, 255, 0.14);
-  border-radius: 6px;
-  padding: 13px 14px;
-  background: rgba(0, 8, 18, 0.58);
-}
-
-.projectList span {
-  color: #dcecff;
-  font-weight: 800;
-}
-
-.projectList strong {
-  color: #18a8ff;
-  font-size: 12px;
-  text-transform: uppercase;
-}
-
-.meetingCard {
-  border: 1px solid rgba(0, 145, 255, 0.22);
-  border-radius: 8px;
-  padding: 22px;
-  background: rgba(0, 8, 18, 0.62);
-}
-
-.meetingCard span {
-  color: #18a8ff;
-  font-size: 12px;
-  font-weight: 900;
-  text-transform: uppercase;
-}
-
-.meetingCard strong {
-  display: block;
-  margin-top: 12px;
-  color: white;
-  font-size: 24px;
-}
-
-.meetingCard a {
-  display: inline-flex;
-  margin-top: 14px;
-  color: #79c9ff;
-  font-weight: 900;
-  text-decoration: none;
-}
-
-.statRow {
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1px;
-  border-top: 1px solid rgba(0, 145, 255, 0.16);
-  background: rgba(0, 145, 255, 0.14);
-}
-
-.statRow div {
-  display: grid;
-  gap: 4px;
-  padding: 18px 22px;
-  background: rgba(1, 5, 13, 0.84);
-}
-
-.statRow strong {
-  color: white;
-  font-size: 24px;
-}
-
-.statRow span {
-  color: #9db3cc;
-  font-size: 12px;
-  font-weight: 900;
-  text-transform: uppercase;
-}
-
-.workflowGrid {
-  grid-template-columns: repeat(8, minmax(0, 1fr));
-}
-
-.workflowItem {
-  min-height: 184px;
-  padding: 18px;
-}
-
-.workflowItem strong {
-  display: block;
-  margin-top: 20px;
-  color: white;
-  font-size: 16px;
-}
-
-.workflowItem p {
-  margin-bottom: 0;
-  font-size: 13px;
-}
-
-.bottomGrid {
-  display: grid;
-  grid-template-columns: 1.1fr 1fr 0.72fr;
-  gap: 14px;
-  padding: 38px 32px 64px;
-}
-
-.stackPanel,
-.featurePanel,
-.brandPanel {
-  min-height: 230px;
-  padding: 24px;
-}
-
-.stackList {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 22px;
-}
-
-.stackList strong {
-  border: 1px solid rgba(0, 145, 255, 0.28);
-  border-radius: 6px;
-  padding: 12px 14px;
-  background: rgba(0, 8, 18, 0.65);
-  color: white;
-}
-
-.featurePanel ul {
-  display: grid;
-  gap: 12px;
-  margin: 20px 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.featurePanel li {
-  position: relative;
-  padding-left: 22px;
-  color: #d9e8fa;
-  font-weight: 800;
-  line-height: 1.4;
-}
-
-.featurePanel li::before {
-  position: absolute;
-  left: 0;
-  top: 0;
-  color: #18a8ff;
-  content: '+';
-}
-
-.brandPanel {
-  display: grid;
-  justify-items: start;
-  align-content: center;
-  gap: 8px;
-}
-
-.brandPanel strong {
+.packageCard .btn {
   margin-top: 16px;
-  color: white;
-  font-size: 26px;
-  text-transform: uppercase;
 }
 
-.brandPanel > span:not(.logoMark) {
-  color: #1397ff;
-  font-weight: 900;
-  text-transform: uppercase;
+.finalCta {
+  display: grid;
+  min-height: 420px;
+  align-items: center;
+  padding: 68px 32px 80px;
+  background:
+    linear-gradient(90deg, rgba(2, 4, 10, 0.96), rgba(2, 4, 10, 0.68)),
+    radial-gradient(circle at 78% 44%, rgba(0, 145, 255, 0.24), transparent 34%);
 }
 
 @media (max-width: 1180px) {
@@ -674,24 +400,16 @@
   }
 
   .heroVisual {
-    min-height: 480px;
+    min-height: 500px;
   }
 
   .serviceGrid,
-  .workflowGrid {
+  .stepGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .dashboardMain {
-    grid-template-columns: 1fr;
-  }
-
-  .bottomGrid {
-    grid-template-columns: 1fr;
   }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 820px) {
   .siteNav {
     align-items: flex-start;
     flex-direction: column;
@@ -704,15 +422,10 @@
     gap: 10px;
   }
 
-  .navLinks a {
-    display: inline-flex;
-    min-height: 38px;
-    align-items: center;
-  }
-
   .hero,
   .section,
-  .bottomGrid {
+  .processBand,
+  .finalCta {
     padding-right: 18px;
     padding-left: 18px;
   }
@@ -724,7 +437,7 @@
   }
 
   .hero h1 {
-    font-size: 52px;
+    font-size: 48px;
   }
 
   .hero p {
@@ -732,23 +445,15 @@
   }
 
   .heroVisual {
-    min-height: 360px;
+    min-height: 430px;
   }
 
-  .aiHead {
-    left: 16px;
-    width: 78%;
-  }
-
-  .orbit {
-    right: 18px;
-    bottom: 22px;
-    width: 126px;
-  }
-
-  .orbit span {
-    width: 64px;
-    font-size: 24px;
+  .funnelCard,
+  .signalPanel {
+    position: relative;
+    inset: auto;
+    width: auto;
+    margin: 14px;
   }
 
   .sectionHeader {
@@ -756,27 +461,15 @@
     flex-direction: column;
   }
 
-  .sectionHeader h2 {
-    font-size: 26px;
+  .sectionHeader h2,
+  .finalCta h2 {
+    font-size: 28px;
   }
 
   .serviceGrid,
-  .workflowGrid {
+  .stepGrid,
+  .packageGrid {
     grid-template-columns: 1fr;
-  }
-
-  .dashboard {
-    grid-template-columns: 1fr;
-  }
-
-  .dashboardRail {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    border-right: 0;
-    border-bottom: 1px solid rgba(0, 145, 255, 0.18);
-  }
-
-  .statRow {
-    grid-template-columns: 1fr 1fr;
   }
 }
 
@@ -785,24 +478,12 @@
     font-size: 17px;
   }
 
-  .brandText span {
-    font-size: 12px;
-  }
-
   .hero h1 {
-    font-size: 42px;
+    font-size: 40px;
   }
 
   .actions .btn {
     width: 100%;
-  }
-
-  .dashboardMain {
-    padding: 16px;
-  }
-
-  .statRow {
-    grid-template-columns: 1fr;
   }
 }
 
