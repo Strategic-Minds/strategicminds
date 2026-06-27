@@ -1,28 +1,35 @@
 'use client';
 
 import { useMemo, useState } from 'react';
+import styles from './admin-console.module.css';
 
-const tabs = ['Overview', 'Leads', 'Clients', 'Projects', 'Approvals', 'Receipts', 'Release'];
+const tabs = ['Overview', 'Journey', 'Payments', 'Approvals', 'Receipts', 'Release'];
 
 const startingQueue = [
-  { title: 'Review homepage copy', area: 'Website funnel', priority: 'High', status: 'Waiting' },
-  { title: 'Approve client dashboard actions', area: 'Client experience', priority: 'Medium', status: 'Waiting' },
-  { title: 'Confirm PWA install setup', area: 'Technical launch', priority: 'Medium', status: 'Waiting' },
-  { title: 'Prepare production release checklist', area: 'Release', priority: 'High', status: 'Waiting' }
+  { title: 'Choose package', area: 'Gate 1', priority: 'High', status: 'Approved' },
+  { title: 'Secure payment', area: 'Gate 2', priority: 'High', status: 'Waiting' },
+  { title: 'Schedule strategy call', area: 'Gate 3', priority: 'Medium', status: 'Waiting' },
+  { title: 'Collect client idea brief', area: 'Gate 4', priority: 'Medium', status: 'Waiting' },
+  { title: 'Approve system plan', area: 'Gate 5', priority: 'High', status: 'Waiting' },
+  { title: 'Build MVP preview', area: 'Gate 6', priority: 'High', status: 'Waiting' },
+  { title: 'Review feedback', area: 'Gate 7', priority: 'Medium', status: 'Waiting' },
+  { title: 'Approve launch', area: 'Gate 8', priority: 'High', status: 'Waiting' },
+  { title: 'Start automated updates', area: 'Gate 9', priority: 'Medium', status: 'Waiting' },
+  { title: 'Scale and optimize', area: 'Gate 10', priority: 'Medium', status: 'Waiting' }
 ];
 
 const projects = [
-  ['Website Funnel', 'Strategic Minds', 'Preview', '82%'],
-  ['Client Dashboard', 'Strategic Minds', 'Interactive', '74%'],
-  ['Admin Console', 'Strategic Minds', 'Interactive', '68%'],
-  ['PWA Setup', 'Strategic Minds', 'Ready for preview', '70%']
+  ['Package Selection', 'Client', 'Approved', '100%'],
+  ['Payment Gate', 'Stripe', 'Waiting', '25%'],
+  ['Strategy Call', 'Client', 'Waiting', '20%'],
+  ['Build Plan', 'Strategic Minds', 'Queued', '10%']
 ];
 
 export default function AdminConsole() {
   const [activeTab, setActiveTab] = useState('Overview');
   const [queue, setQueue] = useState(startingQueue);
-  const [receipts, setReceipts] = useState(['Preview deployment checked', 'Homepage content scan passed']);
-  const [toast, setToast] = useState('Operator preview active. Production actions still require approval.');
+  const [receipts, setReceipts] = useState(['Preview deployment checked', 'Hero image replaced', 'Gated journey installed']);
+  const [toast, setToast] = useState('Operator preview active. Payment, auth, and production launch still require configured credentials and approval.');
 
   const approvedCount = useMemo(() => queue.filter((item) => item.status === 'Approved').length, [queue]);
   const releaseReadiness = Math.round(((approvedCount + receipts.length) / (queue.length + 4)) * 100);
@@ -53,15 +60,17 @@ export default function AdminConsole() {
   }
 
   return (
-    <main className="app-shell">
+    <main className={`app-shell ${styles.shell}`}>
       <nav className="app-nav">
         <a className="brand" href="/">
           Strategic Minds Advisory
-          <span>Admin Console</span>
+          <span>Gate Console</span>
         </a>
         <div className="nav-links app-nav-links">
           <a href="/">Website</a>
           <a href="/client">Client View</a>
+          <a href="/payment">Payment</a>
+          <a href="/auth">Auth</a>
           <button type="button" onClick={copySummary}>Copy Summary</button>
           <button className="btn primary" type="button" onClick={sendUpdate}>Send Update</button>
         </div>
@@ -80,8 +89,8 @@ export default function AdminConsole() {
           <header className="workspace-header">
             <div>
               <span className="eyebrow">Operator workspace</span>
-              <h1>{activeTab === 'Overview' ? 'Website Launch Console' : activeTab}</h1>
-              <p className="muted">Use this preview console to track approvals, receipts, dashboard readiness, and release blockers.</p>
+              <h1>{activeTab === 'Overview' ? 'Gated Launch Console' : activeTab}</h1>
+              <p className="muted">Track the 10-step client journey, payment gate, auth gate, build approvals, receipts, and release blockers.</p>
             </div>
             <div className="action-row">
               <button className="btn dark" type="button" onClick={createReceipt}>Create Receipt</button>
@@ -92,16 +101,16 @@ export default function AdminConsole() {
           <div className="notice-bar">{toast}</div>
 
           <div className="status-row">
-            <div className="dashboard-panel"><span className="badge green">Preview</span><h2>{releaseReadiness}%</h2><span className="muted">Release readiness</span></div>
+            <div className="dashboard-panel"><span className="badge green">Preview</span><h2>{releaseReadiness}%</h2><span className="muted">Gate readiness</span></div>
             <div className="dashboard-panel"><span className="badge amber">Waiting</span><h2>{queue.filter((item) => item.status === 'Waiting').length}</h2><span className="muted">Open approvals</span></div>
             <div className="dashboard-panel"><span className="badge blue">Recorded</span><h2>{receipts.length}</h2><span className="muted">Preview receipts</span></div>
-            <div className="dashboard-panel"><span className="badge green">Ready</span><h2>PWA</h2><span className="muted">Install support</span></div>
+            <div className="dashboard-panel"><span className="badge blue">Ready</span><h2>PWA</h2><span className="muted">Install support</span></div>
           </div>
 
           <div className="main-grid">
             <div className="data-table">
               <div className="table-row header">
-                <span>System</span>
+                <span>Gate</span>
                 <span>Owner</span>
                 <span>Status</span>
                 <span>Progress</span>
@@ -156,7 +165,7 @@ export default function AdminConsole() {
             </div>
             <div className="client-tile">
               <h2>Release Gate</h2>
-              <p className="muted">Production remains blocked until the preview is approved. This console can track readiness, but it does not publish, charge, or mutate live infrastructure.</p>
+              <p className="muted">Production remains blocked until payment, auth, client approval, and preview approval are configured and cleared. This console does not charge, publish, or mutate live infrastructure by itself.</p>
               <div className="progress" aria-label="release readiness">
                 <span style={{ width: `${releaseReadiness}%` }} />
               </div>
