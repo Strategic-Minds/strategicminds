@@ -1,0 +1,207 @@
+.shell {
+  position: relative;
+  background:
+    radial-gradient(circle at 78% 16%, rgba(0, 102, 255, 0.28), rgba(0, 0, 0, 0) 34%),
+    radial-gradient(circle at 16% 82%, rgba(0, 58, 160, 0.2), rgba(0, 0, 0, 0) 38%),
+    linear-gradient(180deg, #000000 0%, #030817 52%, #000000 100%);
+  color: #f7fbff;
+}
+
+.shell :global(.app-nav) {
+  border-bottom-color: rgba(99, 184, 255, 0.16);
+  background: rgba(0, 3, 10, 0.88);
+  color: #f7fbff;
+}
+
+.shell :global(.brand span),
+.shell :global(.eyebrow) {
+  color: #5fb3ff;
+}
+
+.shell :global(.nav-links),
+.shell :global(.app-nav-links) {
+  color: #bdd9ff;
+}
+
+.shell :global(.side-nav) {
+  border-right-color: rgba(99, 184, 255, 0.16);
+  background: rgba(0, 5, 14, 0.72);
+}
+
+.shell :global(.side-nav button) {
+  color: #9cb6d6;
+}
+
+.shell :global(.side-nav button.active) {
+  background: rgba(6, 63, 150, 0.42);
+  color: #ffffff;
+}
+
+.shell :global(.dashboard-panel),
+.shell :global(.data-table),
+.shell :global(.client-tile) {
+  border-color: rgba(99, 184, 255, 0.18);
+  background: rgba(2, 9, 24, 0.86);
+  color: #f7fbff;
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.46);
+  backdrop-filter: blur(20px);
+}
+
+.shell :global(.notice-bar),
+.shell :global(.queue-item),
+.shell :global(.document-list div),
+.shell :global(.message-list p) {
+  border-color: rgba(99, 184, 255, 0.16);
+  background: rgba(3, 15, 36, 0.74);
+  color: #cfe4ff;
+}
+
+.shell :global(.muted) {
+  color: #8aa3c2;
+}
+
+.shell :global(.btn.dark),
+.shell :global(.small-action),
+.shell :global(.mini-actions button),
+.shell :global(.queue-action) {
+  border-color: rgba(95, 179, 255, 0.25);
+  background: rgba(7, 31, 72, 0.72);
+  color: #9fd5ff;
+}
+
+.shell :global(.table-row) {
+  border-top-color: rgba(99, 184, 255, 0.12);
+}
+
+.shell :global(.table-row.header) {
+  background: rgba(2, 14, 34, 0.92);
+  color: #9cb6d6;
+}
+
+.shell :global(.progress) {
+  background: rgba(95, 179, 255, 0.14);
+}
+
+.shell :global(.message-form textarea) {
+  border-color: rgba(99, 184, 255, 0.22);
+  background: rgba(1, 7, 18, 0.92);
+  color: white;
+}
+
+.journeyPanel {
+  margin-top: 14px;
+  border: 1px solid rgba(99, 184, 255, 0.18);
+  border-radius: 8px;
+  padding: 22px;
+  background: linear-gradient(135deg, rgba(4, 22, 52, 0.92), rgba(0, 0, 0, 0.78));
+  box-shadow: 0 24px 82px rgba(0, 0, 0, 0.42);
+}
+
+.journeyMap {
+  display: grid;
+  grid-template-columns: repeat(10, minmax(86px, 1fr));
+  gap: 8px;
+  margin-top: 22px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.journeyStep {
+  display: grid;
+  min-width: 86px;
+  min-height: 112px;
+  align-content: start;
+  gap: 8px;
+  border: 1px solid rgba(95, 179, 255, 0.18);
+  border-radius: 8px;
+  padding: 12px 10px;
+  background: rgba(1, 8, 22, 0.84);
+  color: #bdd9ff;
+  text-align: left;
+}
+
+.journeyStep span {
+  display: inline-flex;
+  width: 34px;
+  aspect-ratio: 1;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: rgba(95, 179, 255, 0.12);
+  color: white;
+  font-weight: 900;
+}
+
+.journeyStep strong {
+  color: white;
+  font-size: 13px;
+  line-height: 1.15;
+}
+
+.journeyStep small {
+  color: #8aa3c2;
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.done {
+  border-color: rgba(109, 240, 173, 0.35);
+}
+
+.done span {
+  background: #21a96b;
+}
+
+.active {
+  border-color: rgba(95, 179, 255, 0.82);
+  box-shadow: 0 0 32px rgba(0, 112, 255, 0.26);
+}
+
+.active span {
+  background: #087bff;
+  box-shadow: 0 0 24px rgba(0, 112, 255, 0.58);
+}
+
+.locked {
+  opacity: 0.68;
+}
+
+.gateDetail {
+  display: grid;
+  align-content: start;
+  gap: 14px;
+}
+
+.gateDetail h2 {
+  margin: 0;
+  font-size: clamp(28px, 4vw, 46px);
+}
+
+.gateFacts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.gateFacts div {
+  display: grid;
+  gap: 6px;
+  border-top: 1px solid rgba(95, 179, 255, 0.18);
+  padding-top: 12px;
+}
+
+.gateFacts span {
+  color: #9cb6d6;
+  font-size: 13px;
+}
+
+@media (max-width: 720px) {
+  .journeyMap {
+    grid-template-columns: repeat(10, minmax(92px, 1fr));
+  }
+
+  .gateFacts {
+    grid-template-columns: 1fr;
+  }
+}

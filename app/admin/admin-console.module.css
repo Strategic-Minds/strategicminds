@@ -1,0 +1,81 @@
+.shell {
+  position: relative;
+  background:
+    radial-gradient(circle at 78% 16%, rgba(0, 102, 255, 0.26), rgba(0, 0, 0, 0) 34%),
+    radial-gradient(circle at 14% 80%, rgba(0, 58, 160, 0.2), rgba(0, 0, 0, 0) 38%),
+    linear-gradient(180deg, #000000 0%, #030817 52%, #000000 100%);
+  color: #f7fbff;
+}
+
+.shell :global(.app-nav) {
+  border-bottom-color: rgba(99, 184, 255, 0.16);
+  background: rgba(0, 3, 10, 0.88);
+  color: #f7fbff;
+}
+
+.shell :global(.brand span),
+.shell :global(.eyebrow) {
+  color: #5fb3ff;
+}
+
+.shell :global(.nav-links),
+.shell :global(.app-nav-links) {
+  color: #bdd9ff;
+}
+
+.shell :global(.side-nav) {
+  border-right-color: rgba(99, 184, 255, 0.16);
+  background: rgba(0, 5, 14, 0.72);
+}
+
+.shell :global(.side-nav button) {
+  color: #9cb6d6;
+}
+
+.shell :global(.side-nav button.active) {
+  background: rgba(6, 63, 150, 0.42);
+  color: #ffffff;
+}
+
+.shell :global(.dashboard-panel),
+.shell :global(.data-table),
+.shell :global(.client-tile) {
+  border-color: rgba(99, 184, 255, 0.18);
+  background: rgba(2, 9, 24, 0.86);
+  color: #f7fbff;
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.46);
+}
+
+.shell :global(.notice-bar),
+.shell :global(.queue-item),
+.shell :global(.message-list p) {
+  border-color: rgba(99, 184, 255, 0.16);
+  background: rgba(3, 15, 36, 0.74);
+  color: #cfe4ff;
+}
+
+.shell :global(.muted) {
+  color: #8aa3c2;
+}
+
+.shell :global(.btn.dark),
+.shell :global(.small-action),
+.shell :global(.mini-actions button),
+.shell :global(.queue-action) {
+  border-color: rgba(95, 179, 255, 0.25);
+  background: rgba(7, 31, 72, 0.72);
+  color: #9fd5ff;
+}
+
+.shell :global(.table-row) {
+  border-top-color: rgba(99, 184, 255, 0.12);
+}
+
+.shell :global(.table-row.header) {
+  background: rgba(2, 14, 34, 0.92);
+  color: #9cb6d6;
+}
+
+.shell :global(.progress) {
+  background: rgba(95, 179, 255, 0.14);
+}

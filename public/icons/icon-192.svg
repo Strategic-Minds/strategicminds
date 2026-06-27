@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" viewBox="0 0 192 192" role="img" aria-label="Strategic Minds icon">
+  <rect width="192" height="192" rx="42" fill="#02040a"/>
+  <circle cx="96" cy="96" r="70" fill="none" stroke="#0788ff" stroke-width="4" opacity="0.55"/>
+  <path d="M71 42c29 0 52 21 52 49 0 16-8 30-20 39l16 20H80l-10-13c-25-1-44-19-44-44 0-29 18-51 45-51Z" fill="#062146" stroke="#18a8ff" stroke-width="4"/>
+  <circle cx="93" cy="86" r="8" fill="#ffffff"/>
+  <path d="M105 86h33M101 104h26M91 122h48" stroke="#18a8ff" stroke-width="6" stroke-linecap="round"/>
+  <text x="96" y="165" text-anchor="middle" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="900">SM</text>
+</svg>
