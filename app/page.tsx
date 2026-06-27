@@ -1,3 +1,7 @@
+import styles from './homepage.module.css';
+
+const cx = (...classes: Array<string | false | undefined>) => classes.filter(Boolean).join(' ');
+
 const services = [
   {
     name: 'Website Launch',
@@ -40,33 +44,33 @@ const process = [
 
 export default function HomePage() {
   return (
-    <main className="site-shell">
-      <nav className="site-nav" aria-label="Main navigation">
-        <a className="brand" href="/">
+    <main className={styles.siteShell}>
+      <nav className={styles.siteNav} aria-label="Main navigation">
+        <a className={styles.brand} href="/">
           Strategic Minds Advisory
           <span>Vercel Website Systems</span>
         </a>
-        <div className="nav-links">
+        <div className={styles.navLinks}>
           <a href="#services">Services</a>
           <a href="#setup">Setup</a>
           <a href="#process">Process</a>
           <a href="/client">Client Portal</a>
-          <a className="btn primary" href="#contact">Start</a>
+          <a className={cx(styles.btn, styles.primary)} href="#contact">Start</a>
         </div>
       </nav>
 
-      <section className="hero">
-        <div className="hero-copy">
-          <span className="eyebrow">Vercel-first website setup</span>
+      <section className={styles.hero}>
+        <div className={styles.heroCopy}>
+          <span className={styles.eyebrow}>Vercel-first website setup</span>
           <h1>Strategic Minds Advisory</h1>
           <p>
             Websites, client portals, and automation-ready workflows for service businesses that need a cleaner path from idea to launch.
           </p>
-          <div className="actions">
-            <a className="btn primary" href="mailto:strategicmindsadvisory@gmail.com">Request a build</a>
-            <a className="btn" href="#services">View services</a>
+          <div className={styles.actions}>
+            <a className={cx(styles.btn, styles.primary)} href="mailto:strategicmindsadvisory@gmail.com">Request a build</a>
+            <a className={styles.btn} href="#services">View services</a>
           </div>
-          <div className="hero-proof" aria-label="Delivery principles">
+          <div className={styles.heroProof} aria-label="Delivery principles">
             <span>Preview-first builds</span>
             <span>Approval-gated launches</span>
             <span>Client-ready handoff</span>
@@ -74,39 +78,39 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="services" className="section light-band">
-        <span className="eyebrow">Services</span>
-        <h2 className="section-title">A website that can become the operating layer for the business.</h2>
-        <p className="section-copy">
+      <section id="services" className={cx(styles.section, styles.lightBand)}>
+        <span className={styles.eyebrow}>Services</span>
+        <h2 className={styles.sectionTitle}>A website that can become the operating layer for the business.</h2>
+        <p className={styles.sectionCopy}>
           Start with the homepage and grow into the portal, intake, approvals, documents, and automation paths as the business gets traction.
         </p>
-        <div className="offer-grid">
+        <div className={styles.offerGrid}>
           {services.map((service) => (
-            <article className={`offer ${service.featured ? 'featured' : ''}`} key={service.name}>
+            <article className={cx(styles.offer, service.featured && styles.featured)} key={service.name}>
               <div>
                 <h3>{service.name}</h3>
                 <p>{service.text}</p>
               </div>
               <div>
-                <div className="price">{service.price}</div>
-                <a className={`btn ${service.featured ? 'primary' : 'dark'}`} href="#contact">Start here</a>
+                <div className={styles.price}>{service.price}</div>
+                <a className={cx(styles.btn, service.featured ? styles.primary : styles.dark)} href="#contact">Start here</a>
               </div>
             </article>
           ))}
         </div>
       </section>
 
-      <section id="setup" className="section setup-band">
-        <div className="setup-copy">
-          <span className="eyebrow">Website setup</span>
-          <h2 className="section-title">Built for Vercel previews, clean handoff, and safe launch decisions.</h2>
-          <p className="section-copy">
+      <section id="setup" className={cx(styles.section, styles.setupBand)}>
+        <div className={styles.setupCopy}>
+          <span className={styles.eyebrow}>Website setup</span>
+          <h2 className={styles.sectionTitle}>Built for Vercel previews, clean handoff, and safe launch decisions.</h2>
+          <p className={styles.sectionCopy}>
             The stack stays simple on the outside and governed behind the scenes: website, portal, intake, workflow notes, and launch readiness in one path.
           </p>
         </div>
-        <div className="setup-grid">
+        <div className={styles.setupGrid}>
           {setupItems.map(([title, text]) => (
-            <div className="setup-item" key={title}>
+            <div className={styles.setupItem} key={title}>
               <strong>{title}</strong>
               <span>{text}</span>
             </div>
@@ -114,12 +118,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="process" className="section light-band">
-        <span className="eyebrow">Process</span>
-        <h2 className="section-title">Move from idea to working website without losing control of the launch.</h2>
-        <div className="process-grid">
+      <section id="process" className={cx(styles.section, styles.lightBand)}>
+        <span className={styles.eyebrow}>Process</span>
+        <h2 className={styles.sectionTitle}>Move from idea to working website without losing control of the launch.</h2>
+        <div className={styles.processGrid}>
           {process.map(([number, title, text]) => (
-            <div className="process-step" key={number}>
+            <div className={styles.processStep} key={number}>
               <span>{number}</span>
               <strong>{title}</strong>
               <p>{text}</p>
@@ -128,16 +132,16 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="contact" className="section final-cta">
+      <section id="contact" className={cx(styles.section, styles.finalCta)}>
         <div>
-          <span className="eyebrow">Start the build</span>
-          <h2 className="section-title">Set up the website, then connect the workflow that helps it run.</h2>
-          <p className="section-copy">
+          <span className={styles.eyebrow}>Start the build</span>
+          <h2 className={styles.sectionTitle}>Set up the website, then connect the workflow that helps it run.</h2>
+          <p className={styles.sectionCopy}>
             Send the idea, the offer, or the current site problem. The next step is a preview-safe homepage and setup path.
           </p>
-          <div className="actions">
-            <a className="btn primary" href="mailto:strategicmindsadvisory@gmail.com">Email Strategic Minds</a>
-            <a className="btn" href="/client">Open client portal</a>
+          <div className={styles.actions}>
+            <a className={cx(styles.btn, styles.primary)} href="mailto:strategicmindsadvisory@gmail.com">Email Strategic Minds</a>
+            <a className={styles.btn} href="/client">Open client portal</a>
           </div>
         </div>
       </section>
