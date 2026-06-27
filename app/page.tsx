@@ -3,128 +3,143 @@ import styles from './homepage.module.css';
 const cx = (...classes: Array<string | false | undefined>) => classes.filter(Boolean).join(' ');
 
 const services = [
-  {
-    name: 'Website Launch',
-    price: 'From $497',
-    text: 'A focused Vercel site with sharp positioning, responsive pages, contact routing, and a clean launch checklist.'
-  },
-  {
-    name: 'Workflow Automation',
-    price: 'From $1,497',
-    text: 'Intake, follow-up, project movement, approvals, and receipt paths mapped into a practical operating flow.'
-  },
-  {
-    name: 'Client Portal',
-    price: 'From $2,997',
-    text: 'A private client workspace for progress, files, requests, meetings, approvals, and next-step visibility.',
-    featured: true
-  },
-  {
-    name: 'Business System Build',
-    price: 'Scoped build',
-    text: 'A full website, portal, admin view, automation plan, and handoff packet for a launch-ready business system.'
-  }
+  ['Business Planning', 'Strategy, positioning, offer structure, and execution path.'],
+  ['Workflow Automation', 'Automate intake, follow-up, approvals, and admin movement.'],
+  ['MVP System Build', 'Build and launch your first Vercel-powered website system.'],
+  ['Business In A Box', 'Website, portal, workflow, handoff, and launch support.']
 ];
 
-const setupItems = [
-  ['Homepage', 'A polished first impression with clear offer, CTA, and mobile-first layout.'],
-  ['Intake Flow', 'Lead capture and request routing prepared for the next automation step.'],
-  ['Client Portal', 'A simple place for progress, documents, requests, and approvals.'],
-  ['Workflow Layer', 'Preview-safe automation logic for handoffs, receipts, and review gates.'],
-  ['Vercel Preview', 'Branch-safe changes can be reviewed before production release.'],
-  ['Launch Handoff', 'A checklist for DNS, forms, analytics, payment readiness, and rollback.']
+const workflow = [
+  ['Lead Capture', 'Forms, calendar, chat widget'],
+  ['Auto Onboarding', 'Client intake and setup'],
+  ['Auto Builder', 'Discovery, docs, build, validate'],
+  ['Workflow Engine', 'Vercel workflow automation'],
+  ['5-Min Cron', 'System health and approvals'],
+  ['AI Gateway', 'Safe agent actions'],
+  ['Notifications', 'Email drafts and alerts'],
+  ['Receipts & Logs', 'Audit proof and release records']
 ];
 
-const process = [
-  ['01', 'Clarify', 'We turn the idea, offer, and audience into a focused website plan.'],
-  ['02', 'Build', 'The homepage, portal path, and core workflow are assembled on Vercel.'],
-  ['03', 'Review', 'You approve copy, layout, routing, launch gates, and client-facing details.'],
-  ['04', 'Launch', 'Production release happens only after the preview is checked and approved.']
-];
+const stack = ['Next.js', 'Vercel', 'Supabase', 'Resend', 'Stripe Ready', 'PWA', 'Tailwind CSS'];
+
+const dashboardRows = ['Discovery', 'Brand & Strategy', 'Documentation', 'Build Phase', 'Validation', 'Release'];
 
 export default function HomePage() {
   return (
     <main className={styles.siteShell}>
       <nav className={styles.siteNav} aria-label="Main navigation">
         <a className={styles.brand} href="/">
-          Strategic Minds Advisory
-          <span>Vercel Website Systems</span>
+          <span className={styles.logoMark} aria-hidden="true" />
+          <span className={styles.brandText}>
+            <strong>Strategic Minds</strong>
+            <span>Advisory</span>
+          </span>
         </a>
         <div className={styles.navLinks}>
-          <a href="#services">Services</a>
-          <a href="#setup">Setup</a>
-          <a href="#process">Process</a>
-          <a href="/client">Client Portal</a>
-          <a className={cx(styles.btn, styles.primary)} href="#contact">Start</a>
+          <a href="#packages">Packages</a>
+          <a href="#solutions">Solutions</a>
+          <a href="#workflow">Workflow</a>
+          <a href="/client">Dashboard</a>
+          <a className={cx(styles.btn, styles.primary)} href="mailto:strategicmindsadvisory@gmail.com">Book a Call</a>
         </div>
       </nav>
 
       <section className={styles.hero}>
         <div className={styles.heroCopy}>
-          <span className={styles.eyebrow}>Vercel-first website setup</span>
-          <h1>Strategic Minds Advisory</h1>
+          <span className={styles.eyebrow}>Strategic Minds Advisory</span>
+          <h1>
+            Intelligence
+            <span>In Motion</span>
+          </h1>
           <p>
-            Websites, client portals, and automation-ready workflows for service businesses that need a cleaner path from idea to launch.
+            We build automated websites, intelligent workflows, and scalable business systems that run on Vercel.
           </p>
           <div className={styles.actions}>
-            <a className={cx(styles.btn, styles.primary)} href="mailto:strategicmindsadvisory@gmail.com">Request a build</a>
-            <a className={styles.btn} href="#services">View services</a>
+            <a className={cx(styles.btn, styles.primary)} href="#packages">Explore Packages</a>
+            <a className={styles.btn} href="mailto:strategicmindsadvisory@gmail.com">Book a Call</a>
           </div>
-          <div className={styles.heroProof} aria-label="Delivery principles">
-            <span>Preview-first builds</span>
-            <span>Approval-gated launches</span>
-            <span>Client-ready handoff</span>
+          <div className={styles.heroBadges} aria-label="Included capabilities">
+            <span>Built for scale</span>
+            <span>Automation first</span>
+            <span>AI powered</span>
+            <span>Results driven</span>
+          </div>
+        </div>
+
+        <div className={styles.heroVisual} aria-hidden="true">
+          <div className={styles.aiHead} />
+          <div className={styles.motionLines} />
+          <div className={styles.orbit}>
+            <span>SM</span>
           </div>
         </div>
       </section>
 
-      <section id="services" className={cx(styles.section, styles.lightBand)}>
-        <span className={styles.eyebrow}>Services</span>
-        <h2 className={styles.sectionTitle}>A website that can become the operating layer for the business.</h2>
-        <p className={styles.sectionCopy}>
-          Start with the homepage and grow into the portal, intake, approvals, documents, and automation paths as the business gets traction.
-        </p>
-        <div className={styles.offerGrid}>
-          {services.map((service) => (
-            <article className={cx(styles.offer, service.featured && styles.featured)} key={service.name}>
-              <div>
-                <h3>{service.name}</h3>
-                <p>{service.text}</p>
-              </div>
-              <div>
-                <div className={styles.price}>{service.price}</div>
-                <a className={cx(styles.btn, service.featured ? styles.primary : styles.dark)} href="#contact">Start here</a>
-              </div>
+      <section id="packages" className={styles.section}>
+        <div className={styles.sectionHeader}>
+          <span className={styles.eyebrow}>Our Core Services</span>
+          <h2>Five-star systems without the heavy agency drag.</h2>
+        </div>
+        <div className={styles.serviceGrid}>
+          {services.map(([title, text]) => (
+            <article className={styles.serviceCard} key={title}>
+              <span className={styles.cardIcon} />
+              <h3>{title}</h3>
+              <p>{text}</p>
             </article>
           ))}
         </div>
       </section>
 
-      <section id="setup" className={cx(styles.section, styles.setupBand)}>
-        <div className={styles.setupCopy}>
-          <span className={styles.eyebrow}>Website setup</span>
-          <h2 className={styles.sectionTitle}>Built for Vercel previews, clean handoff, and safe launch decisions.</h2>
-          <p className={styles.sectionCopy}>
-            The stack stays simple on the outside and governed behind the scenes: website, portal, intake, workflow notes, and launch readiness in one path.
-          </p>
+      <section id="solutions" className={cx(styles.section, styles.dashboardSection)}>
+        <div className={styles.sectionHeader}>
+          <span className={styles.eyebrow}>Client Dashboard Preview</span>
+          <h2>Website, portal, workflow, and approvals in one operating view.</h2>
         </div>
-        <div className={styles.setupGrid}>
-          {setupItems.map(([title, text]) => (
-            <div className={styles.setupItem} key={title}>
-              <strong>{title}</strong>
-              <span>{text}</span>
+        <div className={styles.dashboard}>
+          <aside className={styles.dashboardRail}>
+            {['Dashboard', 'Projects', 'Tasks', 'Documents', 'Payments', 'Messages', 'Settings'].map((item, index) => (
+              <span className={index === 0 ? styles.active : ''} key={item}>{item}</span>
+            ))}
+          </aside>
+          <div className={styles.dashboardMain}>
+            <div className={styles.progressRing}>
+              <strong>75%</strong>
+              <span>Project Progress</span>
             </div>
-          ))}
+            <div className={styles.projectList}>
+              {dashboardRows.map((row, index) => (
+                <div key={row}>
+                  <span>{row}</span>
+                  <strong>{index < 4 ? 'Ready' : 'Queued'}</strong>
+                </div>
+              ))}
+            </div>
+            <div className={styles.meetingCard}>
+              <span>Upcoming Meeting</span>
+              <strong>Strategy Call</strong>
+              <p>Review package, scope, and Vercel preview path.</p>
+              <a href="mailto:strategicmindsadvisory@gmail.com">View Calendar</a>
+            </div>
+          </div>
+          <div className={styles.statRow}>
+            <div><strong>12</strong><span>Total Projects</span></div>
+            <div><strong>7</strong><span>Active Projects</span></div>
+            <div><strong>$96,320</strong><span>Revenue Pipeline</span></div>
+            <div><strong>18</strong><span>Open Tasks</span></div>
+          </div>
         </div>
       </section>
 
-      <section id="process" className={cx(styles.section, styles.lightBand)}>
-        <span className={styles.eyebrow}>Process</span>
-        <h2 className={styles.sectionTitle}>Move from idea to working website without losing control of the launch.</h2>
-        <div className={styles.processGrid}>
-          {process.map(([number, title, text]) => (
-            <div className={styles.processStep} key={number}>
-              <span>{number}</span>
+      <section id="workflow" className={styles.section}>
+        <div className={styles.sectionHeader}>
+          <span className={styles.eyebrow}>Vercel Workflow Automation</span>
+          <h2>Every build includes the pieces needed to launch, operate, and improve.</h2>
+        </div>
+        <div className={styles.workflowGrid}>
+          {workflow.map(([title, text]) => (
+            <div className={styles.workflowItem} key={title}>
+              <span className={styles.cardIcon} />
               <strong>{title}</strong>
               <p>{text}</p>
             </div>
@@ -132,17 +147,30 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="contact" className={cx(styles.section, styles.finalCta)}>
-        <div>
-          <span className={styles.eyebrow}>Start the build</span>
-          <h2 className={styles.sectionTitle}>Set up the website, then connect the workflow that helps it run.</h2>
-          <p className={styles.sectionCopy}>
-            Send the idea, the offer, or the current site problem. The next step is a preview-safe homepage and setup path.
-          </p>
-          <div className={styles.actions}>
-            <a className={cx(styles.btn, styles.primary)} href="mailto:strategicmindsadvisory@gmail.com">Email Strategic Minds</a>
-            <a className={styles.btn} href="/client">Open client portal</a>
+      <section className={styles.bottomGrid} aria-label="Technology and features">
+        <div className={styles.stackPanel}>
+          <span className={styles.eyebrow}>Tech Stack</span>
+          <div className={styles.stackList}>
+            {stack.map((item) => (
+              <strong key={item}>{item}</strong>
+            ))}
           </div>
+        </div>
+        <div className={styles.featurePanel}>
+          <span className={styles.eyebrow}>Global Features</span>
+          <ul>
+            <li>Light and dark mode ready</li>
+            <li>PWA-ready Vercel deployment</li>
+            <li>Secure, scalable workflow path</li>
+            <li>SEO and speed optimized</li>
+            <li>AI-powered automation direction</li>
+          </ul>
+        </div>
+        <div className={styles.brandPanel}>
+          <span className={styles.logoMark} aria-hidden="true" />
+          <strong>Strategic Minds</strong>
+          <span>Advisory</span>
+          <p>Intelligence In Motion</p>
         </div>
       </section>
     </main>
