@@ -2,7 +2,7 @@ import './globals.css';
 
 export const metadata = {
   title: 'Strategic Minds Advisory',
-  description: 'Client operating system powered by AUTO_BUILDER.'
+  description: 'Vercel-built websites, client portals, and automation systems for service businesses.'
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
