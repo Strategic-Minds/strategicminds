@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Strategic Minds Advisory">
+  <rect width="512" height="512" rx="112" fill="#0a0a0a"/>
+  <circle cx="256" cy="256" r="144" fill="#ff0abc" opacity="0.18"/>
+  <path d="M150 330L256 152l106 178h-56l-50-88-50 88z" fill="#ffffff"/>
+</svg>

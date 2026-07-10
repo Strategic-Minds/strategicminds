@@ -1,1 +1,17 @@
-{"name":"Strategic Minds Advisory","short_name":"Strategic Minds","description":"Intelligence In Motion","start_url":"/","display":"standalone","background_color":"#ffffff","theme_color":"#0d6efd","icons":[]}
+{
+  "name": "Strategic Minds Advisory",
+  "short_name": "Strategic Minds",
+  "description": "Clean advisory website and client dashboard preview",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}

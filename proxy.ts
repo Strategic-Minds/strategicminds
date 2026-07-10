@@ -15,7 +15,7 @@ function redirectToLogin(request: NextRequest) {
   return NextResponse.redirect(loginUrl);
 }
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const isClientRoute = clientRoute.test(pathname);
   const isAdminRoute = adminRoute.test(pathname);

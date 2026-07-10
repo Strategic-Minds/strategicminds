@@ -1,5 +1,5 @@
-const CACHE_NAME = 'strategic-minds-client-os-v1';
-const CORE_ASSETS = ['/', '/dashboard', '/api/health', '/manifest.json'];
+const CACHE_NAME = 'strategic-minds-advisory-v1';
+const CORE_ASSETS = ['/', '/services', '/packages', '/how-it-works', '/about', '/schedule', '/login', '/payment', '/dashboard', '/api/health', '/manifest.json', '/icon.svg', '/apple-touch-icon.svg'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(CORE_ASSETS)));
@@ -17,6 +17,9 @@ self.addEventListener('fetch', (event) => {
   const request = event.request;
   if (request.method !== 'GET') return;
 
+  const accept = request.headers.get('accept') || '';
+  const isDocument = accept.includes('text/html');
+
   event.respondWith(
     fetch(request)
       .then((response) => {
@@ -24,6 +27,11 @@ self.addEventListener('fetch', (event) => {
         caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
         return response;
       })
-      .catch(() => caches.match(request).then((cached) => cached || caches.match('/')))
+      .catch(async () => {
+        const cached = await caches.match(request);
+        if (cached) return cached;
+        if (isDocument) return (await caches.match('/')) || Response.error();
+        return (await caches.match('/')) || Response.error();
+      })
   );
 });

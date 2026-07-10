@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#9c9a93"/>
+      <stop offset="100%" stop-color="#5f5b53"/>
+    </linearGradient>
+    <pattern id="p" width="80" height="80" patternUnits="userSpaceOnUse">
+      <rect width="80" height="80" fill="url(#g)"/>
+      <path d="M0 40H80 M40 0V80" stroke="#7b786f" stroke-width="2" opacity=".3"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="760" fill="url(#p)"/>
+  <rect x="60" y="60" width="1080" height="640" rx="24" fill="none" stroke="#bdb7aa" stroke-width="10" opacity=".35"/>
+  <text x="600" y="380" text-anchor="middle" font-family="Arial" font-size="46" fill="#fff" opacity=".45">SAFE FIXTURE FLOOR IMAGE</text>
+</svg>
