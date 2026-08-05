@@ -1,0 +1,107 @@
+{
+  "receipt_version": "1.0.0",
+  "generated_at": "2026-08-05T23:50:44.115Z",
+  "status": "fail",
+  "production_ready": false,
+  "repo": "Strategic-Minds/strategicminds",
+  "branch": "audit/visual-x-browserworker-2026-08-05",
+  "base44_app_id": "6a72dc735df4ab468b4b1441",
+  "workspace_url": "http://127.0.0.1:5173",
+  "test_environment": {
+    "node": "20.20.2",
+    "npm": "10.8.2",
+    "browser": "Playwright Chromium 151.0.7922.34",
+    "mobile_viewport": "430x932",
+    "desktop_viewport": "1440x1000",
+    "network_scope": "Base44 workspace only",
+    "production_actions_performed": false
+  },
+  "source_checks": {
+    "vite_build": "pass",
+    "eslint": "fail",
+    "eslint_error_count": 3,
+    "typecheck": "fail",
+    "typecheck_error_count": "more than 100",
+    "active_router_contains_approved_app_routes": false,
+    "active_router_behavior": "The source defines /app/:screen as a redirect to / and redirects unknown paths to /.",
+    "approved_reference_images_present_in_active_public_assets": false
+  },
+  "browser_summary": {
+    "total_browser_tests": 54,
+    "mobile_routes_tested": 32,
+    "desktop_routes_tested": 22,
+    "approved_routes_expected": 10,
+    "approved_route_identity_pass": 0,
+    "approved_route_identity_fail": 10,
+    "mobile_routes_with_page_errors": 13,
+    "mobile_routes_with_console_errors": 31,
+    "mobile_routes_with_broken_images": 0,
+    "mobile_routes_with_horizontal_overflow": 0
+  },
+  "approved_route_matrix": [
+    {"route":"/app/home","status":"fail","observed":"redirected to /"},
+    {"route":"/app/scan","status":"fail","observed":"redirected to /"},
+    {"route":"/app/visualizer","status":"fail","observed":"redirected to /"},
+    {"route":"/app/compare","status":"fail","observed":"redirected to /"},
+    {"route":"/app/blends","status":"fail","observed":"redirected to /"},
+    {"route":"/app/metallic","status":"fail","observed":"redirected to /"},
+    {"route":"/app/products","status":"fail","observed":"redirected to /"},
+    {"route":"/app/quote","status":"fail","observed":"redirected to /"},
+    {"route":"/app/proposal","status":"fail","observed":"blank page with two aborted module requests during the test"},
+    {"route":"/app/lead","status":"fail","observed":"redirected to /"}
+  ],
+  "generic_route_runtime_failures": [
+    "/generator",
+    "/products",
+    "/colors",
+    "/systems",
+    "/pricing",
+    "/appointments",
+    "/receipts",
+    "/close",
+    "/settings",
+    "/competitive-pricing",
+    "/lead-generator",
+    "/crm",
+    "/email-templates"
+  ],
+  "backend_finding": {
+    "status": "blocked",
+    "detail": "The local UI requested Base44 public settings and entity data through /api, but the workspace returned 404. Entity-backed screens either rendered empty shells or raised Base44Error page exceptions. This test did not prove the deployed backend or authenticated production behavior."
+  },
+  "package_finding": {
+    "status": "fail",
+    "detail": "Re-running the generated forensic validation scripts modified validation JSON files that were included in PACKAGE_CONTENT_CHECKSUMS.sha256. Nine checksum entries then failed, so the package is not validation-idempotent as delivered."
+  },
+  "lint_findings": [
+    "src/components/lead/FloorSpecEditor.jsx: FileText unused",
+    "src/pages/Inbox.jsx: Check unused",
+    "src/pages/More.jsx: InboxIcon unused"
+  ],
+  "major_typecheck_patterns": [
+    "UI wrapper props inferred as empty objects",
+    "PageHeader action/actions contract mismatch",
+    "required EmptyState and SectionCard props omitted",
+    "GenerateImage request uses unsupported existing_image_urls",
+    "FileReader result string or ArrayBuffer mismatch",
+    "ImportMeta.env declarations missing"
+  ],
+  "controls": {
+    "production_deployment": "not performed",
+    "live_messages": "not sent",
+    "live_payments": "not processed",
+    "destructive_database_operations": "not performed",
+    "operator_approval_required_before_promotion": true
+  },
+  "blockers": [
+    "Approved ten-screen /app router is not active.",
+    "Thirteen mobile routes raise page errors in the workspace test.",
+    "Every tested mobile route except one logs Base44 API console errors.",
+    "Lint and typecheck do not pass.",
+    "Authenticated deployed backend behavior was not reachable from the local workspace.",
+    "Corrected package checksum manifest becomes invalid after its own validation scripts run.",
+    "Exact production product catalog remains unverified."
+  ],
+  "release_decision": "BLOCKED",
+  "required_next_action": "Install the corrected Visual X /app route implementation in a checkpointed preview, repair lint and type contracts, make validation artifacts checksum-idempotent, connect the preview to a test backend, and rerun this Browserworker harness until every required route and workflow passes."
+}
