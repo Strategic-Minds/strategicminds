@@ -1,0 +1,17 @@
+{
+  "generated_at": "2026-08-05T23:50:44.115Z",
+  "viewport": "430x932",
+  "evidence": [
+    {"route":"/app/home","final_path":"/","sha256":"401bc95f0edd83bd455806d4b37343c64d50ea683f200311958b52707c4e881f","bytes":143019},
+    {"route":"/app/scan","final_path":"/","sha256":"401bc95f0edd83bd455806d4b37343c64d50ea683f200311958b52707c4e881f","bytes":143019},
+    {"route":"/app/visualizer","final_path":"/","sha256":"401bc95f0edd83bd455806d4b37343c64d50ea683f200311958b52707c4e881f","bytes":143019},
+    {"route":"/app/compare","final_path":"/","sha256":"401bc95f0edd83bd455806d4b37343c64d50ea683f200311958b52707c4e881f","bytes":143019},
+    {"route":"/app/blends","final_path":"/","sha256":"401bc95f0edd83bd455806d4b37343c64d50ea683f200311958b52707c4e881f","bytes":143019},
+    {"route":"/app/metallic","final_path":"/","sha256":"401bc95f0edd83bd455806d4b37343c64d50ea683f200311958b52707c4e881f","bytes":143019},
+    {"route":"/app/products","final_path":"/","sha256":"401bc95f0edd83bd455806d4b37343c64d50ea683f200311958b52707c4e881f","bytes":143019},
+    {"route":"/app/quote","final_path":"/","sha256":"401bc95f0edd83bd455806d4b37343c64d50ea683f200311958b52707c4e881f","bytes":143019},
+    {"route":"/app/proposal","final_path":"/app/proposal","sha256":"b73816c2b985b5d9df78b1d66062ce9aa5fbb64a1823d60a6dea65d3c5845048","bytes":2549,"note":"blank page during test"},
+    {"route":"/app/lead","final_path":"/","sha256":"401bc95f0edd83bd455806d4b37343c64d50ea683f200311958b52707c4e881f","bytes":143019}
+  ],
+  "finding": "Nine approved routes produced the exact same screenshot hash as the home route because the active router redirected them to /. The proposal route produced a near-empty screenshot."
+}
