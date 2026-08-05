@@ -1,0 +1,43 @@
+{
+  "generated_at": "2026-08-05T23:55:12.833Z",
+  "status": "partial",
+  "base44_app_id": "6a72dc735df4ab468b4b1441",
+  "route": "/visualizer",
+  "viewport": "430x932",
+  "client_side_checks": {
+    "status": "pass",
+    "passed": 13,
+    "failed": 0,
+    "checks": [
+      "Visualizer route heading rendered",
+      "Local photo preview loaded",
+      "Metallic Epoxy system selection became active",
+      "Official Metallic Silver color option was available",
+      "1,250 square feet propagated through the bid",
+      "Selected color propagated through the bid",
+      "Three repair patches propagated through the prep summary",
+      "A nonzero $10,800 to $17,250 estimate was calculated",
+      "Email bid link was composed with the selected values",
+      "SMS bid link was composed with the selected values",
+      "Generate button became enabled after upload",
+      "Generation failure was surfaced to the operator",
+      "Save failure was surfaced to the operator"
+    ]
+  },
+  "backend_operations": {
+    "status": "fail",
+    "observed_post_targets": [
+      "/api/apps/6a72dc735df4ab468b4b1441/analytics/track/batch",
+      "/api/apps/6a72dc735df4ab468b4b1441/integration-endpoints/Core/UploadFile",
+      "/api/apps/6a72dc735df4ab468b4b1441/integration-endpoints/Core/GenerateImage",
+      "/api/apps/6a72dc735df4ab468b4b1441/entities/Lead"
+    ],
+    "result": "The local Base44 workspace returned API errors. No lead, generated image, customer message, or production record was confirmed created."
+  },
+  "console_findings": [
+    "Base44 public settings request returned 404",
+    "Base44 SDK reported Request failed with status code 404",
+    "Toast component forwarded unsupported onOpenChange to a DOM element"
+  ],
+  "release_effect": "The visualizer is usable as a client-side calculator and share-link composer, but it is not an end-to-end working system in this workspace."
+}
