@@ -1,0 +1,86 @@
+name: Visual X Browserworker Audit
+
+on:
+  push:
+    branches:
+      - audit/visual-x-browserworker-2026-08-05
+    paths:
+      - "browserworker/visual-x/**"
+      - ".github/workflows/visual-x-browserworker-audit.yml"
+  workflow_dispatch:
+    inputs:
+      base_url:
+        description: "Preview or workspace URL to audit. Do not enter a production URL without operator approval."
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  validate-receipt:
+    name: Validate forensic receipt
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Validate harness syntax
+        run: node --check browserworker/visual-x/route-audit.mjs
+      - name: Validate receipt contract
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+          const path = 'browserworker/visual-x/receipts/2026-08-05-base44-workspace-audit.json';
+          const receipt = JSON.parse(fs.readFileSync(path, 'utf8'));
+          const required = [
+            'status', 'production_ready', 'repo', 'branch', 'base44_app_id',
+            'browser_summary', 'blockers', 'release_decision'
+          ];
+          const missing = required.filter(key => !(key in receipt));
+          if (missing.length) throw new Error(`Missing receipt keys: ${missing.join(', ')}`);
+          if (receipt.repo !== 'Strategic-Minds/strategicminds') throw new Error('Unexpected target repository');
+          if (receipt.production_ready !== false) throw new Error('Audit may not mark production ready');
+          if (receipt.release_decision !== 'BLOCKED') throw new Error('Failed audit must remain blocked');
+          if (receipt.controls.production_deployment !== 'not performed') throw new Error('Production deployment control violated');
+          console.log(JSON.stringify({
+            receipt: path,
+            status: receipt.status,
+            release_decision: receipt.release_decision,
+            approved_route_identity_pass: receipt.browser_summary.approved_route_identity_pass,
+            approved_route_identity_fail: receipt.browser_summary.approved_route_identity_fail
+          }, null, 2));
+          NODE
+
+  browser-audit:
+    name: Run browser audit against supplied preview
+    if: github.event_name == 'workflow_dispatch' && inputs.base_url != ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install Playwright without changing repository manifests
+        run: |
+          mkdir -p /tmp/visual-x-browserworker
+          cd /tmp/visual-x-browserworker
+          npm init -y
+          npm install playwright@1.62.1
+          npx playwright install --with-deps chromium
+          ln -s /tmp/visual-x-browserworker/node_modules "$GITHUB_WORKSPACE/node_modules"
+      - name: Audit preview routes
+        env:
+          VISUAL_X_BASE_URL: ${{ inputs.base_url }}
+          BROWSERWORKER_OUTPUT_DIR: browserworker-output
+        run: node browserworker/visual-x/route-audit.mjs
+      - name: Upload audit evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-x-browserworker-evidence
+          path: browserworker-output
+          if-no-files-found: warn
+          retention-days: 14
