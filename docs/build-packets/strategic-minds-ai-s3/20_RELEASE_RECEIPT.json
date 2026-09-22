@@ -1,0 +1,12 @@
+{
+  "project_id": "SMAI-S3-20260922",
+  "status": "NOT_RELEASED",
+  "production_domain": "strategicmindsai.com",
+  "release_approved": false,
+  "approval_receipt": null,
+  "production_deployment_id": null,
+  "production_sha": null,
+  "smoke_test": "NOT_RUN",
+  "rollback_reference": "docs/build-packets/strategic-minds-ai-s3/18_ROLLBACK_PLAN.md",
+  "note": "Production remains locked until validated preview and explicit release approval."
+}
