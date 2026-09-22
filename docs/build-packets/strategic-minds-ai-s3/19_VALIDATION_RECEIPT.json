@@ -1,0 +1,14 @@
+{
+  "project_id": "SMAI-S3-20260922",
+  "packet_version": "1.0.0",
+  "status": "NOT_TESTED",
+  "validator": "independent-validator-required",
+  "source_sha": "02873271f20322527f2b38295b48498ceea3dd14",
+  "branch": "feature/s3-signal-command-center",
+  "preview_url": null,
+  "tests": [],
+  "screenshots": [],
+  "defects": [],
+  "decision": "BLOCKED_PENDING_IMPLEMENTATION_AND_VALIDATION",
+  "created_at": "2026-09-22T17:00:00Z"
+}
