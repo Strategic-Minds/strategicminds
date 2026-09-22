@@ -1,0 +1,26 @@
+{
+  "project_id": "SMAI-S3-20260922",
+  "system_id": "strategic-minds-ai-corporate-intelligence",
+  "canonical_repo": "Strategic-Minds/strategicminds",
+  "canonical_branch": "main",
+  "working_branch": "feature/s3-signal-command-center",
+  "source_sha": "02873271f20322527f2b38295b48498ceea3dd14",
+  "packet_version": "1.0.0",
+  "intended_domain": "strategicmindsai.com",
+  "design_family": "S3 Signal Command Center",
+  "source_truth": {
+    "github": "canonical code",
+    "google_drive": "human plans/media/approvals",
+    "supabase": "operational state/auth/RLS/evidence",
+    "vercel": "preview/deploy/workflow/cron",
+    "build_web_apps": "requested implementation system"
+  },
+  "benchmarks": [
+    "BCG X",
+    "Accenture AI & Data",
+    "Palantir",
+    "Scale AI",
+    "Semrush Enterprise AIO"
+  ],
+  "status": "APPROVED_DIRECTION_IMPLEMENTATION_PENDING"
+}

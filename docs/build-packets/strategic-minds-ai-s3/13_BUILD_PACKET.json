@@ -1,0 +1,82 @@
+{
+  "project_id": "SMAI-S3-20260922",
+  "system_id": "strategic-minds-ai-corporate-intelligence",
+  "base44_app_id": null,
+  "canonical_repo": "Strategic-Minds/strategicminds",
+  "canonical_branch": "main",
+  "source_sha": "02873271f20322527f2b38295b48498ceea3dd14",
+  "packet_version": "1.0.0",
+  "approved_visual_manifest": "docs/build-packets/strategic-minds-ai-s3/02_APPROVED_VISUAL_MANIFEST.json",
+  "approved_visual_hashes": "PENDING_HASH_AFTER_IMPLEMENTATION",
+  "architecture_doc_hashes": "PENDING_HASH_AFTER_IMPLEMENTATION",
+  "content_lock_hash": "PENDING_HASH_AFTER_IMPLEMENTATION",
+  "allowed_scope": [
+    "feature branch implementation",
+    "preview deployment",
+    "non-production Supabase scaffolding",
+    "lint/typecheck/build",
+    "Playwright validation",
+    "screenshot capture",
+    "bounded repair"
+  ],
+  "forbidden_scope": [
+    "main merge",
+    "production deploy",
+    "DNS/domain changes",
+    "production migrations",
+    "secret changes",
+    "paid resource creation",
+    "customer communications",
+    "destructive operations"
+  ],
+  "required_routes": [
+    "/",
+    "/services",
+    "/solutions",
+    "/intelligence",
+    "/research",
+    "/case-studies",
+    "/about",
+    "/contact",
+    "/client"
+  ],
+  "required_components": [
+    "HeroSignalField",
+    "SignalAtlas",
+    "MarketVisibilityPanel",
+    "ResearchBriefCard",
+    "SignalRoomPreview",
+    "ConsultationForm"
+  ],
+  "required_entities": [
+    "profiles",
+    "organizations",
+    "inquiries",
+    "research_briefs",
+    "intelligence_signals",
+    "projects",
+    "approvals",
+    "validation_receipts"
+  ],
+  "required_integrations": [
+    "GitHub",
+    "Vercel",
+    "Supabase",
+    "Google Drive",
+    "Playwright"
+  ],
+  "required_workflows": [
+    "5-minute reconciliation"
+  ],
+  "acceptance_tests": "docs/build-packets/strategic-minds-ai-s3/14_ACCEPTANCE_TESTS.md",
+  "visual_validation_viewports": [
+    "1440x1000",
+    "1024x1366",
+    "390x844"
+  ],
+  "operational_validation_tests": "docs/build-packets/strategic-minds-ai-s3/16_OPERATIONAL_PARITY_RUBRIC.md",
+  "risk_class": "HIGH",
+  "approval_id": "S3_DIRECTION_APPROVED_20260922",
+  "rollback_reference": "docs/build-packets/strategic-minds-ai-s3/18_ROLLBACK_PLAN.md",
+  "created_at": "2026-09-22T17:00:00Z"
+}
