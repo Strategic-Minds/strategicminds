@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       target_url:
-        description: Live StrategicMinds autobuilder tick URL
+        description: Verified StrategicMinds autobuilder tick URL (restricted to approved project hosts)
         required: false
-        default: https://strategicminds-strategic-minds-advisory.vercel.app/api/autobuilder/tick
+        default: https://strategicminds-hxwbfteca-strategic-minds-advisory.vercel.app/api/autobuilder/tick
   schedule:
     - cron: '17 * * * *'
 
@@ -18,59 +18,128 @@ jobs:
     steps:
       - name: Call signed StrategicMinds autobuilder tick
         env:
-          CRON_SECRET: ${{ secrets.AUTONOMOUS_CONTROL_PLANE_CRON_SECRET }}
-          TARGET_URL: ${{ github.event.inputs.target_url || 'https://strategicminds-strategic-minds-advisory.vercel.app/api/autobuilder/tick' }}
+          PRIMARY_SECRET: ${{ secrets.AUTONOMOUS_CONTROL_PLANE_CRON_SECRET }}
+          FALLBACK_SECRET: ${{ secrets.CRON_SECRET }}
+          TARGET_URL: ${{ github.event.inputs.target_url || vars.AUTOBUILDER_TICK_URL || 'https://strategicminds-hxwbfteca-strategic-minds-advisory.vercel.app/api/autobuilder/tick' }}
         run: |
-          set -euo pipefail
-          mkdir -p artifacts
-
-          if [ -z "${CRON_SECRET:-}" ]; then
-            node - <<'NODE'
-          const fs = require('fs');
-          fs.writeFileSync('artifacts/signed-cron-verification.json', JSON.stringify({
-            verificationStatus: 'failed',
-            error: 'missing_AUTONOMOUS_CONTROL_PLANE_CRON_SECRET',
-            checkedAt: new Date().toISOString()
-          }, null, 2));
-          NODE
-            exit 1
-          fi
-
-          http_code=$(curl -sS -o artifacts/response.json -w '%{http_code}' \
-            -H "Authorization: Bearer ${CRON_SECRET}" \
-            "${TARGET_URL}")
-
-          HTTP_CODE="$http_code" TARGET_URL="$TARGET_URL" node - <<'NODE'
-          const fs = require('fs');
-          const responseText = fs.readFileSync('artifacts/response.json', 'utf8');
-          let body;
-          try {
-            body = JSON.parse(responseText);
-          } catch (error) {
-            body = { raw: responseText };
-          }
-
-          const verified = process.env.HTTP_CODE === '200' && body?.ok === true;
+          node <<'NODE'
+          'use strict';
+          const fs = require('node:fs');
+          const crypto = require('node:crypto');
+          
+          fs.mkdirSync('artifacts', { recursive: true });
           const artifact = {
-            verificationStatus: verified ? 'verified' : 'failed',
-            targetUrl: process.env.TARGET_URL,
-            httpStatus: Number(process.env.HTTP_CODE),
-            ok: body?.ok ?? false,
-            persistence: body?.persistence ?? null,
-            receiptId: body?.receipt?.id ?? null,
-            checkedAt: new Date().toISOString()
+            verificationStatus: 'failed',
+            checkedAt: new Date().toISOString(),
+            httpStatus: null,
+            targetHost: null,
+            secretNamesAvailable: [],
+            triedSecretNames: [],
+            errorCategory: null,
+            response: null
           };
-
-          fs.writeFileSync('artifacts/signed-cron-verification.json', JSON.stringify(artifact, null, 2));
-
-          if (!verified) {
-            process.exit(1);
+          const candidates = [
+            { name: 'AUTONOMOUS_CONTROL_PLANE_CRON_SECRET', value: process.env.PRIMARY_SECRET },
+            { name: 'CRON_SECRET', value: process.env.FALLBACK_SECRET }
+          ].filter(item => typeof item.value === 'string' && item.value.length > 0);
+          const uniqueCandidates = candidates.filter((item, index) =>
+            candidates.findIndex(other => other.value === item.value) === index
+          );
+          artifact.secretNamesAvailable = candidates.map(item => item.name);
+          const allowedHosts = new Set([
+            'strategicminds-hxwbfteca-strategic-minds-advisory.vercel.app',
+            'strategicminds-strategic-minds-advisory.vercel.app',
+            'strategicminds-rosy.vercel.app',
+            'www.strategicmindsadvisory.com',
+            'strategicmindsadvisory.com'
+          ]);
+          const safeErrorCode = value =>
+            ['unauthorized', 'forbidden', 'not_found', 'internal_error', 'invalid_secret']
+              .includes(value) ? value : null;
+          const safeReceiptId = value =>
+            typeof value === 'string' && /^[a-zA-Z0-9_-]{1,128}$/.test(value) ? value : null;
+          function save() {
+            const result = {
+              ...artifact,
+              verified: artifact.verificationStatus === 'verified'
+            };
+            // Response is intentionally allowlisted: never upload the raw response
+            // or headers, which could contain credentials or private customer data.
+            fs.writeFileSync('artifacts/response.json', JSON.stringify(artifact.response || {}, null, 2));
+            fs.writeFileSync('artifacts/signed-cron-verification.json', JSON.stringify(result, null, 2));
           }
+          async function main() {
+            let url;
+            try {
+              url = new URL(process.env.TARGET_URL || '');
+            } catch {
+              artifact.errorCategory = 'invalid_target_url';
+              return;
+            }
+            artifact.targetHost = url.hostname;
+            if (url.protocol !== 'https:' || !allowedHosts.has(url.hostname) ||
+                url.pathname !== '/api/autobuilder/tick' || url.search || url.hash ||
+                url.username || url.password || url.port) {
+              artifact.errorCategory = 'invalid_target_url';
+              return;
+            }
+            if (!uniqueCandidates.length) {
+              artifact.errorCategory = 'missing_github_secret';
+              return;
+            }
+            for (let i = 0; i < uniqueCandidates.length; i++) {
+              const candidate = uniqueCandidates[i];
+              artifact.triedSecretNames.push(candidate.name);
+              const response = await fetch(url.toString(), {
+                method: 'GET',
+                headers: { Authorization: 'Bearer ' + candidate.value, Accept: 'application/json' },
+                redirect: 'manual',
+                signal: AbortSignal.timeout(15000)
+              });
+              const raw = await response.text();
+              let body = null;
+              try { body = JSON.parse(raw); } catch {}
+              artifact.httpStatus = response.status;
+              artifact.response = {
+                isJson: Boolean(body && typeof body === 'object'),
+                contentType: (response.headers.get('content-type') || '').split(';')[0].slice(0,60),
+                responseBytes: Buffer.byteLength(raw),
+                responseSha256: crypto.createHash('sha256').update(raw).digest('hex'),
+                ok: typeof body?.ok === 'boolean' ? body.ok : null,
+                errorCode: safeErrorCode(body?.error),
+                persistenceStatus: safeErrorCode(body?.persistence?.status),
+                receiptId: safeReceiptId(body?.receipt?.id)
+              };
+              // A 401 denies execution before tick. Retry only then, never after a
+              // successful or failed tick, to prevent duplicate side effects.
+              if (response.status === 401 && i + 1 < uniqueCandidates.length) continue;
+              break;
+            }
+            const valid = artifact.httpStatus === 200 && artifact.response?.ok === true;
+            artifact.verificationStatus = valid ? 'verified' : 'failed';
+            artifact.errorCategory = valid ? null :
+              artifact.httpStatus === 404 ? 'endpoint_not_found' :
+              artifact.httpStatus === 401 ? 'unauthorized' :
+              artifact.httpStatus === 403 ? 'forbidden' :
+              artifact.httpStatus >= 500 ? 'upstream_error' :
+              artifact.httpStatus === 200 ? 'unexpected_success_shape' : 'unexpected_http_status';
+          }
+          main().catch(error => {
+            artifact.errorCategory = ['AbortError', 'TimeoutError'].includes(error?.name)
+              ? 'request_timeout' : 'network_or_runtime_error';
+          }).finally(() => {
+            save();
+            if (artifact.verificationStatus !== 'verified') process.exitCode = 1;
+          });
           NODE
 
-      - name: Upload signed cron artifact
-        uses: actions/upload-artifact@v4
+      - name: Upload sanitized signed cron diagnostics
         if: always()
+        uses: actions/upload-artifact@v4
         with:
           name: signed-cron-verification
-          path: artifacts/
+          path: |
+            artifacts/response.json
+            artifacts/signed-cron-verification.json
+          if-no-files-found: error
+          retention-days: 7
